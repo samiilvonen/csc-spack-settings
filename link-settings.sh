@@ -1,14 +1,17 @@
 #!/bin/bash
+# This script creates symlinks from csc git submodule to
+# the $spack/etc/spack directory (location of site scope
+# settings).
 
 files="packages.yaml config.yaml modules.yaml"
 settingspath="site-config"
-etcpath="../etc"
+etcpath="../etc/spack"
 
 for cfile in ${files}; do
     if [ -L ${etcpath}/${cfile} ] && [ -e ${etcpath}/${cfile} ] ; then
         echo "Symlink ${etcpath}/${cfile} in place."
     else
-        ln -s ${settingspath}/${cfile} ${etcpath}/${cfile}
+        ln -sr ${settingspath}/${cfile} ${etcpath}/${cfile}
         echo "Symlink to ${cfile} created."
     fi
 done
