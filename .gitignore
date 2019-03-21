@@ -1,1 +1,9 @@
 *.pyc
+*~
+#*
+.#*
+*.sqsh
+/csc-testenv/home
+!/csc-testenv/home/.bashrc
+!/csc-testenv/home/.bash_profile
+/csc-testenv/temp/tmp
