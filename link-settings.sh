@@ -3,7 +3,7 @@
 # the $spack/etc/spack directory (location of site scope
 # settings).
 
-files="packages.yaml config.yaml modules.yaml mirrors.yaml compilers.yaml"
+files="packages.yaml config.yaml modules.yaml mirrors.yaml compilers.yaml repos.yaml"
 settingspath="site-config"
 etcpath="../etc/spack"
 
