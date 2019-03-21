@@ -7,3 +7,4 @@
 !/csc-testenv/home/.bashrc
 !/csc-testenv/home/.bash_profile
 /csc-testenv/temp/tmp
+!/csc/testenv/temp/.keepthis
