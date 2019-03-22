@@ -58,12 +58,13 @@ __write() {
     return $?
 }
 
+# First argument is repository path
 __revparse_head() {
-    head="`git -C /appl/spack rev-parse $@ HEAD 2>/dev/null`"
+    head="`git -C ${1} rev-parse ${@:2} HEAD 2>/dev/null`"
     result="$?"
     if [ "$result" '!=' '0' ] ; then
-        head="`git --git-dir=/appl/spack/.git \\
-              --work-tree=/appl/spack rev-parse $@ HEAD 2>/dev/null`"
+        head="`git --git-dir=${1}/.git \\
+              --work-tree=${1} rev-parse ${@:2} HEAD 2>/dev/null`"
         result="$?"
     fi
 
@@ -72,10 +73,10 @@ __revparse_head() {
 }
 
 __git_head() {
-    head="`__revparse_head --abbrev-ref`"
+    head="`__revparse_head ${1} --abbrev-ref`"
     if [ "$?" '=' '0' ] ; then
         if [ "$head" '=' 'HEAD' ] ; then
-            head="`__revparse_head | cut -c1-8`..."
+            head="`__revparse_head ${1} | cut -c1-8`..."
         fi
 
         echo "$head"
@@ -85,23 +86,23 @@ __git_head() {
 __update_prompt() {
     local prompt
     prompt=''
-    linux_distro="centos7"
-    if [ -n "$linux_distro" ] ; then
-        linux_distro='\[\e[1;34m\][\[\e[0;34m\]'"$linux_distro"'\[\e[1;34m\]]'
-        if [ -n "$prompt" ] ; then
-            prompt="$prompt "
-        fi
-        prompt="$prompt$linux_distro"
-    fi
 
-    git_head="`__git_head`"
-
+    git_head="`__git_head ${SPACK_ROOT}`"
     if [ -n "$git_head" ] ; then
-        git_head='\[\e[1;32m\](\[\e[0;32m\]'"$git_head"'\[\e[1;32m\])'
+        git_head='\[\e[1;32m\][\[\e[0;32m\]'"$git_head"'\[\e[1;32m\]]'
         if [ -n "$prompt" ] ; then
             prompt="$prompt "
         fi
         prompt="$prompt$git_head"
+    fi
+
+    git_site_head="`__git_head ${SPACK_ROOT}/site-settings`"
+    if [ -n "$git_site_head" ] ; then
+        git_site_head='\[\e[1;34m\](\[\e[0;34m\]'"$git_site_head"'\[\e[1;34m\])'
+        if [ -n "$prompt" ] ; then
+            prompt="$prompt "
+        fi
+        prompt="$prompt$git_site_head"
     fi
 
     if [ -n "$prompt" ] ; then
