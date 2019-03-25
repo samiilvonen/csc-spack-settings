@@ -3,7 +3,7 @@
 mynameis="$( basename "$0" )"
 myuid="$( id -u )"
 mygid="$( id -g )"
-imagename="csctestimage.sqsh"
+imagename="csctestimage.sqfs"
 
 cd "$( dirname "$0" )"
 
