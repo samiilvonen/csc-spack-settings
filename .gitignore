@@ -6,5 +6,6 @@
 /csc-testenv/home
 !/csc-testenv/home/.bashrc
 !/csc-testenv/home/.bash_profile
+!/csc-testenv/home/install-base.sh
 /csc-testenv/temp/tmp
 !/csc/testenv/temp/.keepthis
