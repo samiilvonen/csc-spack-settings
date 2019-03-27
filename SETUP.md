@@ -52,5 +52,6 @@ Singularity: Invoking an interactive shell within container...
 install-base.sh
 [csc/testing] (csc/singularity) ~: 
 ```
-You can set up the example software tree from the build cache with
-`install-base.sh` script.
+If you have access to either CSC's office network or VPN, you
+can set up the example software tree from the build cache with
+`install-base.sh` script. 
