@@ -7,72 +7,48 @@ packages:
     buildable: false
     paths:
       openssl@1.0.2k: /usr
-  curl:
-    buildable: false
-    paths:
-      curl@7.29.0: /usr
-  tar:
-    buildable: false
-    paths:
-      tar@1.26: /usr
   gnutls:
     buildable: false
     paths:
       gnutls@3.3.29: /usr
   tcl:
-    buildable: false
+    buildable: true
     paths:
       tcl@8.5.13: /usr
   libtool:
-    buildable: false
+    buildable: true
     paths:
       libtool@2.4.2: /usr
   libsigsegv:
-    buildable: false
+    buildable: true
     paths:
       libsigsegv@2.10: /usr
-  libffi:
-    buildable: false
-    paths:
-      libffi@3.0.13: /usr
   ncurses:
-    buildable: false
+    buildable: true
     paths:
       ncurses@5.9: /usr
   pcre:
-    buildable: false
+    buildable: true
     paths:
       pcre@8.32+jit: /usr
-  zlib:
-    buildable: false
-    paths:
-      zlib@1.2.7: /usr
   pkgconf:
-    buildable: false
+    buildable: true
     paths:
       pkgconf@0.27.1: /usr
   libiconv:
-    buildable: false
+    buildable: true
     paths:
       libiconv@1.15: /usr
   xz:
-    buildable: false
+    buildable: true
     paths:
       xz@5.2.2: /usr
-  libxml2:
-    buildable: false
-    paths:
-      libxml2@2.9.1: /usr
   bzip2:
-    buildable: false
+    buildable: true
     paths:
       bzip2@1.0.6: /usr
-  expat:
-    buildable: false
-    paths:
-      expat@2.1.0: /usr
   autoconf:
-    buildable: false
+    buildable: true
     paths:
       autoconf@2.69: /usr
   automake:
@@ -92,15 +68,15 @@ packages:
     paths:
       readline@6.2: /usr
   unzip:
-    buildable: false
+    buildable: true
     paths:
       unzip@6.0: /usr
   util-macros:
-    buildable: false
+    buildable: true
     paths:
       util-macros@1.19.0: /usr
   libpciaccess:
-    buildable: false
+    buildable: true
     paths:
       libpciaccess@0.14: /usr
   hwloc:
@@ -116,15 +92,15 @@ packages:
     paths:
       sqlite@3.7.17: /usr
   diffutils:
-    buildable: false
+    buildable: true
     paths:
       diffutils@3.3: /usr
   help2man:
-    buildable: false
+    buildable: true
     paths:
       help2man@1.41.1: /usr
   gettext:
-    buildable: false
+    buildable: true
     paths:
       gettext@0.19.8.1: /usr
   intel:
