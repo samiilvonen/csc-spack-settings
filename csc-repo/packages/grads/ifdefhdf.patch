@@ -1,0 +1,13 @@
+diff --git a/src/gauser.c b/src/gauser.c
+index 368bad6..dc04fd4 100644
+--- a/src/gauser.c
++++ b/src/gauser.c
+@@ -2812,7 +2812,7 @@ long *lptr=NULL;
+ gafloat *fptr=NULL;
+ gadouble *dptr=NULL;
+ size_t sz;
+-#if (USENETCDF == 1 || USEHDF == 1)
++#if (USENETCDF == 1 || USEHDF == 1 || USEHDF5 == 1)
+ struct dt tdef, tdefi;
+ char *tfile, *tfile2;
+ gaint ncid=0, rc, error, n_atts, n_gatts;
