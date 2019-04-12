@@ -5,7 +5,7 @@
 
 
 from spack import *
-
+import shutil
 
 class Grads(AutotoolsPackage):
     """The Grid Analysis and Display System (GrADS) is an interactive
@@ -65,6 +65,7 @@ class Grads(AutotoolsPackage):
     def setup_environment(self, spack_env, run_env):
         spack_env.set('SUPPLIBS', '/tmp')
         run_env.set('GAUDPT', self.prefix + '/udpt.txt')
+        run_env.set('GADDIR', self.prefix + '/data')
         
     def configure_args(self):
         config_args = []
@@ -95,6 +96,9 @@ class Grads(AutotoolsPackage):
     
     @run_after('install')
     def install_udpt_file(self):
+
+        shutil.copytree('data', self.spec.prefix + '/data')
+        
         with open(self.spec.prefix + '/udpt.txt', 'w+') as udptfile:
             udptfile.write('# Type     Name     Full path to shared object file\n')
             udptfile.write('# ----     ----     -------------------------------\n')
