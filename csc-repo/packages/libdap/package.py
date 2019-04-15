@@ -3,31 +3,15 @@
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
-# ----------------------------------------------------------------------------
-# If you submit this package back to Spack as a pull request,
-# please first remove this boilerplate and all FIXME comments.
-#
-# This is a template package file for Spack.  We've put "FIXME"
-# next to all the things you'll want to change. Once you've handled
-# them, you can save this file and test your package like this:
-#
-#     spack install libdap
-#
-# You can edit this file again by typing:
-#
-#     spack edit libdap
-#
-# See the Spack documentation for more information on packaging.
-# ----------------------------------------------------------------------------
 
 from spack import *
 
 
 class Libdap(AutotoolsPackage):
-    """FIXME: Put a proper description of your package here."""
+    """Implementation of OPeNDAP's DAP protocol.
+    """
 
-    # FIXME: Add a proper url for your package's homepage here.
-    homepage = "http://www.example.com"
+    homepage = "http://www.opendap.org"
     url      = "https://www.opendap.org/pub/source/libdap-3.18.1.tar.gz"
 
     version('3.20.3', sha256='29961922b53f62e9d4eb34d1d50ddc23a24100664f97b71f42561fa5588ccc58')
@@ -46,11 +30,5 @@ class Libdap(AutotoolsPackage):
     depends_on('libxml2')
 
     def autoreconf(self, spec, prefix):
-        # FIXME: Modify the autoreconf method as necessary
         autoreconf('--install', '--verbose', '--force')
 
-    def configure_args(self):
-        # FIXME: Add arguments other than --prefix
-        # FIXME: If not needed delete this function
-        args = []
-        return args
