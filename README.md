@@ -9,3 +9,5 @@ systems are stored in different folders under `site-config`.
 - `test-env` has the settings for singularity testing/tutorial environment
 - `laptops` is for the CSC local laptop installations
 
+Singularity test environment scrtipts and settings are in the
+`test-environment` folder.
