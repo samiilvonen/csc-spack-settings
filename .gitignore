@@ -1,1 +1,10 @@
+*~
 *.pyc
+#*
+.#*
+*.simg
+/test-environment/home
+!/test-environment/home/.bashrc
+!/test-environment/home/.bash_profile
+/test-environment/temp/tmp
+!/test-environment/temp/.keepthis

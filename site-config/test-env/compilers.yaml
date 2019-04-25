@@ -1,0 +1,27 @@
+compilers:
+- compiler:
+    environment: {}
+    extra_rpaths: []
+    flags: {}
+    modules: []
+    operating_system: centos7
+    paths:
+      cc: /usr/bin/gcc
+      cxx: /usr/bin/g++
+      f77: /usr/bin/gfortran
+      fc: /usr/bin/gfortran
+    spec: gcc@4.8.5
+    target: x86_64
+- compiler:
+    environment: {}
+    extra_rpaths: []
+    flags: {}
+    modules: []
+    operating_system: centos7
+    paths:
+      cc: /appl/spack/run/gcc-4.8.5/gcc-8.2.0-a6gbo4/bin/gcc
+      cxx: /appl/spack/run/gcc-4.8.5/gcc-8.2.0-a6gbo4/bin/g++
+      f77: /appl/spack/run/gcc-4.8.5/gcc-8.2.0-a6gbo4/bin/gfortran
+      fc: /appl/spack/run/gcc-4.8.5/gcc-8.2.0-a6gbo4/bin/gfortran
+    spec: gcc@8.2.0
+    target: x86_64
