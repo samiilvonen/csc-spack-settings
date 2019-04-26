@@ -96,7 +96,7 @@ __update_prompt() {
         prompt="$prompt$git_head"
     fi
 
-    git_site_head="`__git_head ${SPACK_ROOT}/site-settings`"
+    git_site_head="`__git_head ${SPACK_ROOT}/..`"
     if [ -n "$git_site_head" ] ; then
         git_site_head='\[\e[1;34m\](\[\e[0;34m\]'"$git_site_head"'\[\e[1;34m\])'
         if [ -n "$prompt" ] ; then

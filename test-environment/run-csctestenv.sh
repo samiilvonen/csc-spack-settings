@@ -9,7 +9,7 @@ cd "$( dirname "$0" )"
 
 # Run the test environment
 if [ "$mynameis" '=' 'run-csctestenv.sh' ] ; then
-    command="singularity shell -s /bin/bash --cleanenv --containall --workdir temp --bind ../../..:/appl/spack --home home:/home/${USER}"
+    command="singularity shell -s /bin/bash --cleanenv --containall --workdir temp --bind ..:/appl --home home:/home/${USER}"
     eval "exec ${command}" "${imagename}"
 
 # Generate a local test environment image

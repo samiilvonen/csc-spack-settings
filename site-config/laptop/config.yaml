@@ -2,7 +2,7 @@ config:
   install_tree: ~/spack/install-tree
   install_path_scheme: ${COMPILERNAME}-${COMPILERVER}/${PACKAGE}-${VERSION}-${HASH:6}
   build_stage::
-    - ~/spack/stage
+    - ~/spack
   module_roots:
     lmod: ~/spack/modulefiles
   source_cache: ~/spack/sources

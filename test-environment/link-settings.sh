@@ -4,8 +4,8 @@
 # settings).
 
 files="packages.yaml config.yaml modules.yaml mirrors.yaml compilers.yaml repos.yaml"
-settingspath="site-config"
-etcpath="../etc/spack"
+settingspath="../site-config/test-env"
+etcpath="../spack/etc/spack"
 
 for cfile in ${files}; do
     if [ -L ${etcpath}/${cfile} ] && [ -e ${etcpath}/${cfile} ] ; then
