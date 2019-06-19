@@ -12,6 +12,7 @@ class RdmaCore(CMakePackage):
     homepage = "https://github.com/linux-rdma/rdma-core"
     url      = "https://github.com/linux-rdma/rdma-core/releases/download/v17.1/rdma-core-17.1.tar.gz"
 
+    version('24.0', sha256='e56e07de4611efda196b4c05b682ab9f82098f58ff703848fc7993cad18c136a')
     version('23',   sha256='ee4de492c8ba6a646b1cea4e3eb865657d481d9db97de55c4e87fa17ed57ee05')
     version('22.1', sha256='d2ba34326c828ebeff26b300761d3c45ffceb76e0a804e9c612d1baf96ad673a')
     version('21.1', sha256='337791ed38dc76dddc0213ef5fd79a6c0c447ff3914c0188e436813ee87cb9d7')

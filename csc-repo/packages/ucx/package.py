@@ -12,6 +12,10 @@ class Ucx(AutotoolsPackage):
 
     homepage = "http://www.openucx.org"
     url      = "https://github.com/openucx/ucx/releases/download/v1.3.1/ucx-1.3.1.tar.gz"
+    git      = "https://github.com/openucx/ucx.git"
+
+    # Mellanox version
+    version('1.6-mlnx', commit='9492d2e')
 
     # Current
     version('1.5.1', sha256='567119cd80ad2ae6968ecaa4bd1d2a80afadd037ccc988740f668de10d2fdb7e')
@@ -27,11 +31,21 @@ class Ucx(AutotoolsPackage):
     variant('cuda', default=False, description='Enable cuda support')
 
     depends_on('numactl')
-    depends_on('rdma-core')
+    # depends_on('rdma-core')
     depends_on('cuda', when='+cuda')
 
     def configure_args(self):
         config_args = []
+        config_args.append('--enable-optimizations')
+        config_args.append('--disable-logging')
+        config_args.append('--disable-debug')
+        config_args.append('--disable-assertations')
+        config_args.append('--disable-params-check')
+        config_args.append('--with-knem')
+        config_args.append('--without-xpmem')
+        config_args.append('--without-java')
+        config_args.append('--enable-devel-headers')
+        # NVidia gdrcopy config_args.append('--with-gdrcopy')
 
         if '+cuda' in self.spec:
             config_args.append('--with-cuda=' + self.spec['cuda'].prefix)

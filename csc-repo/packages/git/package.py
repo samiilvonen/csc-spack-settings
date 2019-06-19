@@ -205,7 +205,7 @@ class Git(AutotoolsPackage):
         # have a gettext dependency.
         if 'gettext' in self.spec:
             # RHEL7 has libintl integrated in glibc
-            if not ('centos7' in spec.architecture or 'rhel7' in spec.architecture):
+            if not ('centos7' in self.spec.architecture or 'rhel7' in self.spec.architecture):
                 spack_env.append_flags('EXTLIBS', '-L{0} -lintl'.format(
                     self.spec['gettext'].prefix.lib))
             spack_env.append_flags('CFLAGS', '-I{0}'.format(
