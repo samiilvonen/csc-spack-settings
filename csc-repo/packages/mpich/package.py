@@ -19,6 +19,7 @@ class Mpich(AutotoolsPackage):
     list_depth = 1
 
     version('develop', submodules=True)
+    version('3.3.1', sha256='fe551ef29c8eea8978f679484441ed8bb1d943f6ad25b63c235d4b9243d551e5')
     version('3.3',   '574af413dc0dc7fbb929a761822beb06')
     version('3.2.1', 'e175452f4d61646a52c73031683fc375')
     version('3.2',   'f414cfa77099cd1fa1a5ae4e22db508a')
@@ -30,6 +31,7 @@ class Mpich(AutotoolsPackage):
     version('3.0.4', '9c5d5d4fe1e17dd12153f40bc5b6dbc0')
 
     variant('hydra', default=True,  description='Build the hydra process manager')
+    variant('hcoll', default=False, description='Build with hcoll support')
     variant('romio', default=True,  description='Enable ROMIO MPI I/O implementation')
     variant('verbs', default=False, description='Build support for OpenFabrics verbs.')
     variant('slurm', default=False, description='Enable SLURM support')
@@ -106,6 +108,30 @@ spack package at this time.''',
     conflicts('pmi=pmi2', when='device=ch3 netmod=ofi')
     conflicts('pmi=pmix', when='device=ch3')
 
+    # Copied from OpenMPI package
+    @property
+    def _mxm_dir(self):
+        """Look for default directory where the Mellanox package is
+        installed. Return None if not found.
+        """
+        # Only using default directory; make this more flexible in the future
+        path = "/opt/mellanox/mxm"
+        if os.path.isdir(path):
+            return path
+        else:
+            return None
+
+    @property
+    def _hcoll_dir(self):
+        """Look for default directory where the Mellanox package is
+        installed. Return None if not found.
+        """
+        path = "/opt/mellanox/hcoll"
+        if os.path.isdir(path):
+            return path
+        else:
+            return None
+        
     def setup_environment(self, spack_env, run_env):
         # mpich configure fails when F90 and F90FLAGS are set
         spack_env.unset('F90')
@@ -168,11 +194,13 @@ spack package at this time.''',
 
     def configure_args(self):
         spec = self.spec
+        hcdir = self._hcoll_dir
         config_args = [
             '--enable-shared',
             '--with-pm={0}'.format('hydra' if '+hydra' in spec else 'no'),
             '--{0}-romio'.format('enable' if '+romio' in spec else 'disable'),
-            '--{0}-ibverbs'.format('with' if '+verbs' in spec else 'without')
+            '--{0}-ibverbs'.format('with' if '+verbs' in spec else 'without'),
+            '--with-hcoll={0}'.format(hcdir if '+hcoll' in spec and hcdir else 'no')
         ]
 
         if 'pmi=off' in spec:
@@ -184,6 +212,15 @@ spack package at this time.''',
         elif 'pmi=pmix' in spec:
             config_args.append('--with-pmix={0}'.format(spec['pmix'].prefix))
 
+        # mxm, assume default location
+        if 'netmod=mxm' in spec:
+            if self._mxm_dir:
+                config_args.append('--with-mxm={0}'.format(self._mxm_dir))
+            else:
+                raise InstallError(
+                    'Variant mxm requested, but library not found!'
+                    )
+            
         # setup device configuration
         device_config = ''
         if 'device=ch4' in spec:
