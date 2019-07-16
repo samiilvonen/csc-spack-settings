@@ -214,6 +214,7 @@ class Openmpi(AutotoolsPackage):
     variant('cuda', default=False, description='Enable CUDA support')
     variant('pmi', default=False, description='Enable PMI support')
     variant('cxx_exceptions', default=True, description='Enable C++ Exception support')
+    variant('libevent', default=False, description='Enable external libevent')
     # Adding support to build a debug version of OpenMPI that activates
     # Memchecker, as described here:
     #
@@ -262,6 +263,7 @@ class Openmpi(AutotoolsPackage):
     depends_on('libfabric', when='fabrics=libfabric')
     depends_on('slurm', when='schedulers=slurm')
     depends_on('binutils+libiberty', when='fabrics=mxm')
+    depends_on('libevent', when='+libevent')
 
     conflicts('+cuda', when='@:1.6')  # CUDA support was added in 1.7
     conflicts('fabrics=psm2', when='@:1.8')  # PSM2 support was added in 1.10.0
