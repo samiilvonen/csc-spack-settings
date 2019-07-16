@@ -6,12 +6,14 @@ siteconf="$(pwd)/site-config"
 alternatives --altdir ${altdir} --admindir alternatives \
              --install ${altdir}/config.yaml config.yaml ${siteconf}/puhti/config.yaml 40 \
              --slave   ${altdir}/modules.yaml modules.yaml ${siteconf}/puhti/modules.yaml \
-             --slave   ${altdir}/packages.yaml packages.yaml ${siteconf}/puhti/packages.yaml
+             --slave   ${altdir}/packages.yaml packages.yaml ${siteconf}/puhti/packages.yaml \
+             --slave   ${altdir}/compilers.yaml compilers.yaml ${siteconf}/puhti/compilers.yaml
 
 alternatives --altdir ${altdir} --admindir alternatives \
              --install ${altdir}/config.yaml config.yaml ${siteconf}/puhti-ai/config.yaml 30 \
              --slave   ${altdir}/modules.yaml modules.yaml ${siteconf}/puhti-ai/modules.yaml \
-             --slave   ${altdir}/packages.yaml packages.yaml ${siteconf}/puhti-ai/packages.yaml
+             --slave   ${altdir}/packages.yaml packages.yaml ${siteconf}/puhti-ai/packages.yaml \
+             --slave   ${altdir}/compilers.yaml compilers.yaml ${siteconf}/puhti-ai/compilers.yaml
 
 alternatives --altdir ${altdir} --admindir alternatives \
              --install ${altdir}/config.yaml config.yaml ${siteconf}/laptop/config.yaml 20 \

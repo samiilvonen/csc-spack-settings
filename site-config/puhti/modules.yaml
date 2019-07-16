@@ -7,41 +7,24 @@ modules:
       - gcc@4.8.5
     whitelist:
       - gcc
+      - emacs
+      - fftw
+      - git
+      - git-lfs
+      - go
+      - hdf5
+      - openmpi
+      - mpich
+      - intel
+      - intel-mkl
       - 'cmake%gcc@4.8.5'
       - 'llvm%gcc@4.8.5'
       - 'intel%gcc@4.8.5'
     blacklist:
       - '%gcc@4.8.5'
+      - '%gcc@9.1.0'
       - 'cmake%gcc@8.2.0'
-      - m4
-      - ncurses
-      - flex
-      - bison
-      - gettext
-      - diffutils
-      - expat
-      - help2man
-      - xz
-      - perl
-      - readline
-      - bzip2
-      - gdbm
-      - openssl
-      - sqlite
-      - autoconf
-      - automake
-      - patchelf
-      - pkgconf
-      - hwloc
-      - util-macros
-      - libpciaccess
-      - libxml2
-      - libtool
-      - numactl
-      - zlib
-      - tar
-      - texinfo
-      - sparsehash
+      - '%intel@19.0.4'
     all:
       conflict:
         - '${PACKAGE}'
@@ -50,8 +33,7 @@ modules:
         ^python@3.6.5: py36
         "hdf5+mpi": mpi
         "fftw+mpi": mpi
-        "openblas threads=openmp": omp
       environment:
         set:
-          ${PACKAGE}_ROOT: ${PREFIX}
+          ${PACKAGE}_INSTALL_ROOT: ${PREFIX}
     

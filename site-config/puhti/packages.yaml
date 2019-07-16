@@ -2,138 +2,40 @@ packages:
   all:
     permissions:
       write: group
-      group: spack
+      group: p_installation_spack
   openssl:
     buildable: false
     paths:
       openssl@1.0.2k: /usr
-  curl:
+  slurm:
     buildable: false
     paths:
-      curl@7.29.0: /usr
-  tar:
-    buildable: false
+      slurm@19.05.0 %gcc@4.8.5: /usr
+  pkg-config:
+    buildable: true
     paths:
-      tar@1.26: /usr
+      pkg-config@0.27.1 %gcc@4.8.5: /usr
   gnutls:
     buildable: false
     paths:
-      gnutls@3.3.29: /usr
-  tcl:
-    buildable: false
-    paths:
-      tcl@8.5.13: /usr
-  libtool:
-    buildable: false
-    paths:
-      libtool@2.4.2: /usr
-  libsigsegv:
-    buildable: false
-    paths:
-      libsigsegv@2.10: /usr
-  libffi:
-    buildable: false
-    paths:
-      libffi@3.0.13: /usr
-  ncurses:
-    buildable: false
-    paths:
-      ncurses@5.9: /usr
-  pcre:
-    buildable: false
-    paths:
-      pcre@8.32+jit: /usr
-  zlib:
-    buildable: false
-    paths:
-      zlib@1.2.7: /usr
-  pkgconf:
-    buildable: false
-    paths:
-      pkgconf@0.27.1: /usr
-  libiconv:
-    buildable: false
-    paths:
-      libiconv@1.15: /usr
-  xz:
-    buildable: false
-    paths:
-      xz@5.2.2: /usr
-  libxml2:
-    buildable: false
-    paths:
-      libxml2@2.9.1: /usr
-  bzip2:
-    buildable: false
-    paths:
-      bzip2@1.0.6: /usr
-  expat:
-    buildable: false
-    paths:
-      expat@2.1.0: /usr
-  autoconf:
-    buildable: false
-    paths:
-      autoconf@2.69: /usr
-  automake:
-    buildable: true
-    paths:
-      automake@1.13.4: /usr
-  m4:
-    buildable: true
-    paths:
-      m4@1.4.16: /usr
-  perl:
-    buildable: true
-    paths:
-      perl@5.16.3: /usr
-  readline:
-    buildable: true
-    paths:
-      readline@6.2: /usr
-  unzip:
-    buildable: false
-    paths:
-      unzip@6.0: /usr
-  util-macros:
-    buildable: false
-    paths:
-      util-macros@1.19.0: /usr
-  libpciaccess:
-    buildable: false
-    paths:
-      libpciaccess@0.14: /usr
-  hwloc:
-    buildable: true
-    paths:
-      hwloc@1.11.8%gcc: /usr
-  gdbm:
-    buildable: true
-    paths:
-      gdbm@1.10: /usr
-  sqlite:
-    buildable: true
-    paths:
-      sqlite@3.7.17: /usr
-  diffutils:
-    buildable: false
-    paths:
-      diffutils@3.3: /usr
-  help2man:
-    buildable: false
-    paths:
-      help2man@1.41.1: /usr
-  gettext:
-    buildable: false
-    paths:
-      gettext@0.19.8.1: /usr
+      gnutls@3.3.29 %gcc@4.8.5: /usr
+      gnutls@3.3.29 %gcc@7.4.0: /usr
+      gnutls@3.3.29 %gcc@8.3.0: /usr
+      gnutls@3.3.29 %gcc@9.1.0: /usr
   intel:
     buildable: false
     paths:
-      intel@19.0.1%gcc@4.8.5: /appl/opt/intel-parallel-studio-composer.2019.1/compilers_and_libraries_2019.1.144/linux
+      intel@19.0.4 %gcc@4.8.5: /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/bin
+    version: []
+    compiler: []
+    modules: {}
+    providers: {}
   intel-mkl:
     buildable: false
     paths:
-      intel-mkl@2019.1.144%intel@19.0.1 threads=openmp: /appl/opt/intel-parallel-studio-composer.2019.1/compilers_and_libraries_2019.1.144/linux/mkl
-      intel-mkl@2019.1.144%gcc@8.2.0 threads=openmp: /appl/opt/intel-parallel-studio-composer.2019.1/compilers_and_libraries_2019.1.144/linux/mkl
-
+      intel-mkl@2019.0.4 %gcc@9.1.0 threads=openmp: /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux_mkl
+      intel-mkl@2019.0.4 %intel@19.0.4 threads=openmp: /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux_mkl
+    version: []
+    compiler: []
+    modules: {}
+    providers: {}

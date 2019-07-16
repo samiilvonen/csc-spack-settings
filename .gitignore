@@ -9,3 +9,6 @@
 /test-environment/temp/tmp
 !/test-environment/temp/.keepthis
 alternatives/config.yaml
+modulefiles
+install-tree
+sources
