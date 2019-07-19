@@ -85,105 +85,8 @@ class Openmpi(AutotoolsPackage):
     version('3.0.0', sha256='f699bff21db0125d8cccfe79518b77641cd83628725a1e1ed3e45633496a82d7')  # libmpi.so.40.00.0
 
     version('2.1.6', sha256='98b8e1b8597bbec586a0da79fcd54a405388190247aa04d48e8c40944d4ca86e')  # libmpi.20.20.10.3
-    version('2.1.5', sha256='b807ccab801f27c3159a5edf29051cd3331d3792648919f9c4cee48e987e7794')  # libmpi.so.20.10.3
-    version('2.1.4', sha256='3e03695ca8bd663bc2d89eda343c92bb3d4fc79126b178f5ddcb68a8796b24e2')  # libmpi.so.20.10.3
-    version('2.1.3', sha256='285b3e2a69ed670415524474496043ecc61498f2c63feb48575f8469354d79e8')  # libmpi.so.20.10.2
-    version('2.1.2', sha256='3cc5804984c5329bdf88effc44f2971ed244a29b256e0011b8deda02178dd635')  # libmpi.so.20.10.2
-    version('2.1.1', sha256='bd7badd4ff3afa448c0d7f3ca0ee6ce003b957e9954aa87d8e4435759b5e4d16')  # libmpi.so.20.10.1
-    version('2.1.0', sha256='b169e15f5af81bf3572db764417670f508c0df37ce86ff50deb56bd3acb43957')  # libmpi.so.20.10.0
 
-    # Retired
-    version('2.0.4', sha256='4f82d5f7f294becbd737319f74801206b08378188a95b70abe706fdc77a0c20b')  # libmpi.so.20.0.4
-    version('2.0.3', sha256='b52c0204c0e5954c9c57d383bb22b4181c09934f97783292927394d29f2a808a')  # libmpi.so.20.0.3
-    version('2.0.2', sha256='cae396e643f9f91f0a795f8d8694adf7bacfb16f967c22fb39e9e28d477730d3')  # libmpi.so.20.0.2
-    version('2.0.1', sha256='fed74f4ae619b7ebcc18150bb5bdb65e273e14a8c094e78a3fea0df59b9ff8ff')  # libmpi.so.20.0.1
-    version('2.0.0', sha256='08b64cf8e3e5f50a50b4e5655f2b83b54653787bd549b72607d9312be44c18e0')  # libmpi.so.20.0.0
-
-    version('1.10.7', 'c87c613f9acb1a4eee21fa1ac8042579')  # libmpi.so.12.0.7
-    version('1.10.6', '2e65008c1867b1f47c32f9f814d41706')  # libmpi.so.12.0.6
-    version('1.10.5', 'd32ba9530a869d9c1eae930882ea1834')  # libmpi.so.12.0.5
-    version('1.10.4', '9d2375835c5bc5c184ecdeb76c7c78ac')  # libmpi.so.12.0.4
-    version('1.10.3', 'e2fe4513200e2aaa1500b762342c674b')  # libmpi.so.12.0.3
-    version('1.10.2', 'b2f43d9635d2d52826e5ef9feb97fd4c')  # libmpi.so.12.0.2
-    version('1.10.1', 'f0fcd77ed345b7eafb431968124ba16e')  # libmpi.so.12.0.1
-    version('1.10.0', '280cf952de68369cebaca886c5ce0304')  # libmpi.so.12.0.0
-
-    version('1.8.8', '0dab8e602372da1425e9242ae37faf8c')  # libmpi.so.1.6.3
-    version('1.8.7', '2485ed6fa0fab9bb5b4e7a9f63718630')  # libmpi.so.1.6.2
-    version('1.8.6', 'eb569e7dc97eeaa5b1876cccf114f377')  # libmpi.so.1.6.1
-    version('1.8.5', '93e958914ff0e4d9634d668d2d48c793')  # libmpi.so.1.6.0
-    version('1.8.4', '93b7ea2c4ebae76947f942579608ae4a')  # libmpi.so.1.6.0
-    version('1.8.3', '2067d00853e0c33d498153fc7d268d2b')  # libmpi.so.1.6.0
-    version('1.8.2', '339a9fc199563bacbb359875ce8c9e20')  # libmpi.so.1.5.2
-    version('1.8.1', '0e12c24a28a605f681ff9a19a1aca2f1')  # libmpi.so.1.5.0
-    version('1.8',   '5999cfb177a50c480b5d0bced379aff1')  # libmpi.so.1.5.0
-
-    version('1.7.5', '321ab81147ac69a5bbca72652fb3b468')  # libmpi.so.1.4.0
-    version('1.7.4', '4aea4fb00f8956dd56ccf50e5784e03f')  # libmpi.so.1.3.0
-    version('1.7.3', '7d0779f73c43eb1d098ad037d60649bc')  # libmpi.so.1.2.0
-    version('1.7.2', 'b897b92100bd13b367e651df483421d5')  # libmpi.so.1.1.2
-    version('1.7.1', 'f25b446a9dcbbd6a105a99d926d34441')  # libmpi.so.1.1.1
-    version('1.7',   'c0e3c4b3bfcd8b8bbd027f6f4c164acb')  # libmpi.so.1.1.0
-
-    version('1.6.5', '03aed2a4aa4d0b27196962a2a65fc475')  # libmpi.so.1.0.8
-    version('1.6.4', '62119579ab92b2592cd96b6a9d2a8cc3')  # libmpi.so.1.0.7
-    version('1.6.3', 'eedb73155a7a40b0b07718494298fb25')  # libmpi.so.1.0.6
-    version('1.6.2', '219754715a8e40beb468bbc8f0b3251a')  # libmpi.so.1.0.3
-    version('1.6.1', '33d2782c20ff6be79130a703b85da8f0')  # libmpi.so.1.0.3
-    version('1.6',   'dd6f5bd4b3cb14d93bbf530e50e46e60')  # libmpi.so.1.0.3
-
-    # Ancient
-    version('1.5.5', 'f882fd61ff89db856bfd8f0dfa42e1bd')  # libmpi.so.1.0.3
-    version('1.5.4', '51153d794c49ce6d275dba2793ab0c68')  # libmpi.so.1.0.2
-    version('1.5.3', '0eb8ec2aa05c74a4bc7602b01847131e')  # libmpi.so.1.0.1
-    version('1.5.2', 'faaee6a2777bf607d7fa1297c0b3a9ed')  # libmpi.so.1.0.1
-    version('1.5.1', '3f9409f5d3b617c04dea48ba8fbd703a')  # libmpi.so.1.0.0
-    version('1.5',   '86bf5f9ef7337231abbca3350b31f112')  # libmpi.so.1.0.0
-
-    version('1.4.5', '84ddd2772f46d35da79e1db8a274c99d')  # libmpi.so.0.0.4
-    version('1.4.4', 'e58a1ea7b8af62453aaa0ddaee5f26a0')  # libmpi.so.0.0.3
-    version('1.4.3', 'd2ead141c43b915343f5c5a18f3b5016')  # libmpi.so.0.0.2
-    version('1.4.2', '53b26fa2586aedaf73cf40effbfcc2f3')  # libmpi.so.0.0.2
-    version('1.4.1', '28a820c85e02973809df881fdeddd15e')  # libmpi.so.0.0.1
-    version('1.4',   '9786ec0698afed9498ce43dc3978a435')  # libmpi.so.0.0.1
-
-    version('1.3.4', '978c29f3b671856daa0fc67459b73e01')  # libmpi.so.0.0.1
-    version('1.3.3', 'f6cdc9c195daa8571b2e509e952d6755')  # libmpi.so.0.0.0
-    version('1.3.2', '75781dc31255cd841701c065e239d994')  # libmpi.so.0.0.0
-    version('1.3.1', 'd759523b0752139872c534714d641d64')  # libmpi.so.0.0.0
-    version('1.3',   'efbba7d652d1e430d456f65d7a2e339b')  # libmpi.so.0.0.0
-
-    version('1.2.9', '78c2aebbb746610ed12bdedcc2b6ec0e')  # libmpi.so.0.0.0
-    version('1.2.8', '7f2d5af02101c5f01173f4f6de296549')  # libmpi.so.0.0.0
-    version('1.2.7', 'b5ae3059fba71eba4a89a2923da8223f')  # libmpi.so.0.0.0
-    version('1.2.6', 'f126793b68e71f5ec4a192c40675af2d')  # libmpi.so.0.0.0
-    version('1.2.5', 'c6e82aab6cdcd425bf29217e8317d7dc')  # libmpi.so.0.0.0
-    version('1.2.4', '311b38c597f54d8d6b277225ef458666')  # libmpi.so.0.0.0
-    version('1.2.3', 'ae980bb00f9686934a1143701cc041e4')  # libmpi.so.0.0.0
-    version('1.2.2', '7f553317e388c4efe479e908b66f910d')  # libmpi.so.0.0.0
-    version('1.2.1', 'ceaa42891edba2324a94fdd0b87e46ca')  # libmpi.so.0.0.0
-    version('1.2',   '37e8d4edad54a8d8c3127fbef87ebda1')  # libmpi.so.0.0.0
-
-    version('1.1.5', '6aada92896a1830ece6d3ba1e66a17fa')  # libmpi.so.0.0.0
-    version('1.1.4', '28940b182156478fa442397b0c9660e1')  # libmpi.so.0.0.0
-    version('1.1.3', 'bbaa7fe9d556212d877d872544a31569')  # libmpi.so.0.0.0
-    version('1.1.2', '53877ec8bca5f6e505496b6b94b1d850')  # libmpi.so.0.0.0
-    version('1.1.1', '498b9322ae0ad512026a008a30c7e0b5')  # libmpi.so.0.0.0
-    version('1.1',   '821af8bbb7a8e85ec707cb4c3b6bcbf6')  # libmpi.so.0.0.0
-
-    version('1.0.2', 'fd32861d643f9fe539a01d0d5b836f41')  # libmpi.so.0.0.0
-    version('1.0.1', '8abccca5cdddc81a6d9d9e22b3bb6db9')  # libmpi.so.0.0.0
-    version('1.0',   'f5dcb5d3a98f2e5a9c2a0caaef54d806')  # libmpi.so.0.0.0
-
-    patch('ad_lustre_rwcontig_open_source.patch', when="@1.6.5")
-    patch('llnl-platforms.patch', when="@1.6.5")
-    patch('configure.patch', when="@1.10.1")
-    patch('fix_multidef_pmi_class.patch', when="@2.0.0:2.0.1")
     patch('ucx16.patch', when="@4.0.0:4.0.3")
-
-    # Vader Bug: https://github.com/open-mpi/ompi/issues/5375
-    # Haven't release fix for 2.1.x
-    patch('btl_vader.patch', when='@2.1.3:2.1.5')
 
     # Fixed in 3.0.3 and 3.1.3
     patch('btl_vader.patch', when='@3.0.1:3.0.2')
@@ -201,7 +104,14 @@ class Openmpi(AutotoolsPackage):
     variant(
         'schedulers',
         description='List of schedulers for which support is enabled',
-        values = ('alps', 'lsf', 'tm', 'slurm', 'sge', 'loadleveler'),
+        values = ('alps', 'lsf', 'tm', 'slurm', 'sge'),
+        multi=True
+    )
+
+    variant(
+        'extensions',
+        description='List of MPI extensions which are enabled',
+        values = ('affinity', 'cuda', 'cr'),
         multi=True
     )
 
@@ -212,9 +122,9 @@ class Openmpi(AutotoolsPackage):
     variant('thread_multiple', default=False,
             description='Enable MPI_THREAD_MULTIPLE support')
     variant('cuda', default=False, description='Enable CUDA support')
-    variant('pmi', default=False, description='Enable PMI support')
+    variant('pmix', default=True, description='Enable PMIx support')
     variant('cxx_exceptions', default=True, description='Enable C++ Exception support')
-    variant('libevent', default=False, description='Enable external libevent')
+    variant('sys_libevent', default=True, description='Enable system version of libevent')
     # Adding support to build a debug version of OpenMPI that activates
     # Memchecker, as described here:
     #
@@ -263,14 +173,13 @@ class Openmpi(AutotoolsPackage):
     depends_on('libfabric', when='fabrics=libfabric')
     depends_on('slurm', when='schedulers=slurm')
     depends_on('binutils+libiberty', when='fabrics=mxm')
-    depends_on('libevent', when='+libevent')
 
     conflicts('+cuda', when='@:1.6')  # CUDA support was added in 1.7
     conflicts('fabrics=psm2', when='@:1.8')  # PSM2 support was added in 1.10.0
     conflicts('fabrics=mxm', when='@:1.5.3')  # MXM support was added in 1.5.4
-    conflicts('+pmi', when='@:1.5.4')  # PMI support was added in 1.5.5
-    conflicts('schedulers=slurm ~pmi', when='@1.5.4:',
-              msg='+pmi is required for openmpi(>=1.5.5) to work with SLURM.')
+    conflicts('+pmix', when='@:2.0.0')  # Check this and the scheduler part!
+    conflicts('schedulers=slurm ~pmix', when='@2.0.0:',
+              msg='+pmix is required for openmpi to work with SLURM.')
 
     filter_compiler_wrappers('openmpi/*-wrapper-data*', relative_root='share')
     conflicts('fabrics=libfabric', when='@:1.8')  # libfabric support was added in 1.10.0
@@ -374,6 +283,7 @@ class Openmpi(AutotoolsPackage):
 
     def configure_args(self):
         spec = self.spec
+        # This does not currently work with mlnx, should use knem instead
         config_args = [
             '--without-xpmem',
         ]
@@ -393,12 +303,12 @@ class Openmpi(AutotoolsPackage):
         # for versions older than 3.0.3,3.1.3,4.0.0
         # Presumably future versions after 11/2018 should support slurm+static
         if spec.satisfies('schedulers=slurm'):
-            config_args.append('--with-pmi={0}'.format(spec['slurm'].prefix))
+            config_args.append('--with-pmix={0}'.format(spec['slurm'].prefix))
             if spec.satisfies('@3.1.3:') or spec.satisfies('@3.0.3'):
                 config_args.append('--enable-static')
         else:
             config_args.append('--enable-static')
-            config_args.extend(self.with_or_without('pmi'))
+            config_args.extend(self.with_or_without('pmix'))
 
         if spec.satisfies('@2.0:'):
             # for Open-MPI 2.0:, C++ bindings are disabled by default.
@@ -419,12 +329,20 @@ class Openmpi(AutotoolsPackage):
         # Schedulers
         config_args.extend(self.with_or_without('schedulers'))
 
+        # Extensions
+        if spec.variants['extensions']:
+            config_args.append('--enable-mpi-ext={0}'.format(','.join(spec.variants['extensions'].value)))
+
         config_args.extend(self.enable_or_disable('memchecker'))
         if spec.satisfies('+memchecker', strict=True):
             config_args.extend([
                 '--enable-debug',
                 '--with-valgrind={0}'.format(spec['valgrind'].prefix),
             ])
+
+        # RPM version of libevent
+        if spec.satisfies('+sys_libevent'):
+            config_args.append('--with-libevent=/usr')
 
         # Hwloc support
         if spec.satisfies('@1.5.2:'):

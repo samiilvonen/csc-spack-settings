@@ -81,7 +81,7 @@ spack package at this time.''',
     # and https://github.com/pmodels/mpich/pull/3578
     patch('https://github.com/pmodels/mpich/commit/b324d2de860a7a2848dc38aefb8c7627a72d2003.patch',
           sha256='c7d4ecf865dccff5b764d9c66b6a470d11b0b1a5b4f7ad1ffa61079ad6b5dede',
-          when='@3.3')
+          when='@3.3.0')
 
     depends_on('findutils', type='build')
     depends_on('pkgconfig', type='build')
@@ -127,6 +127,17 @@ spack package at this time.''',
         installed. Return None if not found.
         """
         path = "/opt/mellanox/hcoll"
+        if os.path.isdir(path):
+            return path
+        else:
+            return None
+
+    @property
+    def _ucx_dir(self):
+        """Look for default directory where the Mellanox package is
+        installed. Return None if not found.
+        """
+        path = "/usr"
         if os.path.isdir(path):
             return path
         else:
@@ -197,10 +208,11 @@ spack package at this time.''',
         hcdir = self._hcoll_dir
         config_args = [
             '--enable-shared',
-            '--with-pm={0}'.format('hydra' if '+hydra' in spec else 'no'),
+            '--disable-gl',
+            # '--with-pm={0}'.format('hydra' if '+hydra' in spec else 'no'), TODO: FIX THESE FLAGS
             '--{0}-romio'.format('enable' if '+romio' in spec else 'disable'),
-            '--{0}-ibverbs'.format('with' if '+verbs' in spec else 'without'),
-            '--with-hcoll={0}'.format(hcdir if '+hcoll' in spec and hcdir else 'no')
+            '--{0}-ibverbs'.format('with' if '+verbs' in spec else 'without')
+            #'--with-hcoll={0}'.format(hcdir if '+hcoll' in spec and hcdir else 'no')
         ]
 
         if 'pmi=off' in spec:
@@ -244,5 +256,8 @@ spack package at this time.''',
         if 'netmod=ofi' in spec:
             config_args.append('--with-libfabric={0}'.format(
                 spec['libfabric'].prefix))
+
+        if 'netmod=ucx' in spec:
+            config_args.append('--with-ucx={0}'.format('/usr'))
 
         return config_args

@@ -29,6 +29,8 @@ class HpcxMpi(AutotoolsPackage):
 
     version('2.4.0', sha256='97ea907218b0ae5f4c3ade32e96a24b79e486b4a744ddd2b572cb93505f00423')
 
+    provides('mpi')
+
     filter_compiler_wrappers('openmpi/*-wrapper-data*', relative_root='share')
     
     def setup_dependent_environment(self, spack_env, run_env, dependent_spec):
