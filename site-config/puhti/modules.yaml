@@ -5,35 +5,51 @@ modules:
     hash_length: 0
     core_compilers:
       - gcc@4.8.5
+    hierarchy:
+      - mpi
     whitelist:
       - gcc
+      - cuda
+      - cudnn
       - emacs
       - fftw
       - git
       - git-lfs
       - go
+      - gromacs
       - hdf5
       - openmpi
+      - hpcx-mpi
       - mpich
       - intel
       - intel-mkl
+      - intel-mpi
       - 'cmake%gcc@4.8.5'
       - 'llvm%gcc@4.8.5'
       - 'intel%gcc@4.8.5'
     blacklist:
       - '%gcc@4.8.5'
+      - '%gcc@7.4.0'
+      - '%gcc@8.3.0'
       - '%gcc@9.1.0'
-      - 'cmake%gcc@8.2.0'
       - '%intel@19.0.4'
+      - '%intel@18.0.5'
     all:
       conflict:
         - '${PACKAGE}'
       suffixes:
         ^python@2.7.15: py27
         ^python@3.6.5: py36
-        "hdf5+mpi": mpi
-        "fftw+mpi": mpi
+        "fftw+openmp": omp
       environment:
         set:
           ${PACKAGE}_INSTALL_ROOT: ${PREFIX}
-    
+    mpich:
+      environment:
+        set:
+          SLURM_MPI_TYPE: pmi2
+    hpcx-mpi:
+      environment:
+        set:
+          SLURM_MPI_TYPE: pmix_v2
+
