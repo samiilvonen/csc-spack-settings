@@ -38,10 +38,12 @@ packages:
   intel-mkl:
     buildable: false
     paths:
-      intel-mkl@2019.0.4 %gcc@9.1.0 threads=openmp: /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux_mkl
+      intel-mkl@2019.0.4 %gcc@9.1.0    threads=openmp: /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux_mkl
+      intel-mkl@2019.0.4 %gcc@8.3.0    threads=openmp: /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux_mkl
       intel-mkl@2019.0.4 %intel@19.0.4 threads=openmp: /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux_mkl
       intel-mkl@2018.0.5 %intel@18.0.5 threads=openmp: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/mkl
-      intel-mkl@2019.0.4 %gcc@9.1.0: /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux_mkl
+      intel-mkl@2019.0.4 %gcc@9.1.0:    /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux_mkl
+      intel-mkl@2019.0.4 %gcc@8.3.0:    /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux_mkl
       intel-mkl@2019.0.4 %intel@19.0.4: /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux_mkl
       intel-mkl@2018.0.5 %intel@18.0.5: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/mkl
   intel-mpi:
