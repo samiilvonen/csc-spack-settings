@@ -29,7 +29,11 @@ class HpcxMpi(AutotoolsPackage):
 
     version('2.4.0', sha256='97ea907218b0ae5f4c3ade32e96a24b79e486b4a744ddd2b572cb93505f00423')
 
+    variant('cuda', default=False, description='Build with cuda support')
+
     provides('mpi')
+
+    depends_on('cuda', when='+cuda')
 
     filter_compiler_wrappers('openmpi/*-wrapper-data*', relative_root='share')
     
@@ -66,6 +70,10 @@ class HpcxMpi(AutotoolsPackage):
             '--with-hcoll=/opt/mellanox/hcoll',
             '--with-ucx=/usr',
         ]
+
+        if spec.satisfies('+cuda'):
+            config_args.append('--with-cuda={0}'.format(spec['cuda'].prefix))
+
         rpaths = [self.compiler.cc_rpath_arg + path
                   for path in self.compiler.extra_rpaths]
         config_args.extend([

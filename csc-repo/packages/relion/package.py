@@ -16,11 +16,11 @@ class Relion(CMakePackage, CudaPackage):
     git      = "https://github.com/3dem/relion.git"
 
     version('3.0.6', preferred='true', tag='3.0.6')
-    version('2.1', tag='2.1')
-    version('2.0.3', tag='2.0.3')
+    # version('2.1', tag='2.1')
+    # version('2.0.3', tag='2.0.3')
     # relion has no develop branch though pulling from master
     # should be considered the same as develop
-    version('develop', branch='master')
+    # version('develop', branch='master')
 
     variant('gui', default=True, description="build the gui")
     variant('cuda', default=True, description="enable compute on gpu")
