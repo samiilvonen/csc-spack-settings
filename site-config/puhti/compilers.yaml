@@ -65,3 +65,17 @@ compilers:
       fc: /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/bin/intel64/ifort
     spec: intel@19.0.4
     target: x86_64
+- compiler:
+    environment: {}
+    extra_rpaths:
+      - /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/compiler/lib/intel64_lin
+    flags: {}
+    modules: []
+    operating_system: rhel7
+    paths:
+      cc: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/bin/intel64/icc
+      cxx: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/bin/intel64/icpc
+      f77: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/bin/intel64/ifort
+      fc: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/bin/intel64/ifort
+    spec: intel@18.0.5
+    target: x86_64

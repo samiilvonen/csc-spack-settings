@@ -24,10 +24,12 @@ modules:
       - intel
       - intel-mkl
       - intel-mpi
+      - vim
       - 'cmake%gcc@4.8.5'
       - 'llvm%gcc@4.8.5'
       - 'intel%gcc@4.8.5'
     blacklist:
+      - 'hpcx-mpi ^cuda'
       - '%gcc@4.8.5'
       - '%gcc@7.4.0'
       - '%gcc@8.3.0'
@@ -41,6 +43,8 @@ modules:
         ^python@2.7.15: py27
         ^python@3.6.5: py36
         "fftw+openmp": omp
+        "intel-mkl threads=openmp": omp
+        "gromacs +plumed": plumed
       environment:
         set:
           ${PACKAGE}_INSTALL_ROOT: ${PREFIX}
@@ -49,6 +53,8 @@ modules:
         set:
           SLURM_MPI_TYPE: pmi2
     hpcx-mpi:
+      suffixes:
+        "+cuda": cuda
       environment:
         set:
           SLURM_MPI_TYPE: pmix_v2
