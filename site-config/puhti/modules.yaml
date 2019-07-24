@@ -25,6 +25,7 @@ modules:
       - intel-mkl
       - intel-mpi
       - vim
+      - relion
       - 'cmake%gcc@4.8.5'
       - 'llvm%gcc@4.8.5'
       - 'intel%gcc@4.8.5'
@@ -58,4 +59,6 @@ modules:
       environment:
         set:
           SLURM_MPI_TYPE: pmix_v2
-
+    relion:
+      suffixes:
+        "+cuda": cuda
