@@ -32,6 +32,7 @@ modules:
       - metis
       - perl
       - boost
+      - eccodes
       - 'cmake%gcc@4.8.5'
       - 'llvm%gcc@4.8.5'
       - 'intel%gcc@4.8.5'
