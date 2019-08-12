@@ -60,6 +60,14 @@ modules:
       environment:
         set:
           ${PACKAGE}_INSTALL_ROOT: ${PREFIX}
+    intel:
+      environment:
+        set:
+          CC: icc
+          CXX: icpc
+          FC: ifort
+          F90: ifort
+          F77: ifort
     mpich:
       environment:
         set:
@@ -70,6 +78,10 @@ modules:
       environment:
         set:
           SLURM_MPI_TYPE: pmix_v2
+    intel-mpi:
+      environment:
+        set:
+          SLURM_MPI_TYPE: pmi2
     relion:
       suffixes:
         "+cuda": cuda
