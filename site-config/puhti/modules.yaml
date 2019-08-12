@@ -68,6 +68,9 @@ modules:
           FC: ifort
           F90: ifort
           F77: ifort
+          ICCCFG: /appl/opt/intel_configs/icc_gcc83_csc.cfg
+          ICPCCFG : /appl/opt/intel_configs/icpc_gcc83_csc.cfg
+          IFORTCFG : /appl/opt/intel_configs/ifort_gcc83_csc.cfg
     mpich:
       environment:
         set:
