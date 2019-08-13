@@ -106,3 +106,6 @@ modules:
     relion:
       suffixes:
         "+cuda": cuda
+    gromacs:
+      suffixes:
+        "+cuda": cuda
