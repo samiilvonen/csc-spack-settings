@@ -68,6 +68,11 @@ modules:
           FC: gfortran
           F90: gfortran
           F77: gfortran
+          I_MPI_CC: gcc
+          I_MPI_CXX: g++
+          I_MPI_FC: gfortran
+          I_MPI_F90: gfortran
+          I_MPI_F77: gfortran
     intel:
       environment:
         set:
@@ -79,6 +84,11 @@ modules:
           ICCCFG: /appl/opt/intel_configs/icc_gcc83_csc.cfg
           ICPCCFG : /appl/opt/intel_configs/icpc_gcc83_csc.cfg
           IFORTCFG : /appl/opt/intel_configs/ifort_gcc83_csc.cfg
+          I_MPI_CC: icc
+          I_MPI_CXX: icpc
+          I_MPI_FC: ifort
+          I_MPI_F90: ifort
+          I_MPI_F77: ifort
     mpich:
       environment:
         set:
