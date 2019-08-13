@@ -60,6 +60,14 @@ modules:
       environment:
         set:
           ${PACKAGE}_INSTALL_ROOT: ${PREFIX}
+    gcc:
+      environment:
+        set:
+          CC: gcc
+          CXX: g++
+          FC: gfortran
+          F90: gfortran
+          F77: gfortran
     intel:
       environment:
         set:
