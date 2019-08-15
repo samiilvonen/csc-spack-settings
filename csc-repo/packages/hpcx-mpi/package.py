@@ -36,6 +36,25 @@ class HpcxMpi(AutotoolsPackage):
     depends_on('cuda', when='+cuda')
 
     filter_compiler_wrappers('openmpi/*-wrapper-data*', relative_root='share')
+
+    @property
+    def headers(self):
+        hdrs = HeaderList(find(self.prefix.include, 'mpi.h', recursive=False))
+        if not hdrs:
+            hdrs = HeaderList(find(self.prefix, 'mpi.h', recursive=True))
+        return hdrs or None
+
+    @property
+    def libs(self):
+        query_parameters = self.spec.last_query.extra_parameters
+        libraries = ['libmpi']
+
+        if 'cxx' in query_parameters:
+            libraries = ['libmpi_cxx'] + libraries
+
+        return find_libraries(
+            libraries, root=self.prefix, shared=True, recursive=True
+        )
     
     def setup_dependent_environment(self, spack_env, run_env, dependent_spec):
         spack_env.set('MPICC',  join_path(self.prefix.bin, 'mpicc'))
