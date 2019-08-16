@@ -109,6 +109,9 @@ modules:
     relion:
       suffixes:
         "+cuda": cuda
+    eccodes:
+      suffixes:
+        "+openmp": omp
     gromacs:
       suffixes:
         "+cuda": cuda
