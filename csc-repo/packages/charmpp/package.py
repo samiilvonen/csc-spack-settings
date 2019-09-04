@@ -40,6 +40,9 @@ class Charmpp(Package):
     # Ignore compiler warnings while configuring
     patch("strictpass.patch", when="@:6.8.2")
 
+    # Fix the missing doc folder
+    patch("makefile-doc.patch", when="@6.8.2")
+
     # Build targets
     # "target" is reserved, so we have to use something else.
     variant(
@@ -77,23 +80,23 @@ class Charmpp(Package):
 
     # FIXME: backend=mpi also provides mpi, but spack does not support
     # depends_on("mpi") and provides("mpi") in the same package currently.
-    for b in ['multicore', 'netlrts', 'verbs', 'gni', 'ofi', 'pami',
-              'pamilrts']:
-        provides('mpi@2', when='@6.7.1: build-target=AMPI backend={0}'.format(b))
-        provides('mpi@2', when='@6.7.1: build-target=LIBS backend={0}'.format(b))
-
-    def setup_dependent_environment(self, spack_env, run_env, dependent_spec):
-        spack_env.set('MPICC',  join_path(self.prefix.bin, 'ampicc'))
-        spack_env.set('MPICXX', join_path(self.prefix.bin, 'ampicxx'))
-        spack_env.set('MPIF77', join_path(self.prefix.bin, 'ampif77'))
-        spack_env.set('MPIF90', join_path(self.prefix.bin, 'ampif90'))
-
-    def setup_dependent_package(self, module, dependent_spec):
-        self.spec.mpicc = join_path(self.prefix.bin, 'ampicc')
-        self.spec.mpicxx = join_path(self.prefix.bin, 'ampicxx')
-        self.spec.mpifc = join_path(self.prefix.bin, 'ampif90')
-        self.spec.mpif77 = join_path(self.prefix.bin, 'ampif77')
-
+#     for b in ['multicore', 'netlrts', 'verbs', 'gni', 'ofi', 'pami',
+#               'pamilrts']:
+#         provides('mpi@2', when='@6.7.1: build-target=AMPI backend={0}'.format(b))
+#         provides('mpi@2', when='@6.7.1: build-target=LIBS backend={0}'.format(b))
+# 
+#     def setup_dependent_environment(self, spack_env, run_env, dependent_spec):
+#         spack_env.set('MPICC',  join_path(self.prefix.bin, 'ampicc'))
+#         spack_env.set('MPICXX', join_path(self.prefix.bin, 'ampicxx'))
+#         spack_env.set('MPIF77', join_path(self.prefix.bin, 'ampif77'))
+#         spack_env.set('MPIF90', join_path(self.prefix.bin, 'ampif90'))
+# 
+#     def setup_dependent_package(self, module, dependent_spec):
+#         self.spec.mpicc = join_path(self.prefix.bin, 'ampicc')
+#         self.spec.mpicxx = join_path(self.prefix.bin, 'ampicxx')
+#         self.spec.mpifc = join_path(self.prefix.bin, 'ampif90')
+#         self.spec.mpif77 = join_path(self.prefix.bin, 'ampif77')
+# 
     depends_on("mpi", when="backend=mpi")
     depends_on("papi", when="+papi")
     depends_on("cuda", when="+cuda")

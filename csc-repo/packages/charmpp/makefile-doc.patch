@@ -1,0 +1,11 @@
+--- a/src/scripts/Makefile
++++ b/src/scripts/Makefile
+@@ -315,7 +315,7 @@ dirs+sources:
+ 	rm -rf ../lib_so ; mkdir ../lib_so; touch ../lib_so/.charmso
+ 	rm -rf ../examples
+ 	rm -rf ../tests
+-	rm -rf ../doc ; ln -s ../doc ../doc
++#	rm -rf ../doc ; ln -s ../doc ../doc
+ 	$(SRCBASE)/scripts/gatherflat $(SRCBASE)/scripts .
+ 	./gatherflat $(SRCBASE)/conv-core        .
+ 	./gatherflat $(SRCBASE)/conv-ldb         .

@@ -14,10 +14,10 @@ class Namd(MakefilePackage):
     high-performance simulation of large biomolecular systems."""
 
     homepage = "http://www.ks.uiuc.edu/Research/namd/"
-#    url      = "file://{0}/NAMD_2.12_Source.tar.gz".format(os.getcwd())
+    url      = "file://{0}/NAMD_2.12_Source.tar.gz".format(os.getcwd())
 
-    version('2.13', '9e3323ed856e36e34d5c17a7b0341e38', url="file://{0}/NAMD_2.13_Source.tar.gz".format(os.getcwd()))
-    version('2.12', '2a1191909b1ab03bf0205971ad4d8ee9', url="file://{0}/NAMD_2.12_Source.tar.gz".format(os.getcwd()))
+    version('2.13', '9e3323ed856e36e34d5c17a7b0341e38')
+    version('2.12', '2a1191909b1ab03bf0205971ad4d8ee9')
 
     variant('fftw', default='3', values=('none', '2', '3', 'mkl'),
             description='Enable the use of FFTW/FFTW3/MKL FFT')
@@ -25,7 +25,10 @@ class Namd(MakefilePackage):
     variant('interface', default='none', values=('none', 'tcl', 'python'),
             description='Enables TCL and/or python interface')
 
-    depends_on('charmpp')
+    # Recent versions of NAMD come with a bundled version of charm++
+    # These versions match with the bundled ones
+    depends_on('charmpp@6.8.2', when='@2.13')
+    depends_on('charmpp@6.7.1', when='@2.12')
 
     depends_on('fftw@:2.99', when="fftw=2")
     depends_on('fftw@3:', when="fftw=3")
@@ -93,7 +96,7 @@ class Namd(MakefilePackage):
 
         self._copy_arch_file('base')
 
-        opts = ['--charm-base', spec['charm'].prefix]
+        opts = ['--charm-base', spec['charmpp'].prefix]
         fftw_version = spec.variants['fftw'].value
         if fftw_version == 'none':
             opts.append('--without-fftw')
