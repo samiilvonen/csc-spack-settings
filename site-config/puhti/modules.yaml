@@ -16,31 +16,42 @@ modules:
       - fftw
       - git
       - git-lfs
+      - gnuplot
       - go
+      - 'grads%gcc@4.8.5'
+      - grib-api
       - gromacs
-      - hdf5
+      - 'hdf5%gcc@6.0.0:'
+      - 'hdf5%gcc@intel'
       - openmpi
       - hpcx-mpi
+      - mariadb
       - mpich
       - intel
       - intel-mkl
       - intel-mpi
+      - petsc
+      - pgi
       - netlib-scalapack
       - vim
       - relion
       - gsl
-      - netcdf
+      - 'netcdf%gcc@6.0.0:'
+      - 'netcdf%gcc@intel'
       - netcdf-fortran
       - metis
       - perl
       - boost
       - eccodes
       - parallel-netcdf
-      - udunits2
-      - hdf
+      - 'udunits2%gcc@6.0.0:'
+      - 'udunits2%intel'
+      - 'hdf%gcc@6.0.0:'
+      - 'hdf%gcc@intel'
       - libemos
       - hpl
       - openjdk
+      - namd
       - 'cmake%gcc@4.8.5'
       - 'llvm%gcc@4.8.5'
       - 'intel%gcc@4.8.5'
@@ -56,11 +67,10 @@ modules:
       conflict:
         - '${PACKAGE}'
       suffixes:
-        ^python@2.7.15: py27
-        ^python@3.6.5: py36
+#        ^python@2.7.15: py27
+#        ^python@3.6.5: py36
         "fftw+openmp": omp
         "intel-mkl threads=openmp": omp
-        "gromacs +plumed": plumed
       environment:
         set:
           ${PACKAGE}_INSTALL_ROOT: ${PREFIX}
@@ -113,6 +123,19 @@ modules:
     eccodes:
       suffixes:
         "+openmp": omp
+    fftw:
+      suffixes:
+        "+mpi": mpi
+    boost:
+      suffixes:
+        "+mpi": mpi
     gromacs:
       suffixes:
         "+cuda": cuda
+        "+plumed": plumed
+    hdf5:
+      suffixes:
+        "+mpi": mpi
+    petsc:
+      suffixes:
+        "+complex+double": cmplx
