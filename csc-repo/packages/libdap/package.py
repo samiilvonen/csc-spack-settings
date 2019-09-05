@@ -28,6 +28,7 @@ class Libdap(AutotoolsPackage):
 
     depends_on('libuuid')
     depends_on('libxml2')
+    depends_on('curl')
 
     def autoreconf(self, spec, prefix):
         autoreconf('--install', '--verbose', '--force')

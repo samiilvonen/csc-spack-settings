@@ -87,6 +87,9 @@ class Netcdf(AutotoolsPackage):
     )
 
     # The patch for 4.7.0 touches configure.ac. See force_autoreconf below.
+#    depends_on('autoconf@2.59', type='build', when='@4.7.0')
+#    depends_on('automake@1.16.1', type='build', when='@4.7.0')
+#    depends_on('libtool@2.4.2', type='build', when='@4.7.0')
     depends_on('autoconf', type='build', when='@4.7.0')
     depends_on('automake', type='build', when='@4.7.0')
     depends_on('libtool', type='build', when='@4.7.0')
@@ -150,6 +153,11 @@ class Netcdf(AutotoolsPackage):
     def force_autoreconf(self):
         # The patch for 4.7.0 touches configure.ac.
         return self.spec.satisfies('@4.7.0')
+
+    def autoreconf(self, spec, prefix):
+        autoreconf = which('autoreconf')
+        with working_dir(self.configure_directory):
+            autoreconf('-ifv')
 
     def patch(self):
         try:

@@ -39,23 +39,31 @@ class Grads(AutotoolsPackage):
     variant('geotiff',  default=False, description='Enable geotiff support')
     variant('X',        default=False, description='Use X Window system')
     variant('hdf5',     default=False, description='Enable hdf5 support')
+    variant('hdf4',     default=False, description='Enable hdf4 support')
     variant('gadap',    default=False, description='Enable OpeNDAP support')
+    variant('netcdf',   default=False, description='Enable NetCDF support')
     variant('udunits2', default=False, description='Enable udunits2 unit conversion support')
     variant('pic',      default=False, description='Try to use only PIC objects')
+    variant('szip',     default=False, description='Require szip support on dependencies')
     
     depends_on('libgd')
     depends_on('libxml2')
-    depends_on('cairo+X', type=('build', 'link'))
+    depends_on('cairo+X+pdf', type=('build', 'link'))
     depends_on('shapefile')
-    depends_on('libxmu')
-    depends_on('libgeotiff', when='+geotiff')
-    depends_on('hdf5~mpi',   when='+hdf5')
-    depends_on('gadap',      when='+gadap')
-    depends_on('udunits2',   when='+udunits2')
-    depends_on('libxpm',     when='+X')
-    depends_on('libxaw',     when='+X')
-    depends_on('libxmu',     when='+X')
-    depends_on('libxt',      when='+X')
+    depends_on('szip',                     when='+szip')
+    depends_on('libgeotiff',               when='+geotiff')
+    depends_on('hdf5~mpi+hl',              when='+hdf5')
+    depends_on('hdf5~mpi+hl+szip',         when='+hdf5+szip')
+    depends_on('hdf+shared~fortran',       when='+hdf4')
+    depends_on('hdf+shared+szip~fortran',  when='+hdf4+szip')
+    depends_on('netcdf~mpi',               when='+netcdf')
+    depends_on('netcdf~mpi+hdf4',          when='+netcdf+hdf4')
+    depends_on('gadap',                    when='+gadap')
+    depends_on('udunits2',                 when='+udunits2')
+    depends_on('libxpm',                   when='+X')
+    depends_on('libxaw',                   when='+X')
+    depends_on('libxmu',                   when='+X')
+    depends_on('libxt',                    when='+X')
     
     parallel = False
     
@@ -83,6 +91,9 @@ class Grads(AutotoolsPackage):
         if '+hdf5' in self.spec:
             config_args.append('--with-hdf5=' + self.spec['hdf5'].prefix)
             
+        if '+hdf4' in self.spec:
+            config_args.append('--with-hdf4=' + self.spec['hdf'].prefix)
+
         if '+gadap' in self.spec:
             config_args.append('--with-gadap')
 
