@@ -1,8 +1,0 @@
-config:
-  install_tree: /appl/spack-ai/
-  install_path_scheme: ${COMPILERNAME}-${COMPILERVER}/${PACKAGE}-${VERSION}-${HASH:6}
-  build_stage::
-    - /appl/spack-ai/stage
-  module_roots:
-    lmod: /appl/spack-ai/modulefiles
-  source_cache: /appl/spack-ai/sources
