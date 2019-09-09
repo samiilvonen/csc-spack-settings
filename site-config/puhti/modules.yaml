@@ -59,6 +59,7 @@ modules:
       - 'cmake%gcc@4.8.5'
       - 'llvm%gcc@4.8.5'
       - 'intel%gcc@4.8.5'
+      - 'valgrind%gcc@4.8.5'
     blacklist:
       - 'hpcx-mpi ^cuda'
       - '%gcc@4.8.5'
