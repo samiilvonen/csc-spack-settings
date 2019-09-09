@@ -11,9 +11,11 @@ modules:
       - gcc
       - cuda
       - cudnn
+      - cdo
       - cp2k
       - emacs
-      - fftw
+      - 'fftw%gcc@6.0.0:'
+      - 'fftw%intel'
       - git
       - git-lfs
       - gnuplot
@@ -26,6 +28,7 @@ modules:
       - openmpi
       - hpcx-mpi
       - mariadb
+      - nco
       - mpich
       - intel
       - intel-mkl
@@ -35,7 +38,8 @@ modules:
       - netlib-scalapack
       - vim
       - relion
-      - gsl
+      - 'gsl%gcc@6.0.0:'
+      - 'gsl%gcc@intel'
       - 'netcdf%gcc@6.0.0:'
       - 'netcdf%gcc@intel'
       - netcdf-fortran
