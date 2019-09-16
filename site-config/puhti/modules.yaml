@@ -8,7 +8,10 @@ modules:
     hierarchy:
       - mpi
     whitelist:
+      - 'bzip2%gcc@6.0.0:'
+      - 'bzip2%intel'
       - gcc
+      - gdal
       - cuda
       - cudnn
       - cdo
@@ -43,7 +46,7 @@ modules:
       - 'netcdf%gcc@6.0.0:'
       - 'netcdf%gcc@intel'
       - netcdf-fortran
-      - metis
+      - 'metis~int64'
       - perl
       - boost
       - eccodes
@@ -60,6 +63,8 @@ modules:
       - 'llvm%gcc@4.8.5'
       - 'intel%gcc@4.8.5'
       - 'valgrind%gcc@4.8.5'
+      - zstd
+      - nccl
     blacklist:
       - 'hpcx-mpi ^cuda'
       - '%gcc@4.8.5'
@@ -144,3 +149,4 @@ modules:
     petsc:
       suffixes:
         "+complex+double": cmplx
+        "+int64": int64
