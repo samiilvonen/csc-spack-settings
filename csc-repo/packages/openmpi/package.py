@@ -69,9 +69,10 @@ class Openmpi(AutotoolsPackage):
     version('4.0.2a1-mlnx', commit='fbd6798bf8')
 
     # Current
-    version('4.0.1', preferred=True, sha256='cce7b6d20522849301727f81282201d609553103ac0b09162cf28d102efb9709')  # libmpi.so.40.20.1
+    version('4.0.2', preferred=True, sha256='900bf751be72eccf06de9d186f7b1c4b5c2fa9fa66458e53b77778dffdfe4057')
 
     # Still supported
+    version('4.0.1', sha256='cce7b6d20522849301727f81282201d609553103ac0b09162cf28d102efb9709')  # libmpi.so.40.20.1
     version('4.0.0', sha256='2f0b8a36cfeb7354b45dda3c5425ef8393c9b04115570b615213faaa3f97366b')  # libmpi.so.40.20.0
     version('3.1.4', sha256='957b5547bc61fd53d08af0713d0eaa5cd6ee3d58')  # libmpi.so.40.10.4
     version('3.1.3', sha256='8be04307c00f51401d3fb9d837321781ea7c79f2a5a4a2e5d4eaedc874087ab6')  # libmpi.so.40.10.3
@@ -86,7 +87,7 @@ class Openmpi(AutotoolsPackage):
 
     version('2.1.6', sha256='98b8e1b8597bbec586a0da79fcd54a405388190247aa04d48e8c40944d4ca86e')  # libmpi.20.20.10.3
 
-    patch('ucx16.patch', when="@4.0.0:4.0.3")
+    patch('ucx16.patch', when="@4.0.0:4.0.1")
 
     # Fixed in 3.0.3 and 3.1.3
     patch('btl_vader.patch', when='@3.0.1:3.0.2')
@@ -288,6 +289,11 @@ class Openmpi(AutotoolsPackage):
             '--without-xpmem',
         ]
 
+        # More verbose compile output for problem trackin
+        config_args.extend([
+            '--disable-silent-rules'
+        ])
+
         # Add extra_rpaths dirs from compilers.yaml into link wrapper
         rpaths = [self.compiler.cc_rpath_arg + path
                   for path in self.compiler.extra_rpaths]
@@ -310,9 +316,9 @@ class Openmpi(AutotoolsPackage):
             config_args.append('--enable-static')
             config_args.extend(self.with_or_without('pmix'))
 
-        if spec.satisfies('@2.0:'):
+        #if spec.satisfies('@2.0:'):
             # for Open-MPI 2.0:, C++ bindings are disabled by default.
-            config_args.extend(['--enable-mpi-cxx'])
+        #    config_args.extend(['--enable-mpi-cxx'])
 
         if spec.satisfies('@3.0.0:', strict=True):
             config_args.append('--with-zlib={0}'.format(spec['zlib'].prefix))
