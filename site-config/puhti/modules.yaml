@@ -24,10 +24,11 @@ modules:
       - gnuplot
       - go
       - 'grads%gcc@4.8.5'
+      - grass
       - grib-api
       - gromacs
       - 'hdf5%gcc@6.0.0:'
-      - 'hdf5%gcc@intel'
+      - 'hdf5%intel'
       - openmpi
       - hpcx-mpi
       - mariadb
@@ -42,9 +43,9 @@ modules:
       - vim
       - relion
       - 'gsl%gcc@6.0.0:'
-      - 'gsl%gcc@intel'
+      - 'gsl%intel'
       - 'netcdf%gcc@6.0.0:'
-      - 'netcdf%gcc@intel'
+      - 'netcdf%intel'
       - netcdf-fortran
       - 'metis~int64'
       - perl
@@ -54,10 +55,11 @@ modules:
       - 'udunits2%gcc@6.0.0:'
       - 'udunits2%intel'
       - 'hdf%gcc@6.0.0:'
-      - 'hdf%gcc@intel'
+      - 'hdf%intel'
       - libemos
       - hpl
       - openjdk
+      - 'openmpi%pgi'
       - namd
       - 'cmake%gcc@4.8.5'
       - 'llvm%gcc@4.8.5'
@@ -73,14 +75,10 @@ modules:
       - '%gcc@9.1.0'
       - '%intel@19.0.4'
       - '%intel@18.0.5'
+      - '%pgi'
     all:
       conflict:
         - '${PACKAGE}'
-      suffixes:
-#        ^python@2.7.15: py27
-#        ^python@3.6.5: py36
-        "fftw+openmp": omp
-        "intel-mkl threads=openmp": omp
       environment:
         set:
           ${PACKAGE}_INSTALL_ROOT: ${PREFIX}
@@ -123,6 +121,10 @@ modules:
       environment:
         set:
           SLURM_MPI_TYPE: pmix_v2
+    openmpi:
+      environment:
+        set:
+          SLURM_MPI_TYPE: pmix_v2
     intel-mpi:
       environment:
         set:
@@ -136,6 +138,7 @@ modules:
     fftw:
       suffixes:
         "+mpi": mpi
+        "+openmp": oml
     boost:
       suffixes:
         "+mpi": mpi
@@ -150,3 +153,6 @@ modules:
       suffixes:
         "+complex+double": cmplx
         "+int64": int64
+    intel-mkl:
+      suffixes:
+        "intel-mkl threads=openmp": omp
