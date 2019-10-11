@@ -60,4 +60,19 @@ packages:
   cuda:
     buildable: true
     paths:
-      cuda@10.1 %pgi@19.7-0: /appl/opt/pgi/19.7/linux86-64/2019/cuda/10.1
+      cuda@10.1 %pgi@19.7: /appl/opt/pgi/19.7/linux86-64/2019/cuda/10.1
+  sharp:
+    buildable: false
+    paths:
+      sharp@2.0: /appl/opt/sharp/2.0
+  hcoll:
+    buildable: false
+    paths:
+      hcoll@4.3.2708: /opt/mellanox/hcoll
+      hcoll@4.4.2938: /appl/opt/hcoll/4.4.2938
+  ucx:
+    buildable: false
+    paths:
+      ucx@1.6.0: /usr
+      ucx@1.7.0+cuda: /appl/opt/ucx/1.7.0-mlnx
+      ucx@1.7.0~cuda: /appl/opt/ucx/1.7.0-mlnx
