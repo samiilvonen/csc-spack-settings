@@ -12,7 +12,9 @@ modules:
       - 'bzip2%intel'
       - gcc
       - gdal
-      - cuda
+      - 'cuda%gcc@6.0.0:'
+      - 'cuda%intel'
+      - 'cuda%pgi'
       - cudnn
       - cdo
       - cp2k
@@ -21,7 +23,7 @@ modules:
       - 'fftw%intel'
       - git
       - git-lfs
-      - gnuplot
+      - 'gnuplot+X'
       - go
       - 'grads%gcc@4.8.5'
       - grass
@@ -32,6 +34,7 @@ modules:
       - openmpi
       - hpcx-mpi
       - mariadb
+      - 'mc%gcc@4.8.5'
       - nco
       - mpich
       - intel
@@ -49,7 +52,9 @@ modules:
       - netcdf-fortran
       - 'metis~int64'
       - perl
-      - boost
+      - 'boost%gcc@6.0.0:'
+      - 'boost%intel'
+      - 'boost%pgi'
       - eccodes
       - parallel-netcdf
       - 'udunits2%gcc@6.0.0:'
@@ -65,6 +70,8 @@ modules:
       - 'llvm%gcc@4.8.5'
       - 'intel%gcc@4.8.5'
       - 'valgrind%gcc@4.8.5'
+      - scalasca
+      - scorep
       - zstd
       - nccl
     blacklist:
