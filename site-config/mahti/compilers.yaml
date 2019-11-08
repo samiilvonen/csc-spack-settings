@@ -1,0 +1,81 @@
+compilers:
+- compiler:
+    environment: {}
+    extra_rpaths: []
+    flags: {}
+    modules: []
+    operating_system: rhel7
+    paths:
+      cc: /usr/bin/gcc
+      cxx: /usr/bin/g++
+      f77: /usr/bin/gfortran
+      fc: /usr/bin/gfortran
+    spec: gcc@4.8.5
+    target: x86_64
+- compiler:
+    environment: {}
+    extra_rpaths: []
+    flags: {}
+    modules: []
+    operating_system: rhel7
+    paths:
+      cc: /appl/spack/install-tree/gcc-4.8.5/gcc-9.1.0-vpjht2/bin/gcc
+      cxx: /appl/spack/install-tree/gcc-4.8.5/gcc-9.1.0-vpjht2/bin/g++
+      f77: /appl/spack/install-tree/gcc-4.8.5/gcc-9.1.0-vpjht2/bin/gfortran
+      fc: /appl/spack/install-tree/gcc-4.8.5/gcc-9.1.0-vpjht2/bin/gfortran
+    spec: gcc@9.1.0
+    target: x86_64
+- compiler:
+    environment: {}
+    extra_rpaths: []
+    flags: {}
+    modules: []
+    operating_system: rhel7
+    paths:
+      cc: /appl/spack/install-tree/gcc-4.8.5/gcc-8.3.0-qzmzn5/bin/gcc
+      cxx: /appl/spack/install-tree/gcc-4.8.5/gcc-8.3.0-qzmzn5/bin/g++
+      f77: /appl/spack/install-tree/gcc-4.8.5/gcc-8.3.0-qzmzn5/bin/gfortran
+      fc: /appl/spack/install-tree/gcc-4.8.5/gcc-8.3.0-qzmzn5/bin/gfortran
+    spec: gcc@8.3.0
+    target: x86_64
+- compiler:
+    environment: {}
+    extra_rpaths: []
+    flags: {}
+    modules: []
+    operating_system: rhel7
+    paths:
+      cc: /appl/spack/install-tree/gcc-4.8.5/gcc-7.4.0-l7gbl5/bin/gcc
+      cxx: /appl/spack/install-tree/gcc-4.8.5/gcc-7.4.0-l7gbl5/bin/g++
+      f77: /appl/spack/install-tree/gcc-4.8.5/gcc-7.4.0-l7gbl5/bin/gfortran
+      fc: /appl/spack/install-tree/gcc-4.8.5/gcc-7.4.0-l7gbl5/bin/gfortran
+    spec: gcc@7.4.0
+    target: x86_64
+- compiler:
+    environment: {}
+    extra_rpaths:
+      - /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/compiler/lib/intel64_lin
+    flags: {}
+    modules: []
+    operating_system: rhel7
+    paths:
+      cc: /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/bin/intel64/icc
+      cxx: /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/bin/intel64/icpc
+      f77: /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/bin/intel64/ifort
+      fc: /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/bin/intel64/ifort
+    spec: intel@19.0.4
+    target: x86_64
+- compiler:
+    environment: {}
+    extra_rpaths:
+      - /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/compiler/lib/intel64_lin
+    flags: {}
+    modules: []
+    operating_system: rhel7
+    paths:
+      cc: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/bin/intel64/icc
+      cxx: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/bin/intel64/icpc
+      f77: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/bin/intel64/ifort
+      fc: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/bin/intel64/ifort
+    spec: intel@18.0.5
+    target: x86_64

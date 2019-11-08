@@ -1,0 +1,166 @@
+modules:
+  enable::
+    - lmod
+  lmod:
+    hash_length: 0
+    core_compilers:
+      - gcc@4.8.5
+    hierarchy:
+      - mpi
+    whitelist:
+      - 'bzip2%gcc@6.0.0:'
+      - 'bzip2%intel'
+      - gcc
+      - gdal
+      - 'cuda%gcc@6.0.0:'
+      - 'cuda%intel'
+      - 'cuda%pgi'
+      - cudnn
+      - cdo
+      - cp2k
+      - emacs
+      - 'fftw%gcc@6.0.0:'
+      - 'fftw%intel'
+      - git
+      - git-lfs
+      - 'gnuplot+X'
+      - go
+      - 'grads%gcc@4.8.5'
+      - grass
+      - grib-api
+      - gromacs
+      - 'hdf5%gcc@6.0.0:'
+      - 'hdf5%intel'
+      - openmpi
+      - hpcx-mpi
+      - mariadb
+      - 'mc%gcc@4.8.5'
+      - nco
+      - mpich
+      - intel
+      - intel-mkl
+      - intel-mpi
+      - petsc
+      - pgi
+      - 'p7zip%gcc@4.8.5'
+      - netlib-scalapack
+      - vim
+      - relion
+      - 'gsl%gcc@6.0.0:'
+      - 'gsl%intel'
+      - 'netcdf%gcc@6.0.0:'
+      - 'netcdf%intel'
+      - netcdf-fortran
+      - 'metis~int64'
+      - perl
+      - 'boost%gcc@6.0.0:'
+      - 'boost%intel'
+      - 'boost%pgi'
+      - 'eccodes+fortran'
+      - parallel-netcdf
+      - 'udunits2%gcc@6.0.0:'
+      - 'udunits2%intel'
+      - 'hdf%gcc@6.0.0:'
+      - 'hdf%intel'
+      - libemos
+      - hpl
+      - openjdk
+      - 'openmpi%pgi'
+      - namd
+      - 'cmake%gcc@4.8.5'
+      - 'llvm%gcc@4.8.5'
+      - 'intel%gcc@4.8.5'
+      - 'valgrind%gcc@4.8.5'
+      - scalasca
+      - scorep
+      - zstd
+      - nccl
+    blacklist:
+      - 'hpcx-mpi ^cuda'
+      - '%gcc@4.8.5'
+      - '%gcc@7.4.0'
+      - '%gcc@8.3.0'
+      - '%gcc@9.1.0'
+      - '%intel@19.0.4'
+      - '%intel@18.0.5'
+      - '%pgi'
+    all:
+      conflict:
+        - '${PACKAGE}'
+      environment:
+        set:
+          ${PACKAGE}_INSTALL_ROOT: ${PREFIX}
+    gcc:
+      environment:
+        set:
+          CC: gcc
+          CXX: g++
+          FC: gfortran
+          F90: gfortran
+          F77: gfortran
+          I_MPI_CC: gcc
+          I_MPI_CXX: g++
+          I_MPI_FC: gfortran
+          I_MPI_F90: gfortran
+          I_MPI_F77: gfortran
+    intel:
+      environment:
+        set:
+          CC: icc
+          CXX: icpc
+          FC: ifort
+          F90: ifort
+          F77: ifort
+          ICCCFG: /appl/opt/intel_configs/icc_gcc83_csc.cfg
+          ICPCCFG : /appl/opt/intel_configs/icpc_gcc83_csc.cfg
+          IFORTCFG : /appl/opt/intel_configs/ifort_gcc83_csc.cfg
+          I_MPI_CC: icc
+          I_MPI_CXX: icpc
+          I_MPI_FC: ifort
+          I_MPI_F90: ifort
+          I_MPI_F77: ifort
+    mpich:
+      environment:
+        set:
+          SLURM_MPI_TYPE: pmi2
+    hpcx-mpi:
+      suffixes:
+        "+cuda": cuda
+      environment:
+        set:
+          SLURM_MPI_TYPE: pmix_v2
+    openmpi:
+      environment:
+        set:
+          SLURM_MPI_TYPE: pmix_v2
+    intel-mpi:
+      environment:
+        set:
+          SLURM_MPI_TYPE: pmi2
+    relion:
+      suffixes:
+        "+cuda": cuda
+    eccodes:
+      suffixes:
+        "+openmp": omp
+    fftw:
+      suffixes:
+        "+mpi": mpi
+        "+openmp": oml
+    boost:
+      suffixes:
+        "+mpi": mpi
+    gromacs:
+      suffixes:
+        "+cuda": cuda
+        "+plumed": plumed
+    hdf5:
+      suffixes:
+        "+mpi": mpi
+    petsc:
+      suffixes:
+        "+complex+double": cmplx
+        "+int64": int64
+    intel-mkl:
+      suffixes:
+        "intel-mkl threads=openmp": omp
