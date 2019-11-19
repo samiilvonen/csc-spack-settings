@@ -25,3 +25,9 @@ alternatives --altdir ${altdir} --admindir alternatives \
              --install ${altdir}/config.yaml config.yaml ${siteconf}/test-env/config.yaml 10 \
              --slave   ${altdir}/modules.yaml modules.yaml ${siteconf}/test-env/modules.yaml \
              --slave   ${altdir}/packages.yaml packages.yaml ${siteconf}/test-env/packages.yaml
+
+alternatives --altdir ${altdir} --admindir alternatives \
+             --install ${altdir}/config.yaml config.yaml ${siteconf}/chained-test-env/config.yaml 10 \
+             --slave   ${altdir}/modules.yaml modules.yaml ${siteconf}/chained-test-env/modules.yaml \
+             --slave   ${altdir}/packages.yaml packages.yaml ${siteconf}/chained-test-env/packages.yaml \
+             --slave   ${altdir}/upstreams.yaml upstreams.yaml ${siteconf}/chained-test-env/upstreams.yaml
