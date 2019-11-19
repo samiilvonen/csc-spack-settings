@@ -93,27 +93,30 @@ class Openmpi(AutotoolsPackage):
     patch('btl_vader.patch', when='@3.0.1:3.0.2')
     patch('btl_vader.patch', when='@3.1.0:3.1.2')
 
-    fabrics = ('psm', 'psm2', 'verbs', 'mxm', 'ucx', 'libfabric')
     variant(
         'fabrics',
-        default=None if _verbs_dir() is None else 'verbs',
-        description="List of fabrics that are enabled",
-        values=fabrics,
-        multi=True
+        values=disjoint_sets(
+            ('auto',), ('psm', 'psm2', 'verbs', 'mxm', 'ucx', 'libfabric')
+        ).with_non_feature_values('auto', 'none'),
+        description="List of fabrics that are enabled; "
+        "'auto' lets openmpi determine",
     )
 
     variant(
         'schedulers',
-        description='List of schedulers for which support is enabled',
-        values = ('alps', 'lsf', 'tm', 'slurm', 'sge'),
-        multi=True
+        values=disjoint_sets(
+            ('auto',), ('alps', 'lsf', 'tm', 'slurm', 'sge', 'loadleveler')
+        ).with_non_feature_values('auto', 'none'),
+        description="List of schedulers for which support is enabled; "
+        "'auto' lets openmpi determine",
     )
 
     variant(
         'extensions',
+        values=disjoint_sets(
+            ('none',), ('affinity', 'cuda', 'cr')
+        ).with_non_feature_values('none'),
         description='List of MPI extensions which are enabled',
-        values = ('affinity', 'cuda', 'cr'),
-        multi=True
     )
 
     # Additional support options
@@ -258,7 +261,18 @@ class Openmpi(AutotoolsPackage):
             return '--without-{0}'.format(opt)
         line = '--with-{0}'.format(opt)
         path = _mxm_dir()
-        if (path is not None):
+        if path is not None:
+            line += '={0}'.format(path)
+        return line
+
+    def with_or_without_tm(self, activated):
+        opt = 'tm'
+        # If the option has not been activated return --without-tm
+        if not activated:
+            return '--without-{0}'.format(opt)
+        line = '--with-{0}'.format(opt)
+        path = _tm_dir()
+        if path is not None:
             line += '={0}'.format(path)
         return line
 
@@ -289,7 +303,7 @@ class Openmpi(AutotoolsPackage):
             '--without-xpmem',
         ]
 
-        # More verbose compile output for problem trackin
+        # More verbose compile output for problem tracking
         config_args.extend([
             '--disable-silent-rules'
         ])
@@ -330,13 +344,16 @@ class Openmpi(AutotoolsPackage):
             config_args.append('--enable-mpi1-compatibility')
 
         # Fabrics
-        config_args.extend(self.with_or_without('fabrics',
-                                                activation_value=self._fabrics_activation))
+        if 'fabrics=auto' not in spec:
+            config_args.extend(
+                self.with_or_without('fabrics',
+                                     activation_value=self._fabrics_activation))
         # Schedulers
-        config_args.extend(self.with_or_without('schedulers'))
+        if 'schedulers=auto' not in spec:
+            config_args.extend(self.with_or_without('schedulers'))
 
         # Extensions
-        if spec.variants['extensions']:
+        if 'extensions=none' not in spec:
             config_args.append('--enable-mpi-ext={0}'.format(','.join(spec.variants['extensions'].value)))
 
         config_args.extend(self.enable_or_disable('memchecker'))
@@ -419,7 +436,6 @@ class Openmpi(AutotoolsPackage):
         else:
             config_args.append('--disable-cxx-exceptions')
         return config_args
-
 
     @run_after('install')
     def delete_mpirun_mpiexec(self):
