@@ -18,6 +18,7 @@ modules:
       - cudnn
       - cdo
       - cp2k
+      - 'dos2unix%gcc@4.8.5'
       - emacs
       - 'fftw%gcc@6.0.0:'
       - 'fftw%intel'
@@ -36,12 +37,15 @@ modules:
       - mariadb
       - 'mc%gcc@4.8.5'
       - nco
+      - 'ncl%gcc@4.8.5'
+      - 'ncftp%gcc@4.8.5'
       - mpich
       - intel
       - intel-mkl
       - intel-mpi
       - petsc
       - pgi
+      - 'p7zip%gcc@4.8.5'
       - netlib-scalapack
       - vim
       - relion
@@ -55,7 +59,7 @@ modules:
       - 'boost%gcc@6.0.0:'
       - 'boost%intel'
       - 'boost%pgi'
-      - eccodes
+      - 'eccodes+fortran'
       - parallel-netcdf
       - 'udunits2%gcc@6.0.0:'
       - 'udunits2%intel'
@@ -70,6 +74,7 @@ modules:
       - 'llvm%gcc@4.8.5'
       - 'intel%gcc@4.8.5'
       - 'valgrind%gcc@4.8.5'
+      - saga-gis
       - scalasca
       - scorep
       - zstd
@@ -128,6 +133,10 @@ modules:
       environment:
         set:
           SLURM_MPI_TYPE: pmix_v2
+    hpcx-mpi%gcc:
+      environment:
+        set:
+          PMIX_MCA_gds: ^21
     openmpi:
       environment:
         set:
