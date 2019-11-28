@@ -18,4 +18,5 @@ class X264(AutotoolsPackage):
 
     def configure_args(self):
         args = []
+        args.append('--enable-shared')
         return args

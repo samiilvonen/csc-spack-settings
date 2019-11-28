@@ -22,6 +22,7 @@ modules:
       - emacs
       - 'fftw%gcc@6.0.0:'
       - 'fftw%intel'
+      - 'ffmpeg%gcc@4.8.5'
       - git
       - git-lfs
       - 'gnuplot+X'
