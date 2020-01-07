@@ -25,6 +25,7 @@ class Gromacs(CMakePackage):
     maintainers = ['junghans', 'marvinbernhardt']
 
     version('develop', branch='master')
+    version('2019.5', sha256='438061a4a2d45bbb5cf5c3aadd6c6df32d2d77ce8c715f1c8ffe56156994083a')
     version('2019.4', sha256='ba4366eedfc8a1dbf6bddcef190be8cd75de53691133f305a7f9c296e5ca1867')
     version('2019.3', sha256='4211a598bf3b7aca2b14ad991448947da9032566f13239b1a05a2d4824357573')
     version('2019.2', sha256='bcbf5cc071926bc67baa5be6fb04f0986a2b107e1573e15fadcb7d7fc4fb9f7e')
@@ -65,6 +66,7 @@ class Gromacs(CMakePackage):
                     'IBM_QPX', 'Sparc64_HPC_ACE', 'IBM_VMX', 'IBM_VSX',
                     'ARM_NEON', 'ARM_NEON_ASIMD'))
     variant('rdtscp', default=True, description='Enable RDTSCP instruction usage')
+    variant('hwloc', default=False, description='Enable hwloc support')
 
     depends_on('mpi', when='+mpi')
     depends_on('plumed+mpi', when='+plumed+mpi')
@@ -110,5 +112,10 @@ class Gromacs(CMakePackage):
             options.append('-DGMX_USE_RDTSCP:BOOL=OFF')
         else:
             options.append('-DGMX_USE_RDTSCP:BOOL=ON')
+
+        if '+hwloc' in self.spec:
+            options.append('-DGMX_HWLOC=AUTO')
+        else:
+            options.append('-DGMX_HWLOC=OFF')
 
         return options
