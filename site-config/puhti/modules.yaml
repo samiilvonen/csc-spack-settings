@@ -78,6 +78,8 @@ modules:
       - saga-gis
       - scalasca
       - scorep
+      - 'splits%gcc@9.1.0'
+      - 'subversion%gcc@4.8.5'
       - zstd
       - nccl
     blacklist:
