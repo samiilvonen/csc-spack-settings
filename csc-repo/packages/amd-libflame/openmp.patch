@@ -1,0 +1,43 @@
+diff --git a/build/ac-macros/fla_set_c_openmp_flags.m4 b/build/ac-macros/fla_set_c_openmp_flags.m4
+index f8ad572..0c62fd0 100644
+--- a/build/ac-macros/fla_set_c_openmp_flags.m4
++++ b/build/ac-macros/fla_set_c_openmp_flags.m4
+@@ -8,29 +8,33 @@ AC_DEFUN([FLA_SET_C_OPENMP_FLAGS],
+ 	dnl Set the OpenMP compiler flags based on which C compiler we're going to use.
+ 	case $CC in
+ 		dnl Intel icc.
+-		icc)
++		*icc)
+ 			fla_c_openmp_flags='-openmp'
+ 		;;
+ 		dnl GNU gcc.
+-		gcc)
++		*gcc)
+ 			fla_c_openmp_flags='-fopenmp'
+ 		;;
+ 		dnl PathScale pathcc
+-		pathcc)
++		*pathcc)
+ 			fla_c_openmp_flags='-mp'
+ 		;;
+ 		dnl PGI pgcc.
+-		pgcc)
++		*pgcc)
+ 			fla_c_openmp_flags='-mp'
+ 		;;
+ 		dnl NEC sxcc.
+-		sxcc)
++		*sxcc)
+ 			fla_c_openmp_flags='-P openmp'
+ 		;;
+ 		dnl IBM xlc
+ 		*xlc*)
+ 			fla_c_openmp_flags='-qsmp=omp'
+ 		;;
++                dnl clang
++                *clang)
++                        fla_c_openmp_flags='-fopenmp'
++               ;;
+ 		dnl for all other C compilers.
+ 		*)
+ 			fla_c_openmp_flags='unknown'
