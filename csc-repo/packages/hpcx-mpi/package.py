@@ -8,7 +8,7 @@ from spack import *
 
 class HpcxMpi(AutotoolsPackage):
     """Mellanox HPC-X MPI
-    
+
     This version assumes that all dependencies (sharp, ucx, etc.) are
     installed using rpm pacakges. Main motivation for MPI compilation
     is the Fortran interface.
@@ -37,10 +37,11 @@ class HpcxMpi(AutotoolsPackage):
     depends_on('cuda', when='+cuda')
 
     # Mellanox dependencies, external to spack
-    depends_on('ucx@1.6.0',      when='@2.4.0')
+    depends_on('ucx@1.6.0-mlnx', when='@2.4.0')
     depends_on('hcoll@4.3.2708', when='@2.4.0')
-    depends_on('ucx@1.7.0',      when='@2.5.0')
+    depends_on('ucx@1.7.0-mlnx', when='@2.5.0')
     depends_on('hcoll@4.4.2938', when='@2.5.0')
+    depends_on('sharp@2.0', when='@2.5.0')
 
     depends_on('binutils')
 

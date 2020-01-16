@@ -14,8 +14,9 @@ class Ucx(AutotoolsPackage):
     url      = "https://github.com/openucx/ucx/releases/download/v1.3.1/ucx-1.3.1.tar.gz"
     git      = "https://github.com/openucx/ucx.git"
 
-    # Mellanox version
-    version('1.6-mlnx', commit='9492d2e')
+    # Mellanox versions
+    version('1.7.0-mlnx', commit='18b0018')
+    version('1.6.0-mlnx', commit='9492d2e')
 
     # Current
     version('1.5.1', sha256='567119cd80ad2ae6968ecaa4bd1d2a80afadd037ccc988740f668de10d2fdb7e')
@@ -33,6 +34,8 @@ class Ucx(AutotoolsPackage):
     depends_on('numactl')
     # depends_on('rdma-core')
     depends_on('cuda', when='+cuda')
+
+    depends_on('hcoll@4.4.2938', when='@1.7.0-mlnx')
 
     def configure_args(self):
         config_args = []
