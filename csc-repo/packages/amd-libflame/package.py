@@ -73,7 +73,7 @@ class AmdLibflame(AutotoolsPackage):
     patch('Makefile_5.2.0_darwin.patch', when='@5.2.0')
 
     # Fix the compiler detection on autoconf macro
-    patch('openmp.patch')
+    patch('compiler-detection.patch', level=1, when='@:2.1')
 
     @run_before('autoreconf')
     def bootstrap(self):
