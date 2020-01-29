@@ -44,6 +44,7 @@ modules:
       - intel
       - intel-mkl
       - intel-mpi
+      - 'parallel%gcc@4.8.5'
       - petsc
       - pgi
       - 'p7zip%gcc@4.8.5'
