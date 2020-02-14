@@ -32,6 +32,8 @@ class Hdf(AutotoolsPackage):
     depends_on('bison', type='build')
     depends_on('flex',  type='build')
 
+    filter_compiler_wrappers('h4cc', 'h4fc', relative_root='bin')
+
     def configure_args(self):
         spec = self.spec
 
