@@ -67,7 +67,8 @@ modules:
       - 'udunits2%gcc@6.0.0:'
       - 'udunits2%intel'
       - 'hdf%gcc@6.0.0:'
-      - 'hdf%intel'
+      - 'hdf5@1.10.4+cxx~debug+fortran+hl~mpi+pic+shared+szip+threadsafe'
+      - 'hdf5@1.10.4~cxx~debug+fortran+hl+mpi+pic+shared+szip+threadsafe'
       - libemos
       - hpl
       - openjdk
@@ -169,7 +170,7 @@ modules:
         "+plumed": plumed
     hdf5:
       suffixes:
-        "+mpi": mpi
+        "+mpi+fortran": mpi
     petsc:
       suffixes:
         "+complex+double": cmplx
