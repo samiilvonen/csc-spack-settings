@@ -60,18 +60,6 @@ class AmdLibflame(AutotoolsPackage):
     depends_on('libtool', type='build')
     depends_on('m4', type='build')
     
-    # There is a known issue with the makefile:
-    # https://groups.google.com/forum/#!topic/libflame-discuss/lQKEfjyudOY
-    patch('Makefile_5.1.0.patch', when='@5.1.0')
-
-    # Problems with permissions on installed libraries:
-    # https://github.com/flame/libflame/issues/24
-    patch('Makefile_5.2.0.patch', when='@5.2.0')
-
-    # Problems building on macOS:
-    # https://github.com/flame/libflame/issues/23
-    patch('Makefile_5.2.0_darwin.patch', when='@5.2.0')
-
     # Fix the compiler detection on autoconf macro
     patch('compiler-detection.patch', level=1, when='@:2.1')
 
@@ -122,13 +110,11 @@ class AmdLibflame(AutotoolsPackage):
         # https://github.com/flame/libflame/issues/21
         config_args.append("--enable-max-arg-list-hack")
 
+        # Enable cblas interfaces by default
+        config_args.append("--enable-cblas-interfaces")
+
         return config_args
 
-    @run_after('install')
-    def darwin_fix(self):
-        # The shared library is not installed correctly on Darwin; fix this
-        if self.spec.satisfies('platform=darwin'):
-            fix_darwin_install_name(self.prefix.lib)
 
     @property
     def libs(self):
