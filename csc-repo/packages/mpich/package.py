@@ -220,7 +220,7 @@ spack package at this time.''',
             '--disable-gl',
             '--with-pm={0}'.format('hydra' if '+hydra' in spec else 'no'),
             '--{0}-romio'.format('enable' if '+romio' in spec else 'disable'),
-            '--{0}-ibverbs'.format('with' if '+verbs' in spec else 'without')
+            '--{0}-ibverbs'.format('with' if '+verbs' in spec else 'without'),
             '--with-hcoll={0}'.format(hcdir if '+hcoll' in spec and hcdir else 'no')
         ]
 
