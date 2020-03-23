@@ -1,4 +1,4 @@
-# Copyright 2013-2019 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2020 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -27,7 +27,6 @@ class AmdLibflame(AutotoolsPackage):
 
     provides('lapack', when='+lapack2flame')
 
-    
     variant('lapack2flame', default=True,
             description='Map legacy LAPACK routine invocations'
             ' to their corresponding native C implementations'
@@ -115,6 +114,9 @@ class AmdLibflame(AutotoolsPackage):
 
         return config_args
 
+    # Parallel install seems to be broken
+    def install(self, spec, prefix):
+        make('install', parallel=False)
 
     @property
     def libs(self):
