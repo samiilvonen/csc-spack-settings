@@ -1,0 +1,17 @@
+diff --git a/configure.ac b/configure.ac
+index f4af4e6..2335951 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -61,5 +61,12 @@ fi
+ AC_PROG_INSTALL
+ AC_PROG_LIBTOOL
+ 
++wl='-Wl,'
++lt_lt_prog_compiler_wl='-Wl,'
++lt_lt_prog_compiler_wl_FC='-Wl,'
++lt_lt_prog_compiler_wl_CC='-Wl,'
++lt_prog_compiler_wl='-Wl,'
++lt_prog_compiler_wl_FC='-Wl,'
++lt_prog_compiler_wl_CC='-Wl,'
+ # defining the enabled modules
+ enable_mod_mpi=yes
