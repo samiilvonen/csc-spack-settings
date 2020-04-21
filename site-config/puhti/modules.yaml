@@ -20,10 +20,12 @@ modules:
       - cp2k
       - 'dos2unix%gcc@4.8.5'
       - emacs
+      - extrae
       - 'fftw%gcc@6.0.0:'
       - 'fftw%intel'
       - 'ffmpeg%gcc@4.8.5'
-      - git
+      - 'git@2.21.3'
+      - 'git@2.25.4'
       - git-lfs
       - 'gnuplot+X'
       - go

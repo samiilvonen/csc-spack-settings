@@ -25,6 +25,31 @@ class Git(AutotoolsPackage):
 
     releases = [
         {
+            'version': '2.25.4',
+            'sha256': '1b11d0ee481c6735e9f7d81a3576ef0989bde7843cb4adcdef578c0593d279ab',
+            'sha256_manpages': 'd82f242fda461cd6a4b2d6aa3791eb284155d3d5c5e13942ac263f103c456466'
+        },
+        {
+            'version': '2.25.3',
+            'sha256': '7aec7e09acca48b8a7cfea68f5629f7c7fe473d8061464ebf516e18702b2d370',
+            'sha256_manpages': '4dfe7db81f3641dfe8886788f1fd2eaa05cdd5e5663f6221ce8b4495fa95d8db'
+        },
+        {
+            'version': '2.25.2',
+            'sha256': 'c1ec0b9c72b0cd544b99f9e2d219d63b16867fd0a37c4bd3aaf02c655ae8de07',
+            'sha256_manpages': 'e8d394160e4277504fc462bb0a5d768f8d3d5dbdc8c789f058fae00c8e80e4da'
+        },
+        {
+            'version': '2.21.3',
+            'sha256': '4d8d26943357c6b5f42f132fc75def69e86ba8de2384473909fde3a52808fc2b',
+            'sha256_manpages': 'ed74f74fdbac4d5834eccebb2ed1063645c7ace1ba3e5ec50780ff2dc9b67517'
+        },
+        {
+            'version': '2.21.2',
+            'sha256': '4166d010a091aa186a031b4e30cf594c80a520ffa7225f3267ba4be01700cc01',
+            'sha256_manpages': 'ac931ec640a339eb9296c5e8a676d8c2ddf52e6c164cc0764147568291e7d0fe'
+        },
+        {
             'version': '2.21.0',
             'sha256': '85eca51c7404da75e353eba587f87fea9481ba41e162206a6f70ad8118147bee',
             'sha256_manpages': '14c76ebb4e31f9e55cf5338a04fd3a13bced0323cd51794ccf45fc74bd0c1080'
