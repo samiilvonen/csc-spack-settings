@@ -23,13 +23,14 @@ class Grads(AutotoolsPackage):
 
     version('2.2.1', sha256='695e2066d7d131720d598bac0beb61ac3ae5578240a5437401dc0ffbbe516206')
 
-    # Fixes for autoreconf, from Debian packaging
+    # Several fixes for autoreconf, some are from Debian packaging
     patch('shp-fix.patch',            when='@2.2.1')
     patch('cairo-fix.patch',          when='@2.2.1')
     patch('cairo-fix-include.patch',  when='@2.2.1')
     patch('gadap-fix.patch',          when='@2.2.1')
     patch('ifdefhdf.patch',           when='@2.2.1')
     patch('configure-ac-fixes.patch', when='@2.2.1')
+    patch('unit-fix.patch',           when='@2.2.1')
     
     depends_on('autoconf', type='build')
     depends_on('automake', type='build')
