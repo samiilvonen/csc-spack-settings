@@ -14,6 +14,7 @@ class Cmake(Package):
     maintainers = ['chuckatkins']
 
 
+    version('3.18.2', sha256='5d4e40fc775d3d828c72e5c45906b4d9b59003c9433ff1b36a1cb552bbd51d7e')
     version('3.16.3',   sha256='e54f16df9b53dac30fd626415833a6e75b0e47915393843da1825b096ee60668')
     version('3.16.2',   sha256='8c09786ec60ca2be354c29829072c38113de9184f29928eb9da8446a5f2ce6a9')
     version('3.15.4',   sha256='8a211589ea21374e49b25fc1fc170e2d5c7462b795f1b29c84dd0e984301ed7a')

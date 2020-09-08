@@ -22,8 +22,11 @@ class Gcc(AutotoolsPackage):
     list_url = 'http://ftp.gnu.org/gnu/gcc/'
     list_depth = 1
 
-    version('9.1.0', sha256='79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0')
-    version('8.3.0', sha256='64baadfe6cc0f4947a84cb12d7f0dfaf45bb58b7e92461639596c21e02d97d2c')
+    version('10.1.0', sha256='b6898a23844b656f1b68691c5c012036c2e694ac4b53a8918d4712ad876e7ea2')
+    version('9.3.0',  sha256='71e197867611f6054aa1119b13a0c0abac12834765fe2d81f35ac57f84f742d1')
+    version('9.2.0',  sha256='ea6ef08f121239da5695f76c9b33637a118dcf63e24164422231917fa61fb206')
+    version('9.1.0',  sha256='79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0')
+    version('8.3.0',  sha256='64baadfe6cc0f4947a84cb12d7f0dfaf45bb58b7e92461639596c21e02d97d2c')
     version('8.2.0', '64898a165f67e136d802a92e7633bf1b06c85266027e52127ea025bf5fc2291b5e858288aac0bdba246e6cdf7c6ec88bc8e0e7f3f6f1985f4297710cafde56ed')
     version('8.1.0', '65f7c65818dc540b3437605026d329fc')
     version('7.4.0', '6e9d754638ff03d2e9b2aff55aed82b4')

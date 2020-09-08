@@ -17,6 +17,8 @@ class Cuda(Package):
     https://docs.nvidia.com/cuda/ for details."""
 
     homepage = "https://developer.nvidia.com/cuda-zone"
+    version('11.0.2', sha256='48247ada0e3f106051029ae8f70fbd0c238040f58b0880e55026374a959a69c1', expand=False,
+            url="https://developer.download.nvidia.com/compute/cuda/11.0.2/local_installers/cuda_11.0.2_450.51.05_linux.run")
     version('10.1.168', sha256='4fcad1d2af35495ff57b8ea5851f6031c3d350d14e88f5db12c40a4074ddf43f', expand=False,
             url="https://developer.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda_10.1.168_418.67_linux.run")
     version('10.1.105', sha256='33ac60685a3e29538db5094259ea85c15906cbd0f74368733f4111eab6187c8f', expand=False,
