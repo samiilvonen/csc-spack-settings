@@ -1,0 +1,9 @@
+config:
+  build_jobs:: 20
+  install_tree: /appl/test/omp5/install-tree
+  install_path_scheme: ${COMPILERNAME}-${COMPILERVER}/${PACKAGE}-${VERSION}-${HASH:6}
+  build_stage::
+    - /local_scratch/build/spack-stage-omp5
+  module_roots:
+    lmod: /appl/test/omp5/modulefiles
+  source_cache: /appl/spack/sources
