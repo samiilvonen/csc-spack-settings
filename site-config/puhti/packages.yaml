@@ -9,6 +9,10 @@ packages:
       blas: [mkl]
       lapack: [mkl]
       scalapack:: [netlib-scalapack, intel-parallel-studio]
+  git:
+    variants: +libssh2
+  subversion:
+    variants: +perl
   openssl:
     buildable: false
     paths:
@@ -30,6 +34,8 @@ packages:
       gnutls@3.3.29 %gcc@9.1.0: /usr
   fftw:
     variants: +fma simd=avx512
+  eccodes:
+    variants: +fortran +netcdf jp2k=openjpeg +png +openmp
   intel:
     buildable: false
     paths:
@@ -57,10 +63,6 @@ packages:
     buildable: false
     paths:
       pgi@19.7 %gcc@4.8.5: /appl/opt/pgi/19.7
-  cuda:
-    buildable: true
-    paths:
-      cuda@10.1 %pgi@19.7: /appl/opt/pgi/19.7/linux86-64/2019/cuda/10.1
   sharp:
     buildable: false
     paths:
@@ -70,9 +72,14 @@ packages:
     paths:
       hcoll@4.3.2708: /opt/mellanox/hcoll
       hcoll@4.4.2938: /appl/opt/hcoll/4.4.2938
+      hcoll@4.5.3043: /appl/opt/hcoll/4.5.3043
   ucx:
     buildable: false
     paths:
       ucx@1.6.0: /usr
-      ucx@1.7.0+cuda: /appl/opt/ucx/1.7.0-mlnx
-      ucx@1.7.0~cuda: /appl/opt/ucx/1.7.0-mlnx
+      ucx@1.7.0      +cuda: /appl/opt/ucx/1.7.0-mlnx
+      ucx@1.7.0      ~cuda: /appl/opt/ucx/1.7.0-mlnx
+      ucx@1.8.0      +cuda: /appl/opt/ucx/1.8.0-mlnx/mt
+      ucx@1.8.0      ~cuda: /appl/opt/ucx/1.8.0-mlnx/mt
+      ucx@1.8.0-cuda +cuda: /appl/opt/ucx/1.8.0-cuda
+      ucx@1.9.0-cuda +cuda: /appl/opt/ucx/1.9.0-cuda
