@@ -32,3 +32,10 @@ alternatives --altdir ${altdir} --admindir alternatives \
              --slave   ${altdir}/modules.yaml modules.yaml ${siteconf}/chained-test-env/modules.yaml \
              --slave   ${altdir}/packages.yaml packages.yaml ${siteconf}/chained-test-env/packages.yaml \
              --slave   ${altdir}/upstreams.yaml upstreams.yaml ${siteconf}/chained-test-env/upstreams.yaml
+
+alternatives --altdir ${altdir} --admindir alternatives \
+             --install ${altdir}/config.yaml config.yaml ${siteconf}/omp5/config.yaml 30 \
+             --slave   ${altdir}/modules.yaml modules.yaml ${siteconf}/omp5/modules.yaml \
+             --slave   ${altdir}/packages.yaml packages.yaml ${siteconf}/omp5/packages.yaml \
+             --slave   ${altdir}/compilers.yaml compilers.yaml ${siteconf}/omp5/compilers.yaml \
+             --slave   ${altdir}/repos.yaml repos.yaml ${siteconf}/omp5/repos.yaml
