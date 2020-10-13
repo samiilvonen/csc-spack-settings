@@ -79,3 +79,16 @@ compilers:
       fc: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/bin/intel64/ifort
     spec: intel@18.0.5
     target: x86_64
+- compiler:
+    environment: {}
+    extra_rpaths: []
+    flags: {}
+    modules: []
+    operating_system: rhel7
+    paths:
+      cc: /appl/opt/pgi/19.7/linux86-64/19.7/bin/pgcc
+      cxx: /appl/opt/pgi/19.7/linux86-64/19.7/bin/pgc++
+      f77: /appl/opt/pgi/19.7/linux86-64/19.7/bin/pgf77
+      fc: /appl/opt/pgi/19.7/linux86-64/19.7/bin/pgfortran
+    spec: pgi@19.7
+    target: x86_64
