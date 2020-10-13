@@ -3,11 +3,11 @@ packages:
     permissions:
       write: group
       group: p_installation_spack
-    compiler: [gcc, intel]
+    compiler: [gcc]
     providers:
-      mpi: [hpcx-mpi, mpich, intel-mpi]
-      blas: [mkl]
-      lapack: [mkl]
+      mpi: [openmpi]
+      blas: [openblas]
+      lapack: [openblas]
       scalapack:: [netlib-scalapack, intel-parallel-studio]
   openssl:
     buildable: false
@@ -24,43 +24,9 @@ packages:
   gnutls:
     buildable: false
     paths:
-      gnutls@3.3.29 %gcc@4.8.5: /usr
-      gnutls@3.3.29 %gcc@7.4.0: /usr
-      gnutls@3.3.29 %gcc@8.3.0: /usr
-      gnutls@3.3.29 %gcc@9.1.0: /usr
+      gnutls@3.3.29: /usr
   fftw:
     variants: +fma simd=avx512
-  intel:
-    buildable: false
-    paths:
-      intel@19.0.4 %gcc@4.8.5: /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/bin
-      intel@18.0.5 %gcc@4.8.5: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/bin
-  intel-mkl:
-    buildable: false
-    paths:
-      intel-mkl@2019.0.4 %gcc@9.1.0 ~ilp64 +shared threads=openmp arch=linux-rhel7-x86_64: /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/mkl
-      intel-mkl@2019.0.4 %gcc@8.3.0 ~ilp64 +shared threads=openmp arch=linux-rhel7-x86_64: /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/mkl
-      intel-mkl@2019.0.4 %intel@19.0.4 ~ilp64 +shared threads=openmp arch=linux-rhel7-x86_64: /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/mkl
-      intel-mkl@2018.0.5 %intel@18.0.5 ~ilp64 +shared threads=openmp arch=linux-rhel7-x86_64: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/mkl
-#      intel-mkl@2019.0.4 %gcc@9.1.0 ~ilp64 +shared threads=none arch=linux-rhel7-x86_64:    /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/mkl
-#      intel-mkl@2019.0.4 %gcc@8.3.0 ~ilp64 +shared threads=none arch=linux-rhel7-x86_64:    /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/mkl
-#      intel-mkl@2019.0.4 %intel@19.0.4 ~ilp64 +shared threads=none arch=linux-rhel7-x86_64: /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/mkl
-#      intel-mkl@2018.0.5 %intel@18.0.5 ~ilp64 +shared threads=none arch=linux-rhel7-x86_64: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/mkl
-  intel-mpi:
-    buildable: false
-    paths:
-      intel-mpi@18.0.5 %intel@18.0.5: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/mpi
-      intel-mpi@18.0.5 %intel@19.0.4: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/mpi
-      intel-mpi@18.0.5 %gcc@9.1.0: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/mpi
-      intel-mpi@18.0.5 %gcc@8.3.0: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/mpi
-  pgi:
-    buildable: false
-    paths:
-      pgi@19.7 %gcc@4.8.5: /appl/opt/pgi/19.7
-  cuda:
-    buildable: true
-    paths:
-      cuda@10.1 %pgi@19.7: /appl/opt/pgi/19.7/linux86-64/2019/cuda/10.1
   sharp:
     buildable: false
     paths:
@@ -73,6 +39,4 @@ packages:
   ucx:
     buildable: false
     paths:
-      ucx@1.6.0: /usr
-      ucx@1.7.0+cuda: /appl/opt/ucx/1.7.0-mlnx
-      ucx@1.7.0~cuda: /appl/opt/ucx/1.7.0-mlnx
+      ucx@1.9.0-cuda +cuda: /appl/opt/ucx/1.9.0-cuda
