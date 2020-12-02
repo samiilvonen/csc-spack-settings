@@ -3,23 +3,6 @@
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
-# ----------------------------------------------------------------------------
-# If you submit this package back to Spack as a pull request,
-# please first remove this boilerplate and all FIXME comments.
-#
-# This is a template package file for Spack.  We've put "FIXME"
-# next to all the things you'll want to change. Once you've handled
-# them, you can save this file and test your package like this:
-#
-#     spack install ipm
-#
-# You can edit this file again by typing:
-#
-#     spack edit ipm
-#
-# See the Spack documentation for more information on packaging.
-# ----------------------------------------------------------------------------
-
 from spack import *
 
 
@@ -40,6 +23,8 @@ class Ipm(AutotoolsPackage):
     depends_on('libtool', type='build')
 
     depends_on('mpi')
+    depends_on('papi@:5.9')
+    depends_on('libunwind')
 
     patch('shared.patch')
 
@@ -55,5 +40,7 @@ class Ipm(AutotoolsPackage):
 
     def configure_args(self):
         config_args = ['--enable-posixio',
-                       '--enable-shared']
+                       '--enable-shared',
+                       '--with-papi={}'.format(self.spec['papi'].prefix),
+                       '--with-libunwind={}'.format(self.spec['libunwind'].prefix)]
         return config_args
