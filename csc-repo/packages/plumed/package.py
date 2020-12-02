@@ -23,7 +23,12 @@ class Plumed(AutotoolsPackage):
     homepage = 'http://www.plumed.org/'
     url = 'https://github.com/plumed/plumed2/archive/v2.5.0.tar.gz'
 
-    version('2.5.2', sha256='85d10cc46e2e37c7719cf51c0931278f56c2c8f8a9d86188b2bf97c2535a2ab4')
+    version('2.6.1', sha256='c1b3c397b2d971140aa240dde50e48a04ce78e3dedb02b6dca80fa53f8026e4e')
+    version('2.6.0', sha256='3d57ae460607a49547ef38a52c4ac93493a3966857c352280a9c05f5dcdb1820')
+    version('2.6b',  sha256='3ecda9d46967c8ddd08e820aed974794d926cffb78b262f9d42cdbece3b15677')
+    version('2.5.5', sha256='70faa9ff1938e286dc388cb793b39840953e5646855b684f48df1bc864b737e8')
+    version('2.5.4', sha256='a1647e598191f261e75d06351e607475d395af481315052a4c28563ac9989a7f')
+    version('2.5.3', sha256='543288be667dc4201fc461ecd2dd4878ddfbeac682d0c021c99ea8e501c7c9dc')
     version('2.5.0', 'd1277d86a4aa766bfe97513d7969bfb7')
     version('2.4.4', 'e8ef700fb4740b177cf660313c9805e6')
     version('2.4.2', '0f66f24b4c763ae8b2f39574113e9935')
@@ -54,7 +59,7 @@ class Plumed(AutotoolsPackage):
     depends_on('lapack')
     # For libmatheval support through the 'function' module
     # which is enabled by default (or when optional_modules=all)
-    depends_on('libmatheval')
+    depends_on('libmatheval', when='@:2.4.99')
 
     depends_on('mpi', when='+mpi')
     depends_on('gsl', when='+gsl')

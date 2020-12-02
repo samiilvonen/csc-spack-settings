@@ -17,6 +17,9 @@ class Cuda(Package):
     https://docs.nvidia.com/cuda/ for details."""
 
     homepage = "https://developer.nvidia.com/cuda-zone"
+
+    version('11.1.0', sha256='858cbab091fde94556a249b9580fadff55a46eafbcb4d4a741d2dcd358ab94a5', expand=False,
+            url="https://developer.download.nvidia.com/compute/cuda/11.1.0/local_installers/cuda_11.1.0_455.23.05_linux.run")
     version('11.0.2', sha256='48247ada0e3f106051029ae8f70fbd0c238040f58b0880e55026374a959a69c1', expand=False,
             url="https://developer.download.nvidia.com/compute/cuda/11.0.2/local_installers/cuda_11.0.2_450.51.05_linux.run")
     version('10.1.168', sha256='4fcad1d2af35495ff57b8ea5851f6031c3d350d14e88f5db12c40a4074ddf43f', expand=False,
@@ -31,14 +34,6 @@ class Cuda(Package):
             url="https://developer.nvidia.com/compute/cuda/9.1/Prod/local_installers/cuda_9.1.85_387.26_linux")
     version('9.0.176', '7a00187b2ce5c5e350e68882f42dd507', expand=False,
             url="https://developer.nvidia.com/compute/cuda/9.0/Prod/local_installers/cuda_9.0.176_384.81_linux-run")
-    version('8.0.61', '33e1bd980e91af4e55f3ef835c103f9b', expand=False,
-            url="https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_375.26_linux-run")
-    version('8.0.44', '6dca912f9b7e2b7569b0074a41713640', expand=False,
-            url="https://developer.nvidia.com/compute/cuda/8.0/prod/local_installers/cuda_8.0.44_linux-run")
-    version('7.5.18', '4b3bcecf0dfc35928a0898793cf3e4c6', expand=False,
-            url="http://developer.download.nvidia.com/compute/cuda/7.5/Prod/local_installers/cuda_7.5.18_linux.run")
-    version('6.5.14', '90b1b8f77313600cc294d9271741f4da', expand=False,
-            url="http://developer.download.nvidia.com/compute/cuda/6_5/rel/installers/cuda_6.5.14_linux_64.run")
 
     def install(self, spec, prefix):
         runfile = glob(join_path(self.stage.path, 'cuda*_linux*'))[0]
