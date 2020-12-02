@@ -68,6 +68,11 @@ class Hwloc(AutotoolsPackage):
     def url_for_version(self, version):
         return "http://www.open-mpi.org/software/hwloc/v%s/downloads/hwloc-%s.tar.gz" % (version.up_to(2), version)
 
+    def setup_dependent_environment(self, spack_env, run_env, dep_spec):
+        run_env.prepend_path('PATH', join_path(self.prefix.bin))
+        run_env.prepend_path('LD_LIBRARY_PATH', join_path(self.prefix.lib))
+        run_env.prepend_path('PKG_CONFIG_PATH', join_path(self.prefix.lib.pkgconfig))
+
     def configure_args(self):
         args = [
             # Disable OpenCL, since hwloc might pick up an OpenCL
