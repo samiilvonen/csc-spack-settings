@@ -34,6 +34,12 @@ class Ucx(AutotoolsPackage):
     # depends_on('rdma-core')
     depends_on('cuda', when='+cuda')
 
+    def setup_dependent_environment(self, spack_env, run_env, dep_spec):
+        spack_env.prepend_path('PATH', join_path(self.prefix.bin))
+        spack_env.prepend_path('LD_LIBRARY_PATH', join_path(self.prefix.lib))
+        run_env.prepend_path('PATH', join_path(self.prefix.bin))
+        run_env.prepend_path('LD_LIBRARY_PATH', join_path(self.prefix.lib))
+
     def configure_args(self):
         config_args = []
         config_args.append('--enable-optimizations')
