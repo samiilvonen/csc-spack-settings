@@ -8,6 +8,7 @@ modules:
     hierarchy:
       - mpi
     whitelist:
+      - angsd
       - 'bzip2%gcc@6.0.0:'
       - 'bzip2%intel'
       - gcc
@@ -19,6 +20,7 @@ modules:
       - cdo
       - cp2k
       - 'dos2unix%gcc@4.8.5'
+      - dmd
       - emacs
       - extrae
       - 'fftw%gcc@6.0.0:'
@@ -29,24 +31,29 @@ modules:
       - git-lfs
       - 'gnuplot+X'
       - go
-      - 'grads%gcc@4.8.5'
+      - 'grads@2.2.1%gcc@4.8.5+X+gadap+geotiff+hdf4+hdf5+netcdf patches=2b7afacf2cdbcd712f8dec34b8eeac549d1230bd45b87647fa461a9f058fd7df,614afb4b14564b9eeda3575ee2fbc8c685c78f95240f2527d2b199c16d10a26c,68c7c343e7023ec96d6ea548c3977fe1784313dee195751f95765e05795dd89b,7119f6fbb20303bc4080cd81f077411c295a2ef25d3ae3a40e0dfc97ae1f1085,742ecd5c830aaaa8ef0da6c59c36d78f36c6be6f4db6528b208b54a859997bda,a0d024cb25fd00667d7026b6f1d3893da0926fb23adee7d242a3e458dd38c95c,a97e9f34731d84c72c5e04dc8e63c422427d9f496f82dd820b2890717af025cf ~pic+szip+udunits2'
       - grass
       - grib-api
       - gromacs
       - 'hdf5%gcc@6.0.0:'
-      - 'hdf5%intel'
       - openmpi
+      - plumed
       - hpcx-mpi
+      - 'htop%gcc@4.8.5'
+      - ipm
       - mariadb
       - 'mc%gcc@4.8.5'
+      - 'nano%gcc@4.8.5'
       - nco
       - 'ncl%gcc@4.8.5'
       - 'ncftp%gcc@4.8.5'
       - 'ncview%gcc@4.8.5'
       - mpich
+      - mpip
       - intel
       - intel-mkl
       - intel-mpi
+      - jags
       - 'parallel%gcc@4.8.5'
       - petsc
       - pgi
@@ -74,7 +81,6 @@ modules:
       - libemos
       - hpl
       - openjdk
-      - 'openmpi%pgi'
       - namd
       - 'cmake%gcc@4.8.5'
       - 'llvm%gcc@4.8.5'
@@ -82,9 +88,10 @@ modules:
       - 'valgrind%gcc@4.8.5'
       - saga-gis
       - scalasca
+      - 'screen%gcc@4.8.5'
       - scorep
-      - 'splits%gcc@9.1.0'
-      - 'subversion%gcc@4.8.5'
+      - 'splits%gcc@9.1.0+gui'
+      - 'subversion%gcc@4.8.5+perl'
       - zstd
       - nccl
     blacklist:
@@ -149,6 +156,8 @@ modules:
       environment:
         set:
           SLURM_MPI_TYPE: pmix_v2
+      suffixes:
+        "+cuda": cuda
     intel-mpi:
       environment:
         set:
@@ -167,6 +176,9 @@ modules:
       suffixes:
         "+mpi": mpi
     gromacs:
+      environment:
+        set:
+          OMP_NUM_THREADS: "1"
       suffixes:
         "+cuda": cuda
         "+plumed": plumed
@@ -180,3 +192,6 @@ modules:
     intel-mkl:
       suffixes:
         "intel-mkl threads=openmp": omp
+    extrae:
+      suffixes:
+        "+cuda": cuda
