@@ -5,19 +5,19 @@
 
 from spack import *
 
-
 class Extrae(AutotoolsPackage):
     """Extrae is the package devoted to generate Paraver trace-files for a
     post-mortem analysis. Extrae is a tool that uses different
     interposition mechanisms to inject probes into the target application
-    so as to gather information regarding the application performance. The
-    following table summarizes the programming models and systems
-    supported by Extrae."""
+    so as to gather information regarding the application performance."""
 
     homepage = "https://tools.bsc.es/extrae"
     git      = "https://github.com/bsc-performance-tools/extrae.git"
 
+    version('3.8.3', tag='3.8.3')
     version('3.7.1', tag='3.7.1')
+
+    variant('cuda', default=False, description='Build with CUDA support')
 
     depends_on('autoconf', type='build')
     depends_on('automake', type='build')
@@ -32,17 +32,16 @@ class Extrae(AutotoolsPackage):
     depends_on('papi')
     depends_on('binutils+libiberty')
 
+    depends_on('cuda', when='+cuda')
+
     parallel = False
 
     build_directory = 'spack-build'
-    
+
     def autoreconf(self, spec, prefix):
-        # FIXME: Modify the autoreconf method as necessary
         autoreconf('--install', '--verbose', '--force')
 
     def configure_args(self):
-        # FIXME: Add arguments other than --prefix
-        # FIXME: If not needed delete this function
         args = ['--with-mpi={}'.format(self.spec['mpi'].prefix),
                 '--with-unwind={}'.format(self.spec['libunwind'].prefix),
                 '--with-dyninst={}'.format(self.spec['dyninst'].prefix),
@@ -50,4 +49,13 @@ class Extrae(AutotoolsPackage):
                 '--with-elf={}'.format(self.spec['elfutils'].prefix),
                 '--with-papi={}'.format(self.spec['papi'].prefix),
                 '--with-binutils={}'.format(self.spec['binutils'].prefix)]
+        if '+cuda' in self.spec:
+            args.append('--with-cuda={}'.format(self.spec['cuda'].prefix))
+            args.append('--with-cupti={}'.format(join_path(self.spec['cuda'].prefix,
+                                                           'extras', 'CUPTI')))
+        if self.compiler.name == 'gcc':
+            args.append('--enable-openmp-gnu')
+        elif self.compiler.name == 'intel':
+            args.append('--enable-openmp-intel')
+
         return args
