@@ -18,8 +18,8 @@ class Mariadb(CMakePackage):
 
     version('10.2.8', 'f93cbd5bfde3c0d082994764ff7db580')
     version('10.1.23', '1a7392cc05c7c249acd4495022719ca8')
-    version('5.5.56', '8bc7772fea3e11b0bc1a09d2278e2e32')
     version('10.1.14', '294925531e0fd2f0461e3894496a5adc')
+    version('5.5.56', '8bc7772fea3e11b0bc1a09d2278e2e32')
     version('5.5.49', '67b5a499a5f158b2a586e6e3bfb4f304')
 
     variant('nonblocking', default=True, description='Allow non blocking '
@@ -28,16 +28,24 @@ class Mariadb(CMakePackage):
     variant('client_only', default=False,
             description='Build only libraries and client')
 
+    depends_on('bison', type='build')
     depends_on('boost')
     depends_on('cmake@2.6:', type='build')
+    depends_on('curl')
     depends_on('gnutls')
-    #depends_on('openssl')
     depends_on('jemalloc')
-    depends_on('libaio')
+    depends_on('libaio', when='platform=linux')
     depends_on('libedit')
     depends_on('libevent', when='+nonblocking')
+    depends_on('libxml2')
+    #depends_on('libzmq')
+    depends_on('lz4')
+    depends_on('msgpack-c')
     depends_on('ncurses')
+    depends_on('openssl@:1.0', when='@:10.1')
+    depends_on('pkgconfig', type='build')
     depends_on('zlib')
+
 
     def cmake_args(self):
         spec = self.spec
