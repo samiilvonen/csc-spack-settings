@@ -1,0 +1,273 @@
+diff --git a/build/ac-macros/fla_set_c_debug_flags.m4 b/build/ac-macros/fla_set_c_debug_flags.m4
+index e7417bbe..9bc507fd 100644
+--- a/build/ac-macros/fla_set_c_debug_flags.m4
++++ b/build/ac-macros/fla_set_c_debug_flags.m4
+@@ -2,12 +2,12 @@ AC_DEFUN([FLA_SET_C_DEBUG_FLAGS],
+ [
+ 	AC_REQUIRE([FLA_OBSERVE_HOST_CPU_TYPE])
+ 	
+-	AC_MSG_CHECKING([for (guessing) appropriate $CC debug flags])
++	AC_MSG_CHECKING([for (guessing) appropriate ${CC_VENDOR} debug flags])
+ 
+ 	if test "$1" == "yes" ; then
+ 		
+ 		dnl Set C compiler flags assuming we found...
+-		case $CC in
++		case ${CC_VENDOR} in
+ 			dnl GNU gcc.
+ 			gcc)
+ 				fla_c_debug_flags='-g'
+@@ -44,7 +44,7 @@ AC_DEFUN([FLA_SET_C_DEBUG_FLAGS],
+ 	else
+ 
+ 		dnl Set C compiler flags assuming we found...
+-		case $CC in
++		case ${CC_VENDOR} in
+ 			dnl GNU gcc.
+ 			gcc)
+ 				fla_c_debug_flags='-g0'
+diff --git a/build/ac-macros/fla_set_c_lang_flags.m4 b/build/ac-macros/fla_set_c_lang_flags.m4
+index 1b8ed462..568c5002 100644
+--- a/build/ac-macros/fla_set_c_lang_flags.m4
++++ b/build/ac-macros/fla_set_c_lang_flags.m4
+@@ -2,10 +2,10 @@ AC_DEFUN([FLA_SET_C_LANG_FLAGS],
+ [
+ 	AC_REQUIRE([FLA_OBSERVE_HOST_CPU_TYPE])
+ 	
+-	AC_MSG_CHECKING([for (guessing) appropriate $CC language flags])
++	AC_MSG_CHECKING([for (guessing) appropriate ${CC_VENDOR} language flags])
+ 
+ 	dnl Set C compiler flags assuming we found...
+-	case $CC in
++	case ${CC_VENDOR} in
+ 		dnl GNU gcc.
+ 		gcc)
+ 			fla_c_lang_flags='-std=c99 -Wall -Wno-unused-function -Wno-parentheses -Wfatal-errors'
+diff --git a/build/ac-macros/fla_set_c_openmp_flags.m4 b/build/ac-macros/fla_set_c_openmp_flags.m4
+index f8ad5727..6fe9cf73 100644
+--- a/build/ac-macros/fla_set_c_openmp_flags.m4
++++ b/build/ac-macros/fla_set_c_openmp_flags.m4
+@@ -3,10 +3,10 @@ AC_DEFUN([FLA_SET_C_OPENMP_FLAGS],
+ 	AC_REQUIRE([FLA_OBSERVE_HOST_CPU_TYPE])
+ 		
+ 	dnl Echo C OpenMP flags to user.
+-	AC_MSG_CHECKING([for (guessing) OpenMP flags for $CC])
++	AC_MSG_CHECKING([for (guessing) OpenMP flags for ${CC_VENDOR}])
+ 		
+ 	dnl Set the OpenMP compiler flags based on which C compiler we're going to use.
+-	case $CC in
++	case ${CC_VENDOR} in
+ 		dnl Intel icc.
+ 		icc)
+ 			fla_c_openmp_flags='-openmp'
+@@ -45,7 +45,7 @@ AC_DEFUN([FLA_SET_C_OPENMP_FLAGS],
+ 		
+ 		dnl Tell the user we can't continue unless we know what flags
+ 		dnl to pass to the C compiler to enable OpenMP.
+-		AC_MSG_ERROR([configure doesn't know what flag to give $CC in order to enable OpenMP support. Please submit a bug report to the FLAME developers.])
++		AC_MSG_ERROR([configure doesn't know what flag to give ${CC_VENDOR} in order to enable OpenMP support. Please submit a bug report to the FLAME developers.])
+ 	fi
+ 
+ 	dnl Output the C OpenMP flags variable.
+diff --git a/build/ac-macros/fla_set_c_opt_flags.m4 b/build/ac-macros/fla_set_c_opt_flags.m4
+index 9f96068a..01584103 100644
+--- a/build/ac-macros/fla_set_c_opt_flags.m4
++++ b/build/ac-macros/fla_set_c_opt_flags.m4
+@@ -2,12 +2,12 @@ AC_DEFUN([FLA_SET_C_OPT_FLAGS],
+ [
+ 	AC_REQUIRE([FLA_OBSERVE_HOST_CPU_TYPE])
+ 	
+-	AC_MSG_CHECKING([for (guessing) appropriate $CC optimization flags])
++	AC_MSG_CHECKING([for (guessing) appropriate ${CC_VENDOR} optimization flags])
+ 
+ 	if test "$1" == "yes" ; then
+ 
+ 		dnl Set C compiler flags assuming we found...
+-		case $CC in
++		case ${CC_VENDOR} in
+ 			dnl GNU gcc.
+ 			gcc)
+ 				fla_c_opt_flags='-O3'
+@@ -44,7 +44,7 @@ AC_DEFUN([FLA_SET_C_OPT_FLAGS],
+ 	else
+ 		
+ 		dnl Set C compiler flags assuming we found...
+-		case $CC in
++		case ${CC_VENDOR} in
+ 			dnl GNU gcc.
+ 			gcc)
+ 				fla_c_opt_flags='-O0'
+diff --git a/build/ac-macros/fla_set_c_preproc_flags.m4 b/build/ac-macros/fla_set_c_preproc_flags.m4
+index 38ea03c6..20a70f90 100644
+--- a/build/ac-macros/fla_set_c_preproc_flags.m4
++++ b/build/ac-macros/fla_set_c_preproc_flags.m4
+@@ -3,7 +3,7 @@ AC_DEFUN([FLA_SET_C_PREPROC_FLAGS],
+ 	AC_REQUIRE([FLA_OBSERVE_HOST_CPU_TYPE])
+ 	
+ 	dnl Set C preprocessor flags assuming we found...
+-	case $CC in
++	case ${CC_VENDOR} in
+ 		dnl GNU gcc.
+ 		gcc)
+ 			dnl Define the _GNU_SOURCE macro.
+diff --git a/build/ac-macros/fla_set_c_prof_flags.m4 b/build/ac-macros/fla_set_c_prof_flags.m4
+index 9e8ec328..7b71123a 100644
+--- a/build/ac-macros/fla_set_c_prof_flags.m4
++++ b/build/ac-macros/fla_set_c_prof_flags.m4
+@@ -2,12 +2,12 @@ AC_DEFUN([FLA_SET_C_PROF_FLAGS],
+ [
+ 	AC_REQUIRE([FLA_OBSERVE_HOST_CPU_TYPE])
+ 	
+-	AC_MSG_CHECKING([for (guessing) appropriate $CC profiling flags])
++	AC_MSG_CHECKING([for (guessing) appropriate ${CC_VENDOR} profiling flags])
+ 
+ 	if test "$1" == "yes" ; then
+ 		
+ 		dnl Set C compiler flags assuming we found...
+-		case $CC in
++		case ${CC_VENDOR} in
+ 			dnl GNU gcc.
+ 			gcc)
+ 				fla_c_prof_flags='-pg'
+@@ -44,7 +44,7 @@ AC_DEFUN([FLA_SET_C_PROF_FLAGS],
+ 	else
+ 
+ 		dnl Set C compiler flags assuming we found...
+-		case $CC in
++		case ${CC_VENDOR} in
+ 			dnl GNU gcc.
+ 			gcc)
+ 				fla_c_prof_flags=''
+diff --git a/build/ac-macros/fla_set_c_sse_flags.m4 b/build/ac-macros/fla_set_c_sse_flags.m4
+index 33919a10..aed5e2dc 100644
+--- a/build/ac-macros/fla_set_c_sse_flags.m4
++++ b/build/ac-macros/fla_set_c_sse_flags.m4
+@@ -3,10 +3,10 @@ AC_DEFUN([FLA_SET_C_SSE_FLAGS],
+ 	AC_REQUIRE([FLA_OBSERVE_HOST_CPU_TYPE])
+ 		
+ 	dnl Echo C SSE flags to user.
+-	AC_MSG_CHECKING([for (guessing) SSE flags for $CC])
++	AC_MSG_CHECKING([for (guessing) SSE flags for ${CC_VENDOR}])
+ 		
+ 	dnl Set the SSE compiler flags based on which C compiler we're going to use.
+-	case $CC in
++	case ${CC_VENDOR} in
+ 		dnl Intel icc.
+ 		icc)
+ 			fla_c_sse_flags='-msse3'
+@@ -49,7 +49,7 @@ AC_DEFUN([FLA_SET_C_SSE_FLAGS],
+ 		
+ 		dnl Tell the user we can't continue because he asked for SSE flags
+ 		dnl for a compiler that (probably) does not support them.
+-		AC_MSG_ERROR([configure can't continue because the $CC compiler (probably) does not support SSE.])
++		AC_MSG_ERROR([configure can't continue because the ${CC_VENDOR} compiler (probably) does not support SSE.])
+ 	fi
+ 
+ 	dnl Check string in case C SSE flags are unknown.
+@@ -57,7 +57,7 @@ AC_DEFUN([FLA_SET_C_SSE_FLAGS],
+ 		
+ 		dnl Tell the user we can't continue unless we know what flags
+ 		dnl to pass to the C compiler to enable SSE support.
+-		AC_MSG_ERROR([configure doesn't know what flag to give $CC in order to enable SSE. Please submit a bug report to the FLAME developers.])
++		AC_MSG_ERROR([configure doesn't know what flag to give ${CC_VENDOR} in order to enable SSE. Please submit a bug report to the FLAME developers.])
+ 	fi
+ 
+ 	dnl Output the C SSE flags variable.
+diff --git a/build/ac-macros/fla_set_c_warning_flags.m4 b/build/ac-macros/fla_set_c_warning_flags.m4
+index 4708bdca..2c580354 100644
+--- a/build/ac-macros/fla_set_c_warning_flags.m4
++++ b/build/ac-macros/fla_set_c_warning_flags.m4
+@@ -2,12 +2,12 @@ AC_DEFUN([FLA_SET_C_WARNING_FLAGS],
+ [
+ 	AC_REQUIRE([FLA_OBSERVE_HOST_CPU_TYPE])
+ 	
+-	AC_MSG_CHECKING([for (guessing) appropriate $CC warning flags])
++	AC_MSG_CHECKING([for (guessing) appropriate ${CC_VENDOR} warning flags])
+ 
+ 	if test "$1" == "yes" ; then
+ 		
+ 		dnl Set C compiler flags assuming we found...
+-		case $CC in
++		case ${CC_VENDOR} in
+ 			dnl GNU gcc.
+ 			gcc)
+ 				fla_c_warning_flags='-Wall -Wno-comment'
+@@ -44,7 +44,7 @@ AC_DEFUN([FLA_SET_C_WARNING_FLAGS],
+ 	else
+ 
+ 		dnl Set C compiler flags assuming we found...
+-		case $CC in
++		case ${CC_VENDOR} in
+ 			dnl GNU gcc.
+ 			gcc)
+ 				fla_c_warning_flags='-w'
+diff --git a/build/config.mk.in b/build/config.mk.in
+index fee2c9dc..fddab1dc 100644
+--- a/build/config.mk.in
++++ b/build/config.mk.in
+@@ -28,6 +28,10 @@ SO_MMB    := $(SO_MAJOR).$(SO_MINORB)
+ # library name.
+ ARCH                           := @fla_host_cpu@
+ 
++# This variable identifies the operating system / kernel. It is the result of
++# 'uname -s'.
++OS_NAME                        := @os_name@
++
+ # We have to set these particular variables because some of the @anchors@
+ # that are substituted in via configure may be defined *in terms of* these
+ # variables. For example, @libdir@ may be replaced with '${exec_prefix}/lib',
+@@ -101,6 +105,7 @@ EMPTY_FILE := /dev/null
+ 
+ # --- Determine the C compiler and related flags ---
+ CC           := @CC@
++CC_VENDOR    := @CC_VENDOR@
+ CPPROCFLAGS  := -D_POSIX_C_SOURCE=200809L @DEFS@ @fla_blis_flags@
+ CMISCFLAGS   := @fla_c_lang_flags@ @fla_c_openmp_flags@ @fla_c_prof_flags@
+ CXXMISCFLAGS := -Wall -Wno-unused-function -Wno-parentheses -Wfatal-errors
+diff --git a/build/post-configure.sh.in b/build/post-configure.sh.in
+index 26f9110d..61d59bca 100755
+--- a/build/post-configure.sh.in
++++ b/build/post-configure.sh.in
+@@ -17,6 +17,10 @@ echo ""
+ echo "build system type............................... : @build@"
+ echo "host system type................................ : @host@"
+ 
++echo ""
++echo "OS name......................................... : @os_name@"
++echo "OS version...................................... : @os_vers@"
++
+ echo ""
+ echo "Enable verbose make output...................... : @fla_enable_verbose_make_output@"
+ 
+@@ -25,6 +29,7 @@ echo "Enable maximum argument list hack............... : @fla_enable_max_arg_lis
+ 
+ echo ""
+ echo "C compiler...................................... : @CC@"
++echo "C compiler vendor............................... : @CC_VENDOR@"
+ echo "Library archiver................................ : @AR@"
+ echo "Library archive indexer......................... : @RANLIB@"
+ 
+diff --git a/configure.ac b/configure.ac
+index 790ac90e..c81c22d3 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -227,6 +227,9 @@ dnl AC_PROG_CC and AC_PROG_F77 marcos in the variables fla_c_compiler_list and
+ dnl fla_f77_compiler_list, respectively.
+ FLA_OBSERVE_HOST_CPU_TYPE
+ 
++dnl Set the @os_name@ output variable to the output of 'uname -s'.
++FLA_OBSERVE_OS_NAME
++
+ dnl Set the default value of the $prefix value, normally set by the --prefix
+ dnl option to configure.
+ dnl AC_PREFIX_DEFAULT([$HOME/flame])
+@@ -255,6 +258,9 @@ FLA_CHECK_WITH_CC
+ dnl Determine the C compiler.
+ FLA_REQUIRE_CC
+ 
++dnl Determine the C compiler vendor (CC_VENDOR).
++FLA_REQUIRE_CC_VENDOR
++
+ dnl Check whether the user requested a specific library archiver. If so, assign
+ dnl it to the requested archiver variable. Otherwise do nothing.
+ FLA_CHECK_WITH_AR
