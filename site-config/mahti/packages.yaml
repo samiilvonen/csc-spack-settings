@@ -2,79 +2,61 @@ packages:
   all:
     permissions:
       write: group
-      group: p_installation_spack
+      group: m_installation_spack
     compiler: [gcc, intel]
     providers:
-      mpi: [hpcx-mpi, mpich, intel-mpi]
-      blas: [mkl]
-      lapack: [mkl]
-      scalapack:: [netlib-scalapack, intel-parallel-studio]
+      mpi: [csc.openmpi, csc.mpich]
+      blas: [csc.openblas, amdblis]
+      lapack: [csc.openblas, amdlibflame]
+      scalapack:: [amdscalapack, netlib-scalapack]
+  amdblis:
+    variants: threads=openmp cpuarch=zen2
+  amdlibflame:
+    variants: threads=openmp
+  libtool:
+    version: [2.4.2, 2.4.6]
+  openmpi:
+    variants: +sys_libevent
+  openblas:
+    variants: +consistent_fpcsr threads=openmp
   openssl:
     buildable: false
     paths:
       openssl@1.0.2k: /usr
+  openmpi:
+    variants: fabrics=ucx schedulers=slurm +thread_multiple +hcoll +mlnx_platform +syslibevent
+    version: [4.1.0]
   slurm:
     buildable: false
     paths:
-      slurm@19.05.0 %gcc@4.8.5: /usr
+      slurm@20.02.6 %gcc@4.8.5: /usr
   pkg-config:
     buildable: true
     paths:
-      pkg-config@0.27.1 %gcc@4.8.5: /usr
+      pkg-config@0.27.1: /usr
   gnutls:
     buildable: false
     paths:
-      gnutls@3.3.29 %gcc@4.8.5: /usr
-      gnutls@3.3.29 %gcc@7.4.0: /usr
-      gnutls@3.3.29 %gcc@8.3.0: /usr
-      gnutls@3.3.29 %gcc@9.1.0: /usr
+      gnutls@3.3.29: /usr
   fftw:
-    variants: +fma simd=avx512
-  eccodes:
-    variants: +fortran +netcdf jp2k=openjpeg +png +openmp
-  intel:
-    buildable: false
-    paths:
-      intel@19.0.4 %gcc@4.8.5: /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/bin
-      intel@18.0.5 %gcc@4.8.5: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/bin
-  intel-mkl:
-    buildable: false
-    paths:
-      intel-mkl@2019.0.4 %gcc@9.1.0 ~ilp64 +shared threads=openmp arch=linux-rhel7-x86_64: /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/mkl
-      intel-mkl@2019.0.4 %gcc@8.3.0 ~ilp64 +shared threads=openmp arch=linux-rhel7-x86_64: /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/mkl
-      intel-mkl@2019.0.4 %intel@19.0.4 ~ilp64 +shared threads=openmp arch=linux-rhel7-x86_64: /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/mkl
-      intel-mkl@2018.0.5 %intel@18.0.5 ~ilp64 +shared threads=openmp arch=linux-rhel7-x86_64: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/mkl
-#      intel-mkl@2019.0.4 %gcc@9.1.0 ~ilp64 +shared threads=none arch=linux-rhel7-x86_64:    /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/mkl
-#      intel-mkl@2019.0.4 %gcc@8.3.0 ~ilp64 +shared threads=none arch=linux-rhel7-x86_64:    /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/mkl
-#      intel-mkl@2019.0.4 %intel@19.0.4 ~ilp64 +shared threads=none arch=linux-rhel7-x86_64: /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/mkl
-#      intel-mkl@2018.0.5 %intel@18.0.5 ~ilp64 +shared threads=none arch=linux-rhel7-x86_64: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/mkl
-  intel-mpi:
-    buildable: false
-    paths:
-      intel-mpi@18.0.5 %intel@18.0.5: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/mpi
-      intel-mpi@18.0.5 %intel@19.0.4: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/mpi
-      intel-mpi@18.0.5 %gcc@9.1.0: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/mpi
-      intel-mpi@18.0.5 %gcc@8.3.0: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/mpi
-  pgi:
-    buildable: false
-    paths:
-      pgi@19.7 %gcc@4.8.5: /appl/opt/pgi/19.7
-#  cuda:
-#    buildable: true
-#    paths:
-#      cuda@10.1 %pgi@19.7: /appl/opt/pgi/19.7/linux86-64/2019/cuda/10.1
+    variants: +fma simd=avx2
+  gromacs:
+    variants: ~hwloc simd=AVX2_256
   sharp:
     buildable: false
     paths:
-      sharp@2.0: /appl/opt/sharp/2.0
+      sharp@2.1: /appl/opt/sharp/2.1
+      sharp@2.2: /appl/opt/sharp/2.2
   hcoll:
     buildable: false
     paths:
-      hcoll@4.3.2708: /opt/mellanox/hcoll
-      hcoll@4.4.2938: /appl/opt/hcoll/4.4.2938
+      hcoll@4.5.3045: /appl/opt/hcoll/4.5.3045
+      hcoll@4.6.3125: /appl/opt/hcoll/4.6.3125      
   ucx:
+    variants: +thread_multiple
     buildable: false
     paths:
       ucx@1.6.0: /usr
-      ucx@1.7.0+cuda: /appl/opt/ucx/1.7.0-mlnx
-      ucx@1.7.0~cuda: /appl/opt/ucx/1.7.0-mlnx
+      ucx@1.8.0~cuda+thread_multiple: /appl/opt/ucx/1.8.0-mlnx/mt
+      ucx@1.9.0~cuda+thread_multiple: /appl/opt/ucx/1.9.0-mlnx/mt
+      

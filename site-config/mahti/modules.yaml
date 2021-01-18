@@ -8,73 +8,8 @@ modules:
     hierarchy:
       - mpi
     whitelist:
-      - 'bzip2%gcc@6.0.0:'
-      - 'bzip2%intel'
       - gcc
-      - gdal
-      - 'cuda%gcc@6.0.0:'
-      - 'cuda%intel'
-      - 'cuda%pgi'
-      - cudnn
-      - cdo
-      - cp2k
-      - emacs
-      - 'fftw%gcc@6.0.0:'
-      - 'fftw%intel'
-      - git
-      - git-lfs
-      - 'gnuplot+X'
-      - go
-      - 'grads%gcc@4.8.5'
-      - grass
-      - grib-api
-      - gromacs
-      - 'hdf5%gcc@6.0.0:'
-      - 'hdf5%intel'
       - openmpi
-      - hpcx-mpi
-      - mariadb
-      - 'mc%gcc@4.8.5'
-      - nco
-      - mpich
-      - intel
-      - intel-mkl
-      - intel-mpi
-      - petsc
-      - pgi
-      - 'p7zip%gcc@4.8.5'
-      - netlib-scalapack
-      - vim
-      - relion
-      - 'gsl%gcc@6.0.0:'
-      - 'gsl%intel'
-      - 'netcdf%gcc@6.0.0:'
-      - 'netcdf%intel'
-      - netcdf-fortran
-      - 'metis~int64'
-      - perl
-      - 'boost%gcc@6.0.0:'
-      - 'boost%intel'
-      - 'boost%pgi'
-      - 'eccodes+fortran'
-      - parallel-netcdf
-      - 'udunits2%gcc@6.0.0:'
-      - 'udunits2%intel'
-      - 'hdf%gcc@6.0.0:'
-      - 'hdf%intel'
-      - libemos
-      - hpl
-      - openjdk
-      - 'openmpi%pgi'
-      - namd
-      - 'cmake%gcc@4.8.5'
-      - 'llvm%gcc@4.8.5'
-      - 'intel%gcc@4.8.5'
-      - 'valgrind%gcc@4.8.5'
-      - scalasca
-      - scorep
-      - zstd
-      - nccl
     blacklist:
       - 'hpcx-mpi ^cuda'
       - '%gcc@4.8.5'
@@ -119,30 +54,6 @@ modules:
           I_MPI_FC: ifort
           I_MPI_F90: ifort
           I_MPI_F77: ifort
-    mpich:
-      environment:
-        set:
-          SLURM_MPI_TYPE: pmi2
-    hpcx-mpi:
-      suffixes:
-        "+cuda": cuda
-      environment:
-        set:
-          SLURM_MPI_TYPE: pmix_v2
-    openmpi:
-      environment:
-        set:
-          SLURM_MPI_TYPE: pmix_v2
-    intel-mpi:
-      environment:
-        set:
-          SLURM_MPI_TYPE: pmi2
-    relion:
-      suffixes:
-        "+cuda": cuda
-    eccodes:
-      suffixes:
-        "+openmp": omp
     fftw:
       suffixes:
         "+mpi": mpi
