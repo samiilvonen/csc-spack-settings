@@ -28,6 +28,7 @@ modules:
       - 'ffmpeg%gcc@4.8.5'
       - 'git@2.21.3'
       - 'git@2.25.4'
+      - flux-core
       - git-lfs
       - 'gnuplot+X'
       - go
@@ -162,6 +163,10 @@ modules:
       environment:
         set:
           SLURM_MPI_TYPE: pmi2
+    cuda:
+      environment:
+        append_path:
+          LIBRARY_PATH:  ${PREFIX}/lib64/stubs/
     relion:
       suffixes:
         "+cuda": cuda
