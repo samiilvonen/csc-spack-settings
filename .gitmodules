@@ -1,6 +1,4 @@
 [submodule "spack"]
 	path = spack
 	url = https://github.com/CSCfi/spack.git
-	branch = csc
-[submodule "DbConnector"]
-	branch = csc/puhti
+	branch = csc/v0.12
