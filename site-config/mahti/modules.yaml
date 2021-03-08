@@ -8,8 +8,12 @@ modules:
     hierarchy:
       - mpi
     whitelist:
+      - aocc
       - gcc
+      - gromacs
       - openmpi
+      - openblas
+      - amdblis
     blacklist:
       - 'hpcx-mpi ^cuda'
       - '%gcc@4.8.5'
@@ -18,6 +22,8 @@ modules:
       - '%gcc@9.1.0'
       - '%intel@19.0.4'
       - '%intel@18.0.5'
+      - '%gcc@10.2.0'
+      - '%aocc@2.3.0'
       - '%pgi'
     all:
       conflict:
@@ -54,6 +60,9 @@ modules:
           I_MPI_FC: ifort
           I_MPI_F90: ifort
           I_MPI_F77: ifort
+    amdblis:
+      suffixes:
+        "threads=openmp": omp
     fftw:
       suffixes:
         "+mpi": mpi
@@ -68,6 +77,9 @@ modules:
     hdf5:
       suffixes:
         "+mpi": mpi
+    openblas:
+      suffixes:
+        "threads=openmp": omp
     petsc:
       suffixes:
         "+complex+double": cmplx

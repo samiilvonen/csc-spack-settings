@@ -1,9 +1,11 @@
 config:
-  build_jobs:: 20
-  install_tree: /appl/spack/v016/install-tree
-  install_path_scheme: ${COMPILERNAME}-${COMPILERVER}/${PACKAGE}-${VERSION}-${HASH:6}
-  build_stage::
-    - /local_scratch/build/spack-stage
+  'build_jobs:': 20
+  install_tree:
+    projections:
+      all: ${COMPILERNAME}-${COMPILERVER}/${PACKAGE}-${VERSION}-${HASH:6}
+    root: /appl/spack/v016/install-tree
+  'build_stage:':
+  - /local_scratch/build/spack-stage
   module_roots:
     lmod: /appl/spack/v016/modulefiles
   source_cache: /appl/spack/v016/sources

@@ -13,50 +13,60 @@ packages:
     variants: threads=openmp cpuarch=zen2
   amdlibflame:
     variants: threads=openmp
+  gcc:
+    variants: +binutils
+  gromacs:
+    variants: +shared build_type=Release ~hwloc simd=AVX2_256
   libtool:
     version: [2.4.2, 2.4.6]
   openmpi:
-    variants: +sys_libevent
+    variants: fabrics=ucx,hcoll schedulers=slurm ~static +pmix +lustre +thread_multiple +mlnx_platform +sys_libevent ~gpfs
   openblas:
     variants: +consistent_fpcsr threads=openmp
   openssl:
     buildable: false
-    paths:
-      openssl@1.0.2k: /usr
-  openmpi:
-    variants: fabrics=ucx schedulers=slurm +thread_multiple +hcoll +mlnx_platform +syslibevent
-    version: [4.1.0]
+    externals:
+    - spec: openssl@1.0.2k
+      prefix: /appl/spack/syslibs
   slurm:
     buildable: false
-    paths:
-      slurm@20.02.6 %gcc@4.8.5: /usr
-  pkg-config:
-    buildable: true
-    paths:
-      pkg-config@0.27.1: /usr
+    externals:
+    - spec: slurm@20.02.6
+      prefix: /appl/spack/syslibs
   gnutls:
     buildable: false
-    paths:
-      gnutls@3.3.29: /usr
-  fftw:
-    variants: +fma simd=avx2
-  gromacs:
-    variants: ~hwloc simd=AVX2_256
+    externals:
+    - spec: gnutls@3.3.29
+      prefix: /appl/spack/syslibs
   sharp:
     buildable: false
-    paths:
-      sharp@2.1: /appl/opt/sharp/2.1
-      sharp@2.2: /appl/opt/sharp/2.2
+    externals:
+    - spec: sharp@2.1
+      prefix: /appl/opt/sharp/2.1
+    - spec: sharp@2.2
+      prefix: /appl/opt/sharp/2.2
   hcoll:
     buildable: false
-    paths:
-      hcoll@4.5.3045: /appl/opt/hcoll/4.5.3045
-      hcoll@4.6.3125: /appl/opt/hcoll/4.6.3125      
+    externals:
+    - spec: hcoll@4.5.3045
+      prefix: /appl/opt/hcoll/4.5.3045
+    - spec: hcoll@4.6.3125
+      prefix: /appl/opt/hcoll/4.6.3125
+  hwloc:
+    buildable: true
+    externals:
+    - spec: hwloc@1.11.8
+      prefix: /appl/spack/syslibs
+  lustre:
+    buildable: false
+    externals:
+    - spec: lustre@2.12.3
+      prefix: /appl/spack/syslibs
   ucx:
     variants: +thread_multiple
     buildable: false
-    paths:
-      ucx@1.6.0: /usr
-      ucx@1.8.0~cuda+thread_multiple: /appl/opt/ucx/1.8.0-mlnx/mt
-      ucx@1.9.0~cuda+thread_multiple: /appl/opt/ucx/1.9.0-mlnx/mt
-      
+    externals:
+    - spec: ucx@1.8.0~cuda+thread_multiple
+      prefix: /appl/opt/ucx/1.8.0-mlnx/mt
+    - spec: ucx@1.9.0~cuda+thread_multiple
+      prefix: /appl/opt/ucx/1.9.0-mlnx/mt
