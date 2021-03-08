@@ -81,7 +81,12 @@ modules:
       - 'hdf5@1.10.4~cxx~debug+fortran+hl+mpi+pic+shared+szip+threadsafe'
       - libemos
       - hpl
-      - openjdk
+      - 'openjdk%gcc@4.8.5'
+      - blitz
+      - jasper
+      - slepc
+      - 'pigz%gcc@4.8.5'
+      - 'rsync%gcc@4.8.5'
       - namd
       - 'cmake%gcc@4.8.5'
       - 'llvm%gcc@4.8.5'
@@ -93,6 +98,7 @@ modules:
       - scorep
       - 'splits%gcc@9.1.0+gui'
       - 'subversion%gcc@4.8.5+perl'
+      - 'tar%gcc@4.8.5'
       - zstd
       - nccl
     blacklist:
