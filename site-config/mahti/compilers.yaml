@@ -12,3 +12,29 @@ compilers:
       fc: /usr/bin/gfortran
     spec: gcc@4.8.5
     target: x86_64
+- compiler:
+    spec: gcc@10.2.0
+    paths:
+      cc: /appl/spack/v016/install-tree/gcc-4.8.5/gcc-10.2.0-xx7qqx/bin/gcc
+      cxx: /appl/spack/v016/install-tree/gcc-4.8.5/gcc-10.2.0-xx7qqx/bin/g++
+      f77: /appl/spack/v016/install-tree/gcc-4.8.5/gcc-10.2.0-xx7qqx/bin/gfortran
+      fc: /appl/spack/v016/install-tree/gcc-4.8.5/gcc-10.2.0-xx7qqx/bin/gfortran
+    flags: {}
+    operating_system: rhel7
+    target: x86_64
+    modules: []
+    environment: {}
+    extra_rpaths: []
+- compiler:
+    spec: aocc@3.0.0
+    paths:
+      cc: /appl/spack/v016/install-tree/gcc-4.8.5/aocc-3.0.0-ogrsnr/bin/clang
+      cxx: /appl/spack/v016/install-tree/gcc-4.8.5/aocc-3.0.0-ogrsnr/bin/clang++
+      f77: /appl/spack/v016/install-tree/gcc-4.8.5/aocc-3.0.0-ogrsnr/bin/flang
+      fc: /appl/spack/v016/install-tree/gcc-4.8.5/aocc-3.0.0-ogrsnr/bin/flang
+    flags: {}
+    operating_system: rhel7
+    target: x86_64
+    modules: []
+    environment: {}
+    extra_rpaths: []

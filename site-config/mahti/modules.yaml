@@ -8,22 +8,16 @@ modules:
     hierarchy:
       - mpi
     whitelist:
-      - aocc
-      - gcc
-      - gromacs
-      - openmpi
-      - openblas
       - amdblis
+      - aocc
+      - 'gcc@8.0.0:'
+      - gromacs
+      - openblas
+      - openmpi
     blacklist:
-      - 'hpcx-mpi ^cuda'
-      - '%gcc@4.8.5'
-      - '%gcc@7.4.0'
-      - '%gcc@8.3.0'
-      - '%gcc@9.1.0'
-      - '%intel@19.0.4'
-      - '%intel@18.0.5'
-      - '%gcc@10.2.0'
       - '%aocc@2.3.0'
+      - '%gcc@10.2.0'
+      - '%gcc@4.8.5'
       - '%pgi'
     all:
       conflict:
@@ -31,6 +25,16 @@ modules:
       environment:
         set:
           ${PACKAGE}_INSTALL_ROOT: ${PREFIX}
+    amdblis:
+      suffixes:
+        "threads=openmp": omp
+    boost:
+      suffixes:
+        "+mpi": mpi
+    fftw:
+      suffixes:
+        "+mpi": mpi
+        "+openmp": oml
     gcc:
       environment:
         set:
@@ -44,6 +48,13 @@ modules:
           I_MPI_FC: gfortran
           I_MPI_F90: gfortran
           I_MPI_F77: gfortran
+    gromacs:
+      suffixes:
+        "+cuda": cuda
+        "+plumed": plumed
+    hdf5:
+      suffixes:
+        "+mpi": mpi
     intel:
       environment:
         set:
@@ -60,23 +71,9 @@ modules:
           I_MPI_FC: ifort
           I_MPI_F90: ifort
           I_MPI_F77: ifort
-    amdblis:
+    intel-mkl:
       suffixes:
-        "threads=openmp": omp
-    fftw:
-      suffixes:
-        "+mpi": mpi
-        "+openmp": oml
-    boost:
-      suffixes:
-        "+mpi": mpi
-    gromacs:
-      suffixes:
-        "+cuda": cuda
-        "+plumed": plumed
-    hdf5:
-      suffixes:
-        "+mpi": mpi
+        "intel-mkl threads=openmp": omp
     openblas:
       suffixes:
         "threads=openmp": omp
@@ -84,6 +81,3 @@ modules:
       suffixes:
         "+complex+double": cmplx
         "+int64": int64
-    intel-mkl:
-      suffixes:
-        "intel-mkl threads=openmp": omp
