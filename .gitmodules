@@ -1,4 +1,4 @@
 [submodule "spack"]
 	path = spack
 	url = https://github.com/CSCfi/spack.git
-	branch = csc/v0.16
+	branch = csc/v0.17
