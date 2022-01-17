@@ -1,40 +1,40 @@
 modules:
-  enable::
-    - lmod
+  'enable:':
+  - lmod
   lmod:
     hash_length: 0
     core_compilers:
-      - gcc@4.8.5
+    - gcc@4.8.5
     hierarchy:
-      - mpi
+    - mpi
     whitelist:
-      - amdblis
-      - aocc
-      - 'gcc@8.0.0:'
-      - gromacs
-      - openblas
-      - openmpi
+    - amdblis
+    - aocc
+    - 'gcc@8.0.0:'
+    - gromacs
+    - openblas
+    - openmpi
     blacklist:
-      - '%aocc@2.3.0'
-      - '%gcc@10.2.0'
-      - '%gcc@4.8.5'
-      - '%pgi'
+    - '%aocc@2.3.0'
+    - '%gcc@10.2.0'
+    - '%gcc@4.8.5'
+    - '%pgi'
     all:
       conflict:
-        - '${PACKAGE}'
+      - ${PACKAGE}
       environment:
         set:
           ${PACKAGE}_INSTALL_ROOT: ${PREFIX}
     amdblis:
       suffixes:
-        "threads=openmp": omp
+        threads=openmp: omp
     boost:
       suffixes:
-        "+mpi": mpi
+        +mpi: mpi
     fftw:
       suffixes:
-        "+mpi": mpi
-        "+openmp": oml
+        +mpi: mpi
+        +openmp: oml
     gcc:
       environment:
         set:
@@ -50,11 +50,11 @@ modules:
           I_MPI_F77: gfortran
     gromacs:
       suffixes:
-        "+cuda": cuda
-        "+plumed": plumed
+        +cuda: cuda
+        +plumed: plumed
     hdf5:
       suffixes:
-        "+mpi": mpi
+        +mpi: mpi
     intel:
       environment:
         set:
@@ -64,8 +64,8 @@ modules:
           F90: ifort
           F77: ifort
           ICCCFG: /appl/opt/intel_configs/icc_gcc83_csc.cfg
-          ICPCCFG : /appl/opt/intel_configs/icpc_gcc83_csc.cfg
-          IFORTCFG : /appl/opt/intel_configs/ifort_gcc83_csc.cfg
+          ICPCCFG: /appl/opt/intel_configs/icpc_gcc83_csc.cfg
+          IFORTCFG: /appl/opt/intel_configs/ifort_gcc83_csc.cfg
           I_MPI_CC: icc
           I_MPI_CXX: icpc
           I_MPI_FC: ifort
@@ -73,11 +73,15 @@ modules:
           I_MPI_F77: ifort
     intel-mkl:
       suffixes:
-        "intel-mkl threads=openmp": omp
+        intel-mkl threads=openmp: omp
     openblas:
       suffixes:
-        "threads=openmp": omp
+        threads=openmp: omp
     petsc:
       suffixes:
-        "+complex+double": cmplx
-        "+int64": int64
+        +complex+double: cmplx
+        +int64: int64
+  default:
+    lmod:
+      core_compilers:
+      - gcc@8.5.0

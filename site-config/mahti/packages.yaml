@@ -26,7 +26,7 @@ packages:
   openssl:
     buildable: false
     externals:
-    - spec: openssl@1.0.2k
+    - spec: openssl@1.1.1k
       prefix: /appl/spack/syslibs
   slurm:
     buildable: false

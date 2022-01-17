@@ -15,7 +15,8 @@ alternatives --altdir ${altdir} --admindir alternatives \
              --slave   ${altdir}/modules.yaml modules.yaml ${siteconf}/mahti/modules.yaml \
              --slave   ${altdir}/packages.yaml packages.yaml ${siteconf}/mahti/packages.yaml \
              --slave   ${altdir}/compilers.yaml compilers.yaml ${siteconf}/mahti/compilers.yaml \
-             --slave   ${altdir}/repos.yaml repos.yaml ${siteconf}/mahti/repos.yaml
+             --slave   ${altdir}/repos.yaml repos.yaml ${siteconf}/mahti/repos.yaml \
+             --slave   ${altdir}/bootstrap.yaml bootstrap.yaml ${siteconf}/mahti/bootstrap.yaml
 
 alternatives --altdir ${altdir} --admindir alternatives \
              --install ${altdir}/config.yaml config.yaml ${siteconf}/laptop/config.yaml 20 \
