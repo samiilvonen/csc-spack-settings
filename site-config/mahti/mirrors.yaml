@@ -1,0 +1,2 @@
+mirrors:
+  allas-bcache: s3://spack-cache-rhel8-017
