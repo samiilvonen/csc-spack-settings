@@ -3,7 +3,7 @@ packages:
     permissions:
       write: group
       group: m_installation_spack
-    compiler: [gcc, intel]
+    compiler: [gcc, aocc]
     providers:
       mpi: [csc.openmpi, csc.mpich]
       blas: [csc.openblas, amdblis]
@@ -28,15 +28,35 @@ packages:
     externals:
     - spec: openssl@1.1.1k
       prefix: /appl/spack/syslibs
+  gnutls:
+    buildable: false
+    externals:
+    - spec: gnutls@3.6.16
+      prefix: /appl/spack/syslibs
+  nettle:
+    buildable: false
+    externals:
+    - spec: nettle@3.4.1
+      prefix: /appl/spack/syslibs
+  libidn2:
+    buildable: false
+    externals:
+    - spec: libidn2@2.2.0
+      prefix: /appl/spack/syslibs
+  libtasn1:
+    buildable: false
+    externals:
+    - spec: libtasn1@4.13
+      prefix: /appl/spack/syslibs
+  p11-kit:
+    buildable: false
+    externals:
+    - spec: p11-kit@0.23.22
+      prefix: /appl/spack/syslibs
   slurm:
     buildable: false
     externals:
     - spec: slurm@20.02.6
-      prefix: /appl/spack/syslibs
-  gnutls:
-    buildable: false
-    externals:
-    - spec: gnutls@3.3.29
       prefix: /appl/spack/syslibs
   sharp:
     buildable: false
@@ -66,7 +86,5 @@ packages:
     variants: +thread_multiple
     buildable: false
     externals:
-    - spec: ucx@1.8.0~cuda+thread_multiple
-      prefix: /appl/opt/ucx/1.8.0-mlnx/mt
-    - spec: ucx@1.9.0~cuda+thread_multiple
-      prefix: /appl/opt/ucx/1.9.0-mlnx/mt
+    - spec: ucx@1.11.2~cuda+thread_multiple
+      prefix: /appl/opt/ucx/1.11.2
