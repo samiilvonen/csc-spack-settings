@@ -36,7 +36,9 @@ class Openmpi(AutotoolsPackage):
     version('master', branch='master')
 
     # Current
-    version('4.1.0', preferred=True, sha256='73866fb77090819b6a8c85cb8539638d37d6877455825b74e289d647a39fd5b5')
+    version('4.1.2', preferred=True, sha256='9b78c7cf7fc32131c5cf43dd2ab9740149d9d87cadb2e2189f02685749a6b527')
+    version('4.1.1', sha256='e24f7a778bd11a71ad0c14587a7f5b00e68a71aa5623e2157bafee3d44c07cda')
+    version('4.1.0', sha256='73866fb77090819b6a8c85cb8539638d37d6877455825b74e289d647a39fd5b5')
     version('4.0.5', sha256='c58f3863b61d944231077f344fe6b4b8fbb83f3d1bc93ab74640bf3e5acac009')  # libmpi.so.40.20.5
     version('4.0.4', sha256='47e24eb2223fe5d24438658958a313b6b7a55bb281563542e1afc9dec4a31ac4')  # libmpi.so.40.20.4
     version('4.0.3', sha256='1402feced8c3847b3ab8252165b90f7d1fa28c23b6b2ca4632b6e4971267fd03')  # libmpi.so.40.20.3
@@ -166,6 +168,9 @@ class Openmpi(AutotoolsPackage):
     depends_on('lsf', when='schedulers=lsf')
     depends_on('openpbs', when='schedulers=tm')
     depends_on('slurm', when='schedulers=slurm')
+
+    depends_on('pmix', when='+pmix')
+    depends_on('libevent', when='+pmix')
 
     # CUDA support was added in 1.7
     conflicts('+cuda', when='@:1.6')
@@ -482,7 +487,7 @@ class Openmpi(AutotoolsPackage):
         # for versions older than 3.0.3,3.1.3,4.0.0
         # Presumably future versions after 11/2018 should support slurm+static
         if spec.satisfies('schedulers=slurm'):
-            config_args.append('--with-pmix={0}'.format(spec['slurm'].prefix))
+            config_args.append('--with-pmix={0}'.format(spec['pmix'].prefix))
             if spec.satisfies('@3.1.3:') or spec.satisfies('@3.0.3'):
                 if '+static' in spec:
                     config_args.append('--enable-static')
