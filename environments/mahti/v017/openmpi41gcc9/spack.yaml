@@ -1,0 +1,69 @@
+# This is a Spack Environment file.
+#
+# It describes a set of packages to be installed, along with
+# configuration settings.
+spack:
+  # add package specs to the `specs` list
+  specs:
+  - boost
+  - cdo
+  - openmpi
+  - openblas
+  - eccodes
+  - fftw
+  - hdf5
+  - parallel-netcdf
+  - netcdf-c
+  - netcdf-fortran
+  - netlib-scalapack
+  - scalasca
+  - mumps
+  view: false
+  config:
+    install_tree:
+      padded_length: 64
+  packages:
+    all:
+      compiler: [gcc@9.4.0]
+      target: [zen2]
+      providers:
+        blas: [openblas]
+        lapack: [openblas]
+        scalapack: [netlib-scalapack]
+    boost:
+      variants: +context+container+coroutine+fibber+icu+mpi cxxstd=17
+    cdo:
+      variants: +curl
+    eccodes:
+      variants: +aec+fortran+memfs+netcdf+openmp+png~pthreads~python jp2k=jasper build_type=Release
+    fftw:
+      variants: +mpi
+    hdf:
+      variants: ~external-xdr+shared+szip
+    hdf5:
+      variants: +threadsafe+szip+fortran+cxx+hl+mpi+tools
+    mumps:
+      variants: +ptscotch
+    netcdf-c:
+      variants: +dap~fsync+hdf4~jna+mpi+parallel-netcdf+pic+shared
+    netlib-scalapack:
+      variants: +pic
+    openmpi:
+      variants: fabrics=ucx schedulers=slurm +sys_libevent+lustre+pmix~gpfs~static+thread_multiple
+    python:
+      variants: +tls
+  concretization: together
+  compilers:
+  - compiler:
+      spec: gcc@9.4.0
+      paths:
+        cc: /appl/spack/v017/install-tree/gcc-8.5.0/gcc-9.4.0-nfm4wc/bin/gcc
+        cxx: /appl/spack/v017/install-tree/gcc-8.5.0/gcc-9.4.0-nfm4wc/bin/g++
+        f77: /appl/spack/v017/install-tree/gcc-8.5.0/gcc-9.4.0-nfm4wc/bin/gfortran
+        fc: /appl/spack/v017/install-tree/gcc-8.5.0/gcc-9.4.0-nfm4wc/bin/gfortran
+      flags: {}
+      operating_system: rhel8
+      target: x86_64
+      modules: []
+      environment: {}
+      extra_rpaths: []

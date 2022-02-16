@@ -1,0 +1,16 @@
+# This is a Spack Environment file.
+#
+# It describes a set of packages to be installed, along with
+# configuration settings.
+spack:
+  # add package specs to the `specs` list
+  specs: [lmod-csc ^git+svn]
+  packages:
+    all:
+      target: [x86_64_v3]
+    lua:
+      version: [5.3.4]
+  view: false
+  config:
+    install_tree:
+      padded_length: 64

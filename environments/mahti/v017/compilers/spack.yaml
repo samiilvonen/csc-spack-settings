@@ -1,0 +1,21 @@
+# This is a Spack Environment file.
+#
+# It describes a set of packages to be installed, along with
+# configuration settings.
+spack:
+  # add package specs to the `specs` list
+  specs:
+  - gcc@9.4.0+binutils~bootstrap+graphite+strip languages=c,c++,fortran,jit
+  - gcc@10.3.0+binutils~bootstrap+graphite+strip languages=c,c++,fortran,jit
+  - gcc@11.2.0+binutils~bootstrap+graphite+strip languages=c,c++,fortran,jit
+  - aocc@3.2.0+license-agreed
+  - aocc@3.1.0+license-agreed
+  - environment-modules
+  view: false
+  config:
+    install_tree:
+      padded_length: 64
+  packages:
+    all:
+      compiler: [gcc@8.5.0]
+      target: [x86_64_v3]

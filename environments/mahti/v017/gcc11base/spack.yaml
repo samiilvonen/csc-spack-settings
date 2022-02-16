@@ -1,0 +1,46 @@
+# This is a Spack Environment file.
+#
+# It describes a set of packages to be installed, along with
+# configuration settings.
+spack:
+  # add package specs to the `specs` list
+  specs:
+  - cgal
+  - curl
+  - gsl
+  - jasper
+  - jemalloc
+  - openblas
+  view: false
+  config:
+    install_tree:
+      padded_length: 64
+  concretization: together
+  packages:
+    all:
+      compiler: [gcc@11.2.0]
+      target: [zen2]
+    boost:
+      variants: +context+container+coroutine+fibber+icu~mpi cxxstd=17
+    cgal:
+      variants: +core
+    gsl:
+      variants: +external-cblas
+    jasper:
+      variants: +jpeg~opengl+shared build_type=Release
+    openblas:
+      variants: +consistent_fpcsr threads=openmp
+  compilers:
+  - compiler:
+      spec: gcc@11.2.0
+      paths:
+        cc: /appl/spack/v017/install-tree/gcc-8.5.0/gcc-11.2.0-zshp2k/bin/gcc
+        cxx: /appl/spack/v017/install-tree/gcc-8.5.0/gcc-11.2.0-zshp2k/bin/g++
+        f77: /appl/spack/v017/install-tree/gcc-8.5.0/gcc-11.2.0-zshp2k/bin/gfortran
+        fc: /appl/spack/v017/install-tree/gcc-8.5.0/gcc-11.2.0-zshp2k/bin/gfortran
+      flags: {}
+      operating_system: rhel8
+      target: x86_64
+      modules: []
+      environment: {}
+      extra_rpaths: []

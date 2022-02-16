@@ -1,0 +1,39 @@
+# This is a Spack Environment file.
+#
+# It describes a set of packages to be installed, along with
+# configuration settings.
+spack:
+  # add package specs to the `specs` list
+  specs: [aocc@3.1.0+license-agreed]
+  view: false
+  concretization: together
+  config:
+    install_tree:
+      padded_length: 64
+  packages:
+    all:
+      target: [x86_64_v3]
+    emacs:
+      variants: +tls
+    git:
+      variants: +svn
+    gnuplot:
+      variants: +X
+    libevent:
+      buildable: false
+      externals:
+      - spec: libevent@2.1.8
+        prefix: /appl/spack/syslibs
+    lua:
+      version: [5.3.4]
+    openssh:
+      buildable: false
+      externals:
+      - spec: openssh@8.0p1
+        prefix: /usr
+    python:
+      variants: +ssl
+    subversion:
+      variants: +perl
+    zstd:
+      variants: +programs

@@ -1,0 +1,25 @@
+# This is a Spack Environment file.
+#
+# It describes a set of packages to be installed, along with
+# configuration settings.
+spack:
+  # add package specs to the `specs` list
+  specs:
+  - amdlibm %aocc@3.2.0
+  - amdblis %aocc@3.2.0
+  - amdlibflame %aocc@3.2.0
+  view: false
+  config:
+    install_tree:
+      padded_length: 64
+  concretization: together
+  packages:
+    all:
+      compiler: [aocc@3.2.0]
+      target: [zen2]
+    amdblis:
+      variants: threads=openmp
+    amdlibflame:
+      variants: threads=openmp
+    boost:
+      variants: +context+container+coroutine+fibber+icu~mpi cxxstd=17
