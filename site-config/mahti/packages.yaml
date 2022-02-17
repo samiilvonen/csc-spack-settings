@@ -13,16 +13,35 @@ packages:
     variants: threads=openmp cpuarch=zen2
   amdlibflame:
     variants: threads=openmp
+  curl:
+    variants: ~gssapi~ldap+libidn2~librtmp~libssh+libssh2+nghttp2 tls=gnutls
   gcc:
     variants: +binutils
   gromacs:
     variants: +shared build_type=Release ~hwloc simd=AVX2_256
+  libevent:
+    buildable: false
+    externals:
+    - spec: libevent@2.1.8
+      prefix: /appl/spack/syslibs
   libtool:
     version: [2.4.2, 2.4.6]
+  lua:
+    version: [5.3.4]
+  pmix:
+    buildable: false
+    externals:
+    - spec: pmix@3.2.2
+      prefix: /appl/spack/syslibs/pmix/3.2.2
   openmpi:
     variants: fabrics=ucx,hcoll schedulers=slurm ~static +pmix +lustre +thread_multiple +mlnx_platform +sys_libevent ~gpfs
   openblas:
     variants: +consistent_fpcsr threads=openmp
+  openssh:
+    buildable: false
+    externals:
+    - spec: openssh@8.0p1
+      prefix: /usr
   openssl:
     buildable: false
     externals:
