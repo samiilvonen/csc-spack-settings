@@ -1,4 +1,17 @@
 modules:
+  prefix_inspections:
+    include:
+    - CPATH
+    lib:
+    - LIBRARY_PATH
+    lib64:
+    - LIBRARY_PATH
+    man:
+    - MANPATH
+    share/man:
+    - MANPATH
+    share/aclocal:
+    - ACLOCAL_PATH
   default:
     enable:
     - lmod
@@ -10,14 +23,33 @@ modules:
       - mpi
       whitelist:
       - amdblis
+      - amdlibflame
       - aocc
+      - boost
+      - cdo
+      - cgal
+      - eccodes
+      - emacs
+      - gcc
+      - git
+      - git-lfs
+      - go
       - gromacs
+      - jemalloc
       - openblas
       - openmpi
+      - pdsh
+      - screen
+      - subversion
+      - tmux
+      - vim
       blacklist:
       - '%aocc@3.1.0'
-      - '%gcc@11.2.0'
+      - '%aocc@3.2.0'
       - '%gcc@8.5.0'
+      - '%gcc@9.4.0'
+      - '%gcc@10.3.0'
+      - '%gcc@11.2.0'
       all:
         conflict:
         - ${PACKAGE}

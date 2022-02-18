@@ -105,5 +105,5 @@ packages:
     variants: +thread_multiple
     buildable: false
     externals:
-    - spec: ucx@1.11.2~cuda+thread_multiple
-      prefix: /appl/opt/ucx/1.11.2
+    - spec: ucx@1.12.0~cuda+thread_multiple
+      prefix: /appl/opt/ucx/1.12.0
