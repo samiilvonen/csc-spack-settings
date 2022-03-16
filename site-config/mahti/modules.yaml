@@ -30,15 +30,27 @@ modules:
       - cgal
       - eccodes
       - emacs
+      - fftw
       - gcc
       - git
       - git-lfs
       - go
       - gromacs
+      - hdf5
+      - jasper
       - jemalloc
+      - mpich
+      - mumps
+      - netcdf-c
+      - netcdf-fortran
+      - netlib-scalapack
       - openblas
       - openmpi
+      - parallel-netcdf
       - pdsh
+      - scalasca
+      - scorep
+      - scotch
       - screen
       - subversion
       - tmux

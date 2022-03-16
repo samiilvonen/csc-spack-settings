@@ -6,8 +6,8 @@ packages:
     compiler: [gcc, aocc]
     providers:
       mpi: [csc.openmpi, csc.mpich]
-      blas: [csc.openblas, amdblis]
-      lapack: [csc.openblas, amdlibflame]
+      blas: [openblas, amdblis]
+      lapack: [openblas, amdlibflame]
       scalapack:: [amdscalapack, netlib-scalapack]
   amdblis:
     variants: threads=openmp cpuarch=zen2
@@ -31,8 +31,8 @@ packages:
   pmix:
     buildable: false
     externals:
-    - spec: pmix@3.2.2
-      prefix: /appl/spack/syslibs/pmix/3.2.2
+    - spec: pmix@3.2.3
+      prefix: /appl/spack/syslibs/pmix/3.2.3
   openmpi:
     variants: fabrics=ucx,hcoll schedulers=slurm ~static +pmix +lustre +thread_multiple +mlnx_platform +sys_libevent ~gpfs
   openblas:
@@ -94,7 +94,7 @@ packages:
   hwloc:
     buildable: true
     externals:
-    - spec: hwloc@1.11.8
+    - spec: hwloc@2.2.0
       prefix: /appl/spack/syslibs
   lustre:
     buildable: false

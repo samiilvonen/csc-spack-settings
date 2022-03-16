@@ -5,9 +5,9 @@
 spack:
   # add package specs to the `specs` list
   specs:
-  - amdlibm %aocc@3.2.0
-  - amdblis %aocc@3.2.0
-  - amdlibflame %aocc@3.2.0
+  - amdlibm
+  - amdblis
+  - amdlibflame
   view: false
   config:
     install_tree:
