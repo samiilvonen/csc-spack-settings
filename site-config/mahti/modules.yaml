@@ -22,25 +22,37 @@ modules:
       hierarchy:
       - mpi
       whitelist:
+      - amber
       - amdblis
       - amdlibflame
       - aocc
-      - boost
+      - boost+mpi
+      - bzip2%gcc@8.5.0
       - cdo
       - cgal
+      - cp2k
+      - cmake%gcc@8.5.0
+      - cuda
       - eccodes
       - emacs
+      - fio
+      - fish
       - fftw
       - gcc
       - git
       - git-lfs
       - go
+      - gnuplot%gcc@8.5.0
       - gromacs
+      - gsl+external-cblas
       - hdf5
+      - htop
       - jasper
       - jemalloc
+      - molden
       - mpich
       - mumps
+      - namd
       - netcdf-c
       - netcdf-fortran
       - netlib-scalapack
@@ -77,7 +89,7 @@ modules:
       fftw:
         suffixes:
           +mpi: mpi
-          +openmp: oml
+          +openmp: omp
       gcc:
         environment:
           set:
