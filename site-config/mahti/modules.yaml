@@ -33,12 +33,14 @@ modules:
       - cp2k
       - cmake%gcc@8.5.0
       - cuda
+      - cudnn
       - eccodes
       - emacs
       - fio
       - fish
       - fftw
-      - gcc
+      - 'gcc@9.4.0'
+      - 'gcc@11.2.0'
       - git
       - git-lfs
       - go
@@ -46,6 +48,7 @@ modules:
       - gromacs
       - gsl+external-cblas
       - hdf5
+      - hpl
       - htop
       - jasper
       - jemalloc
@@ -53,6 +56,7 @@ modules:
       - mpich
       - mumps
       - namd
+      - nco
       - netcdf-c
       - netcdf-fortran
       - netlib-scalapack
@@ -60,6 +64,7 @@ modules:
       - openmpi
       - parallel-netcdf
       - pdsh
+      - proj
       - scalasca
       - scorep
       - scotch
@@ -132,6 +137,10 @@ modules:
       openblas:
         suffixes:
           threads=openmp: omp
+      openmpi:
+        environment:
+          set:
+            OMPI_MCA_io: ^ompio
       petsc:
         suffixes:
           +complex+double: cmplx
