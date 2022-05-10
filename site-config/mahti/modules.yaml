@@ -26,6 +26,7 @@ modules:
       - amdblis
       - amdlibflame
       - aocc
+      - blitz
       - boost+mpi
       - bzip2%gcc@8.5.0
       - cdo
@@ -45,6 +46,7 @@ modules:
       - git-lfs
       - go
       - gnuplot%gcc@8.5.0
+      - grib-api
       - gromacs
       - gsl+external-cblas
       - hdf5
@@ -52,18 +54,21 @@ modules:
       - htop
       - jasper
       - jemalloc
+      - 'metis ~int64 ~real64'
       - molden
       - mpich
       - mumps
-      - namd
+      - 'namd interface=tcl'
       - nco
       - netcdf-c
       - netcdf-fortran
       - netlib-scalapack
       - openblas
       - openmpi
+      - papi
       - parallel-netcdf
       - pdsh
+      - plumed
       - proj
       - scalasca
       - scorep
@@ -75,6 +80,7 @@ modules:
       blacklist:
       - '%aocc@3.1.0'
       - '%aocc@3.2.0'
+      - '%gcc@7.5.0'
       - '%gcc@8.5.0'
       - '%gcc@9.4.0'
       - '%gcc@10.3.0'
@@ -85,12 +91,19 @@ modules:
         environment:
           set:
             ${PACKAGE}_INSTALL_ROOT: ${PREFIX}
+      amber:
+        suffixes:
+          +cuda: cuda
       amdblis:
         suffixes:
           threads=openmp: omp
       boost:
         suffixes:
           +mpi: mpi
+      cuda:
+        environment:
+          append_path:
+            LIBRARY_PATH: ${PREFIX}/lib64/stubs
       fftw:
         suffixes:
           +mpi: mpi
@@ -145,3 +158,38 @@ modules:
         suffixes:
           +complex+double: cmplx
           +int64: int64
+  unsupported_set:
+    enable::
+    - lmod
+    roots:
+      lmod: /appl/spack/v017/unsupported
+    lmod:
+      hash_length: 0
+      core_compilers:
+      - gcc@8.5.0
+      hierarchy:
+      - mpi
+      blacklist:
+      - '%aocc@3.1.0'
+      - '%aocc@3.2.0'
+      - '%gcc@7.5.0'
+      - '%gcc@8.5.0'
+      - '%gcc@9.4.0'
+      - '%gcc@10.3.0'
+      - '%gcc@11.2.0'
+      whitelist:
+      - 'gcc@7.5.0'
+      - intel-oneapi-compilers
+      - intel-oneapi-mkl
+      - intel-oneapi-tbb
+      - intel-oneapi-mpi
+      - nvhpc
+      intel-oneapi-mpi:
+        environment:
+          prepend_path:
+            LD_LIBRARY_PATH: "/appl/opt/ucx/1.12.1/lib:/appl/opt/ucx/1.12.1/lib/ucx"
+          set:
+            FI_PROVIDER: "mlx"
+            I_MPI_PMI_VALUE_LENGTH_MAX: "512"
+            SLURM_MPI_TYPE: "pmi2"
+
