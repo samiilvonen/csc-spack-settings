@@ -5,74 +5,62 @@ packages:
       group: p_installation_spack
     compiler: [gcc, intel]
     providers:
-      mpi: [hpcx-mpi, mpich, intel-mpi]
-      blas: [mkl]
-      lapack: [mkl]
-      scalapack:: [netlib-scalapack, intel-parallel-studio]
+      mpi: [openmpi, mpich, intel-oneapi-mpi]
+      blas: [inte-oneapi-mkl]
+      lapack: [intel-oneapi-mkl]
+      scalapack:: [netlib-scalapack, intel-oneapi-mkl]
+  curl:
+    variants: ~gssapi~ldap+libidn2~librtmp~libssh+libssh2+nghttp2 tls=gnutls
+  gcc:
+    variants: +binutils
+  libevent:
+    buildable: false
+    externals:
+    - spec: libevent@2.1.8
+      prefix: /usr
+  libtool:
+    version: [2.4.2, 2.4.6]
+  lua:
+    version: [5.3.4]
+  pmix:
+    buildable: false
+    externals:
+    - spec: pmix@3.2.3
+      prefix: /usr
+  openmpi:
+    variants: fabrics=ucx schedulers=slurm ~static +pmix +lustre +thread_multiple +mlnx_platform +sys_libevent ~gpfs
+  openblas:
+    variants: +consistent_fpcsr threads=openmp
+  openssh:
+    buildable: false
+    externals:
+    - spec: openssh@8.0p1
+      prefix: /usr
   openssl:
     buildable: false
-    paths:
-      openssl@1.0.2k: /usr
-  slurm:
-    buildable: false
-    paths:
-      slurm@19.05.0 %gcc@4.8.5: /usr
-  pkg-config:
-    buildable: true
-    paths:
-      pkg-config@0.27.1 %gcc@4.8.5: /usr
+    externals:
+    - spec: openssl@1.1.1k
+      prefix: /usr
   gnutls:
     buildable: false
-    paths:
-      gnutls@3.3.29 %gcc@4.8.5: /usr
-      gnutls@3.3.29 %gcc@7.4.0: /usr
-      gnutls@3.3.29 %gcc@8.3.0: /usr
-      gnutls@3.3.29 %gcc@9.1.0: /usr
+    externals:
+    - spec: gnutls@3.6.16
+      prefix: /usr
+  slurm:
+    buildable: false
+    externals:
+    - spec: slurm@20.02.6
+      prefix: /usr
   fftw:
     variants: +fma simd=avx512
-  intel:
+  lustre:
     buildable: false
-    paths:
-      intel@19.0.4 %gcc@4.8.5: /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/bin
-      intel@18.0.5 %gcc@4.8.5: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/bin
-  intel-mkl:
-    buildable: false
-    paths:
-      intel-mkl@2019.0.4 %gcc@9.1.0 ~ilp64 +shared threads=openmp arch=linux-rhel7-x86_64: /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/mkl
-      intel-mkl@2019.0.4 %gcc@8.3.0 ~ilp64 +shared threads=openmp arch=linux-rhel7-x86_64: /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/mkl
-      intel-mkl@2019.0.4 %intel@19.0.4 ~ilp64 +shared threads=openmp arch=linux-rhel7-x86_64: /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/mkl
-      intel-mkl@2018.0.5 %intel@18.0.5 ~ilp64 +shared threads=openmp arch=linux-rhel7-x86_64: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/mkl
-#      intel-mkl@2019.0.4 %gcc@9.1.0 ~ilp64 +shared threads=none arch=linux-rhel7-x86_64:    /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/mkl
-#      intel-mkl@2019.0.4 %gcc@8.3.0 ~ilp64 +shared threads=none arch=linux-rhel7-x86_64:    /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/mkl
-#      intel-mkl@2019.0.4 %intel@19.0.4 ~ilp64 +shared threads=none arch=linux-rhel7-x86_64: /appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/mkl
-#      intel-mkl@2018.0.5 %intel@18.0.5 ~ilp64 +shared threads=none arch=linux-rhel7-x86_64: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/mkl
-  intel-mpi:
-    buildable: false
-    paths:
-      intel-mpi@18.0.5 %intel@18.0.5: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/mpi
-      intel-mpi@18.0.5 %intel@19.0.4: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/mpi
-      intel-mpi@18.0.5 %gcc@9.1.0: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/mpi
-      intel-mpi@18.0.5 %gcc@8.3.0: /appl/opt/cluster_studio_xe2018/compilers_and_libraries_2018.5.274/linux/mpi
-  pgi:
-    buildable: false
-    paths:
-      pgi@19.7 %gcc@4.8.5: /appl/opt/pgi/19.7
-  cuda:
-    buildable: true
-    paths:
-      cuda@10.1 %pgi@19.7: /appl/opt/pgi/19.7/linux86-64/2019/cuda/10.1
-  sharp:
-    buildable: false
-    paths:
-      sharp@2.0: /appl/opt/sharp/2.0
-  hcoll:
-    buildable: false
-    paths:
-      hcoll@4.3.2708: /opt/mellanox/hcoll
-      hcoll@4.4.2938: /appl/opt/hcoll/4.4.2938
+    externals:
+    - spec: lustre@2.12.3
+      prefix: /usr
   ucx:
+    variants: +thread_multiple
     buildable: false
-    paths:
-      ucx@1.6.0: /usr
-      ucx@1.7.0+cuda: /appl/opt/ucx/1.7.0-mlnx
-      ucx@1.7.0~cuda: /appl/opt/ucx/1.7.0-mlnx
+    externals:
+    - spec: ucx@1.12.0~cuda+thread_multiple
+      prefix: /appl/opt/ucx/1.12.0
