@@ -15,6 +15,8 @@ modules:
   default:
     enable:
     - lmod
+    roots:
+      lmod: /appl/spack/v018/modulefiles
     lmod:
       hash_length: 0
       core_compilers:
@@ -41,7 +43,7 @@ modules:
       - fish
       - fftw
       - 'gcc@9.4.0'
-      - 'gcc@11.2.0'
+      - 'gcc@11.3.0'
       - git
       - git-lfs
       - go
@@ -52,6 +54,9 @@ modules:
       - hdf5
       - hpl
       - htop
+      - intel-oneapi-compilers
+      - intel-oneapi-compilers-classic
+      - intel-oneapi-mkl
       - jasper
       - jemalloc
       - 'metis ~int64 ~real64'
@@ -77,15 +82,16 @@ modules:
       - subversion
       - tmux
       - vim
+      - zlib
       blacklist:
       - '%aocc@3.1.0'
       - '%aocc@3.2.0'
       - '%gcc@7.5.0'
       - '%gcc@8.5.0'
       - '%gcc@9.4.0'
-      - '%gcc@10.3.0'
-      - '%gcc@11.2.0'
+      - '%gcc@11.3.0'
       all:
+        autoload: none
         conflict:
         - ${PACKAGE}
         environment:
@@ -147,6 +153,14 @@ modules:
       intel-mkl:
         suffixes:
           intel-mkl threads=openmp: omp
+      intel-oneapi-mpi:
+        environment:
+          prepend_path:
+            LD_LIBRARY_PATH: "/appl/opt/ucx/1.12.1/lib:/appl/opt/ucx/1.12.1/lib/ucx"
+          set:
+            FI_PROVIDER: "mlx"
+            I_MPI_PMI_VALUE_LENGTH_MAX: "512"
+            SLURM_MPI_TYPE: "pmi2"
       openblas:
         suffixes:
           threads=openmp: omp
@@ -162,7 +176,7 @@ modules:
     enable::
     - lmod
     roots:
-      lmod: /appl/spack/v017/unsupported
+      lmod: /appl/spack/v018/unsupported
     lmod:
       hash_length: 0
       core_compilers:
@@ -170,26 +184,9 @@ modules:
       hierarchy:
       - mpi
       blacklist:
-      - '%aocc@3.1.0'
-      - '%aocc@3.2.0'
-      - '%gcc@7.5.0'
       - '%gcc@8.5.0'
       - '%gcc@9.4.0'
-      - '%gcc@10.3.0'
-      - '%gcc@11.2.0'
+      - '%gcc@11.3.0'
       whitelist:
-      - 'gcc@7.5.0'
-      - intel-oneapi-compilers
-      - intel-oneapi-mkl
-      - intel-oneapi-tbb
-      - intel-oneapi-mpi
       - nvhpc
-      intel-oneapi-mpi:
-        environment:
-          prepend_path:
-            LD_LIBRARY_PATH: "/appl/opt/ucx/1.12.1/lib:/appl/opt/ucx/1.12.1/lib/ucx"
-          set:
-            FI_PROVIDER: "mlx"
-            I_MPI_PMI_VALUE_LENGTH_MAX: "512"
-            SLURM_MPI_TYPE: "pmi2"
 

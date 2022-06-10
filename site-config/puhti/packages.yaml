@@ -17,7 +17,7 @@ packages:
     buildable: false
     externals:
     - spec: libevent@2.1.8
-      prefix: /usr
+      prefix: /appl/spack/syslibs
   libtool:
     version: [2.4.2, 2.4.6]
   lua:
@@ -26,7 +26,7 @@ packages:
     buildable: false
     externals:
     - spec: pmix@3.2.3
-      prefix: /usr
+      prefix: /appl/spack/syslibs/pmix/3.2.3
   openmpi:
     variants: fabrics=ucx schedulers=slurm ~static +pmix +lustre +thread_multiple +mlnx_platform +sys_libevent ~gpfs
   openblas:
@@ -35,32 +35,32 @@ packages:
     buildable: false
     externals:
     - spec: openssh@8.0p1
-      prefix: /usr
+      prefix: /appl/spack/syslibs
   openssl:
     buildable: false
     externals:
     - spec: openssl@1.1.1k
-      prefix: /usr
+      prefix: /appl/spack/syslibs
   gnutls:
     buildable: false
     externals:
     - spec: gnutls@3.6.16
-      prefix: /usr
+      prefix: /appl/spack/syslibs
   slurm:
     buildable: false
     externals:
     - spec: slurm@20.02.6
-      prefix: /usr
+      prefix: /appl/spack/syslibs
   fftw:
     variants: +fma simd=avx512
   lustre:
     buildable: false
     externals:
     - spec: lustre@2.12.3
-      prefix: /usr
+      prefix: /appl/spack/syslibs
   ucx:
     variants: +thread_multiple
     buildable: false
     externals:
-    - spec: ucx@1.12.0~cuda+thread_multiple
-      prefix: /appl/opt/ucx/1.12.0
+    - spec: ucx@1.12.1~cuda+thread_multiple
+      prefix: /appl/opt/ucx/1.12.1
