@@ -24,24 +24,29 @@ modules:
       whitelist:
       - amber
       - amdblis
+      - amdfftw
       - amdlibflame
+      - amdscalapack
       - aocc
+      - aocl-sparse
       - blitz
       - boost+mpi
       - bzip2%gcc@8.5.0
       - cdo
       - cgal
-      - cp2k
+      - 'cp2k +elpa ^amdblis'
       - cmake%gcc@8.5.0
       - cuda
       - cudnn
       - eccodes
       - emacs
+      - extrae
       - fio
       - fish
       - fftw
-      - 'gcc@9.4.0'
-      - 'gcc@11.2.0'
+      - 'flux-core@0.43.0'
+      - gcc@9.4.0
+      - gcc@11.2.0
       - git
       - git-lfs
       - go
@@ -52,8 +57,12 @@ modules:
       - hdf5
       - hpl
       - htop
+      - hyperqueue
+      - hypre
+      - imagemagick%gcc@8.5.0
       - jasper
       - jemalloc
+      - mc
       - 'metis ~int64 ~real64'
       - molden
       - mpich
@@ -63,9 +72,13 @@ modules:
       - netcdf-c
       - netcdf-fortran
       - netlib-scalapack
+      - nextflow
       - openblas
+      - openjdk
       - openmpi
+      - 'p7zip%gcc@8.5.0'
       - papi
+      - parallel
       - parallel-netcdf
       - pdsh
       - plumed
@@ -76,15 +89,15 @@ modules:
       - screen
       - subversion
       - tmux
+      - valgrind
       - vim
+      - 'yaml-cpp%gcc@11.2.0'
       blacklist:
-      - '%aocc@3.1.0'
-      - '%aocc@3.2.0'
-      - '%gcc@7.5.0'
-      - '%gcc@8.5.0'
-      - '%gcc@9.4.0'
-      - '%gcc@10.3.0'
-      - '%gcc@11.2.0'
+      - '%aocc'
+      - '%gcc'
+      - '%nvhpc'
+      - '%oneapi'
+      - '%intel'
       all:
         conflict:
         - ${PACKAGE}
@@ -147,6 +160,8 @@ modules:
       intel-mkl:
         suffixes:
           intel-mkl threads=openmp: omp
+      nextflow:
+        autoload: all
       openblas:
         suffixes:
           threads=openmp: omp
@@ -154,6 +169,8 @@ modules:
         environment:
           set:
             OMPI_MCA_io: ^ompio
+        suffixes:
+          +cuda: cuda
       petsc:
         suffixes:
           +complex+double: cmplx
@@ -170,20 +187,51 @@ modules:
       hierarchy:
       - mpi
       blacklist:
-      - '%aocc@3.1.0'
-      - '%aocc@3.2.0'
-      - '%gcc@7.5.0'
-      - '%gcc@8.5.0'
-      - '%gcc@9.4.0'
-      - '%gcc@10.3.0'
-      - '%gcc@11.2.0'
+      - '%aocc'
+      - '%gcc'
+      - '%nvhpc'
+      - '%oneapi'
+      - '%intel'
       whitelist:
       - 'gcc@7.5.0'
+      - 'gcc@9.4.0'
+      - 'openmpi%gcc@7.5.0'
+      - 'openmpi%gcc@9.4.0 ~cuda'
       - intel-oneapi-compilers
       - intel-oneapi-mkl
       - intel-oneapi-tbb
       - intel-oneapi-mpi
       - nvhpc
+      - 'cp2k ^amdblis'
+      intel-oneapi-mpi:
+        environment:
+          prepend_path:
+            LD_LIBRARY_PATH: "/appl/opt/ucx/1.12.1/lib:/appl/opt/ucx/1.12.1/lib/ucx"
+          set:
+            FI_PROVIDER: "mlx"
+            I_MPI_PMI_VALUE_LENGTH_MAX: "512"
+            SLURM_MPI_TYPE: "pmi2"
+  testing_set:
+    enable::
+    - lmod
+    roots:
+      lmod: /appl/spack/v017/testing
+    lmod:
+      hash_length: 0
+      core_compilers:
+      - gcc@8.5.0
+      hierarchy:
+      - mpi
+      blacklist:
+      - '%aocc'
+      - '%gcc'
+      - '%nvhpc'
+      - '%oneapi'
+      - '%intel'
+      whitelist:
+      - 'gcc@9.4.0'
+      - 'openmpi%gcc@9.4.0 ~cuda'
+      - 'cp2k +elpa ^amdblis'
       intel-oneapi-mpi:
         environment:
           prepend_path:
