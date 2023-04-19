@@ -109,3 +109,5 @@ packages:
       prefix: /appl/opt/ucx/1.12.0
     - spec: ucx@1.12.1+cuda+gdrcopy+thread_multiple
       prefix: /appl/opt/ucx/1.12.1-c11.5
+    - spec: ucx@1.14.0~cuda+thread_multiple
+      prefix: /appl/opt/ucx/1.14.0

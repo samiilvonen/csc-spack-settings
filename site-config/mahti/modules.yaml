@@ -179,7 +179,7 @@ modules:
     enable::
     - lmod
     roots:
-      lmod: /appl/spack/v017/unsupported
+      lmod: /appl/spack/v019/unsupported
     lmod:
       hash_length: 0
       core_compilers:
@@ -215,7 +215,7 @@ modules:
     enable::
     - lmod
     roots:
-      lmod: /appl/spack/v017/testing
+      lmod: /appl/spack/v019/testing
     lmod:
       hash_length: 0
       core_compilers:
