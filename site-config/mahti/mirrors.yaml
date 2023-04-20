@@ -1,2 +1,2 @@
-mirrors:
-  allas-bcache: s3://spack-cache-rhel8-019
+#mirrors:
+#  allas-bcache: s3://spack-cache-rhel8-019

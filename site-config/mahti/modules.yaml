@@ -13,8 +13,10 @@ modules:
     share/aclocal:
     - ACLOCAL_PATH
   default:
-    enable:
+    enable::
     - lmod
+    roots:
+      lmod: /appl/spack/v019/modulefiles
     lmod:
       hash_length: 0
       core_compilers:
@@ -22,76 +24,8 @@ modules:
       hierarchy:
       - mpi
       whitelist:
-      - amber
-      - amdblis
-      - amdfftw
-      - amdlibflame
-      - amdscalapack
       - aocc
-      - aocl-sparse
-      - blitz
-      - boost+mpi
-      - bzip2%gcc@8.5.0
-      - cdo
-      - cgal
-      - 'cp2k +elpa ^amdblis'
-      - cmake%gcc@8.5.0
-      - cuda
-      - cudnn
-      - eccodes
-      - emacs
-      - extrae
-      - fio
-      - fish
-      - fftw
-      - 'flux-core@0.43.0'
-      - gcc@9.4.0
-      - gcc@11.2.0
-      - git
-      - git-lfs
-      - go
-      - gnuplot%gcc@8.5.0
-      - grib-api
-      - gromacs
-      - gsl+external-cblas
-      - hdf5
-      - hpl
-      - htop
-      - hyperqueue
-      - hypre
-      - imagemagick%gcc@8.5.0
-      - jasper
-      - jemalloc
-      - mc
-      - 'metis ~int64 ~real64'
-      - molden
-      - mpich
-      - mumps
-      - 'namd interface=tcl'
-      - nco
-      - netcdf-c
-      - netcdf-fortran
-      - netlib-scalapack
-      - nextflow
-      - openblas
-      - openjdk
-      - openmpi
-      - 'p7zip%gcc@8.5.0'
-      - papi
-      - parallel
-      - parallel-netcdf
-      - pdsh
-      - plumed
-      - proj
-      - scalasca
-      - scorep
-      - scotch
-      - screen
-      - subversion
-      - tmux
-      - valgrind
-      - vim
-      - 'yaml-cpp%gcc@11.2.0'
+      - 'gcc@12.2.0'
       blacklist:
       - '%aocc'
       - '%gcc'
@@ -192,17 +126,7 @@ modules:
       - '%nvhpc'
       - '%oneapi'
       - '%intel'
-      whitelist:
-      - 'gcc@7.5.0'
-      - 'gcc@9.4.0'
-      - 'openmpi%gcc@7.5.0'
-      - 'openmpi%gcc@9.4.0 ~cuda'
-      - intel-oneapi-compilers
-      - intel-oneapi-mkl
-      - intel-oneapi-tbb
-      - intel-oneapi-mpi
-      - nvhpc
-      - 'cp2k ^amdblis'
+      whitelist: []
       intel-oneapi-mpi:
         environment:
           prepend_path:
