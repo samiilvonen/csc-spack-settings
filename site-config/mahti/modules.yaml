@@ -23,34 +23,54 @@ modules:
       - gcc@8.5.0
       hierarchy:
       - mpi
-      whitelist:
-      - aocc
-      - 'gcc@12.2.0'
-      blacklist:
+      include:
+      - 'aocc@4.0.0'
+      - amdblis
+      - amdfftw
+      - amdlibflame
+      - amdlibm
+      - amdscalapack
+      - aocl-sparse
+      - cgal
+      - 'cuda@12.1.1%gcc@10.4.0'
+      - curl
+      - 'gcc@10.4.0'
+      - 'gcc@13.1.0'
+      - gromacs
+      - gsl
+      - jasper
+      - jemalloc
+      - openblas
+      - openmpi
+      exclude:
       - '%aocc'
       - '%gcc'
       - '%nvhpc'
       - '%oneapi'
       - '%intel'
       all:
+        autoload: none
         conflict:
-        - ${PACKAGE}
+        - '{name}'
         environment:
           set:
-            ${PACKAGE}_INSTALL_ROOT: ${PREFIX}
+            '{name}_INSTALL_ROOT': '{prefix}'
       amber:
         suffixes:
           +cuda: cuda
       amdblis:
         suffixes:
           threads=openmp: omp
+      amdfftw:
+        suffixes:
+          +openmp: omp
       boost:
         suffixes:
           +mpi: mpi
       cuda:
         environment:
           append_path:
-            LIBRARY_PATH: ${PREFIX}/lib64/stubs
+            LIBRARY_PATH: '{prefix}/lib64/stubs'
       fftw:
         suffixes:
           +mpi: mpi
@@ -103,6 +123,7 @@ modules:
         environment:
           set:
             OMPI_MCA_io: ^ompio
+            UCX_NET_DEVICES: mlx5_0:1
         suffixes:
           +cuda: cuda
       petsc:
