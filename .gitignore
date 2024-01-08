@@ -3,6 +3,8 @@
 #*
 .#*
 *.simg
+**/spack.lock
+**/.spack-env
 /test-environment/home
 !/test-environment/home/.bashrc
 !/test-environment/home/.bash_profile

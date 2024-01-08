@@ -1,0 +1,30 @@
+# This is a Spack Environment file.
+#
+# It describes a set of packages to be installed, along with
+# configuration settings.
+spack:
+  # add package specs to the `specs` list
+  specs:
+  - cgal%gcc@13.1.0
+  - curl%gcc@13.1.0
+  - gsl%gcc@13.1.0
+  - jasper%gcc@13.1.0
+  - jemalloc%gcc@13.1.0
+  - openblas%gcc@13.1.0 +consistent_fpcsr+locking+shared+pic threads=openmp
+  view: false
+  concretizer:
+    unify: when_possible
+  packages:
+    all:
+      compiler: [gcc@13.1.0]
+      target: [zen2]
+    boost:
+      variants: +context+container+coroutine+fibber+icu~mpi cxxstd=17
+    cgal:
+      variants: +core
+    gsl:
+      variants: +external-cblas
+    jasper:
+      variants: +jpeg~opengl+shared build_type=Release
+    openblas:
+      variants: +consistent_fpcsr threads=openmp
