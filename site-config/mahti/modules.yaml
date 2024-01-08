@@ -32,16 +32,19 @@ modules:
       - amdscalapack
       - aocl-sparse
       - cgal
+      - cp2k
       - 'cuda@12.1.1%gcc@10.4.0'
-      - curl
+      - fftw
       - 'gcc@10.4.0'
       - 'gcc@13.1.0'
       - gromacs
       - gsl
       - jasper
-      - jemalloc
+      - mariadb
       - openblas
       - openmpi
+      - rclone
+      - restic
       exclude:
       - '%aocc'
       - '%gcc'
@@ -130,6 +133,14 @@ modules:
         suffixes:
           +complex+double: cmplx
           +int64: int64
+      rclone:
+        environment:
+          set:
+            GOMAXPROCS: '4'
+      restic:
+        environment:
+          set:
+            GOMAXPROCS: '4'
   unsupported_set:
     enable::
     - lmod
