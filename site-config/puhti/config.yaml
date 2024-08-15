@@ -2,7 +2,7 @@ config:
   build_jobs: 20
   install_tree:
     projections:
-      all: ${COMPILERNAME}-${COMPILERVER}/${PACKAGE}-${VERSION}-${HASH:6}
-    root: /appl/spack/v018/install-tree
+      all: '{compiler.name}-{compiler.version}/{name}-{version}-{hash:6}'
+    root: /appl/spack/v022/install-tree
   build_stage: /local_scratch/build/spack-stage
-  source_cache: /appl/spack/v018/sources
+  source_cache: /appl/spack/v022/sources

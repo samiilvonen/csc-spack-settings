@@ -6,7 +6,7 @@ packages:
     compiler: [gcc, intel]
     providers:
       mpi: [openmpi, mpich, intel-oneapi-mpi]
-      blas: [inte-oneapi-mkl]
+      blas: [intel-oneapi-mkl]
       lapack: [intel-oneapi-mkl]
       scalapack:: [netlib-scalapack, intel-oneapi-mkl]
   curl:
@@ -49,14 +49,14 @@ packages:
   slurm:
     buildable: false
     externals:
-    - spec: slurm@20.02.6
+    - spec: slurm@23.11.4
       prefix: /appl/spack/syslibs
   fftw:
     variants: +fma simd=avx512
   lustre:
     buildable: false
     externals:
-    - spec: lustre@2.12.3
+    - spec: lustre@2.12.9
       prefix: /appl/spack/syslibs
   ucx:
     variants: +thread_multiple

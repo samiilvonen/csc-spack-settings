@@ -13,10 +13,10 @@ modules:
     share/aclocal:
     - ACLOCAL_PATH
   default:
-    enable:
+    enable::
     - lmod
     roots:
-      lmod: /appl/spack/v018/modulefiles
+      lmod: /appl/spack/v022/modulefiles
     lmod:
       hash_length: 0
       core_compilers:
@@ -24,92 +24,20 @@ modules:
       hierarchy:
       - mpi
       whitelist:
-      - amber
-      - amdblis
-      - amdlibflame
-      - aocc
-      - blitz
-      - boost+mpi
-      - bzip2%gcc@8.5.0
-      - cdo
-      - cgal
-      - cp2k
-      - cmake%gcc@8.5.0
-      - cuda
-      - cudnn
-      - eccodes
-      - emacs
-      - fio
-      - fish
-      - fftw
-      - 'gcc@9.4.0'
-      - 'gcc@11.3.0'
-      - git
-      - git-lfs
-      - go
-      - gnuplot%gcc@8.5.0
-      - grib-api
-      - gromacs
-      - gsl+external-cblas
-      - hdf5
-      - hpl
-      - htop
-      - intel-oneapi-compilers
-      - intel-oneapi-compilers-classic
-      - intel-oneapi-mkl
-      - jasper
-      - jemalloc
-      - 'metis ~int64 ~real64'
-      - molden
-      - mpich
-      - mumps
-      - 'namd interface=tcl'
-      - nco
-      - netcdf-c
-      - netcdf-fortran
-      - netlib-scalapack
-      - openblas
-      - openmpi
-      - papi
-      - parallel-netcdf
-      - pdsh
-      - plumed
-      - proj
-      - scalasca
-      - scorep
-      - scotch
-      - screen
-      - subversion
-      - tmux
-      - vim
-      - zlib
+      - 'gcc@13.2.0'
       blacklist:
-      - '%aocc@3.1.0'
-      - '%aocc@3.2.0'
-      - '%gcc@7.5.0'
       - '%gcc@8.5.0'
-      - '%gcc@9.4.0'
-      - '%gcc@11.3.0'
       all:
         autoload: none
         conflict:
-        - ${PACKAGE}
+        - '{name}'
         environment:
           set:
-            ${PACKAGE}_INSTALL_ROOT: ${PREFIX}
-      amber:
-        suffixes:
-          +cuda: cuda
-      amdblis:
-        suffixes:
-          threads=openmp: omp
-      boost:
-        suffixes:
-          +mpi: mpi
+            '{name}_INSTALL_ROOT: {prefix}'
       cuda:
         environment:
           append_path:
-            LIBRARY_PATH: ${PREFIX}/lib64/stubs
+            LIBRARY_PATH: '{prefix}/lib64/stubs'
       fftw:
         suffixes:
           +mpi: mpi
@@ -168,15 +96,11 @@ modules:
         environment:
           set:
             OMPI_MCA_io: ^ompio
-      petsc:
-        suffixes:
-          +complex+double: cmplx
-          +int64: int64
   unsupported_set:
     enable::
     - lmod
     roots:
-      lmod: /appl/spack/v018/unsupported
+      lmod: /appl/spack/v022/unsupported
     lmod:
       hash_length: 0
       core_compilers:
