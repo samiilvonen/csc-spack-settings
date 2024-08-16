@@ -8,6 +8,8 @@
 !/test-environment/home/.bash_profile
 /test-environment/temp/tmp
 !/test-environment/temp/.keepthis
+/environments/
+!/environments/**/spack.yaml
 alternatives/config.yaml
 modulefiles
 install-tree

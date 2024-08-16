@@ -12,3 +12,16 @@ compilers:
     modules: []
     environment: {}
     extra_rpaths: []
+- compiler:
+    spec: gcc@=13.2.0
+    paths:
+      cc: /appl/spack/v022/install-tree/gcc-8.5.0/gcc-13.2.0-hgaeyz/bin/gcc
+      cxx: /appl/spack/v022/install-tree/gcc-8.5.0/gcc-13.2.0-hgaeyz/bin/g++
+      f77: /appl/spack/v022/install-tree/gcc-8.5.0/gcc-13.2.0-hgaeyz/bin/gfortran
+      fc: /appl/spack/v022/install-tree/gcc-8.5.0/gcc-13.2.0-hgaeyz/bin/gfortran
+    flags: {}
+    operating_system: rhel8
+    target: x86_64
+    modules: []
+    environment: {}
+    extra_rpaths: []
