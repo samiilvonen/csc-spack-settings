@@ -7,7 +7,7 @@ compilers:
       f77: /usr/bin/gfortran
       fc: /usr/bin/gfortran
     flags: {}
-    operating_system: rhel8
+    operating_system: rocky8
     target: x86_64
     modules: []
     environment: {}
@@ -20,7 +20,7 @@ compilers:
       f77: /appl/spack/v022/install-tree/gcc-8.5.0/gcc-13.2.0-hgaeyz/bin/gfortran
       fc: /appl/spack/v022/install-tree/gcc-8.5.0/gcc-13.2.0-hgaeyz/bin/gfortran
     flags: {}
-    operating_system: rhel8
+    operating_system: rocky8
     target: x86_64
     modules: []
     environment: {}

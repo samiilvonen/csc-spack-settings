@@ -13,10 +13,12 @@ modules:
     share/aclocal:
     - ACLOCAL_PATH
   default:
-    enable::
+    enable:
     - lmod
+    - tcl
     roots:
       lmod: /appl/spack/v022/modulefiles
+      tcl: /appl/spack/v022/tcl-modules
     arch_folder: false
     lmod:
       hide_implicits: false
@@ -29,8 +31,12 @@ modules:
       - boost
       - cdo
       - cmake
+      - cp2k
+      - cuda
       - eccodes
       - fftw
+      - gdal
+      - gromacs
       - gsl
       - jasper
       - jemalloc
@@ -76,6 +82,10 @@ modules:
             I_MPI_FC: gfortran
             I_MPI_F90: gfortran
             I_MPI_F77: gfortran
+      gdal:
+        environment:
+          set:
+            SSL_CERT_FILE: /etc/ssl/certs/ca-bundle.crt
       gromacs:
         suffixes:
           +cuda: cuda
@@ -113,6 +123,62 @@ modules:
       openblas:
         suffixes:
           threads=openmp: omp
+      openmpi:
+        environment:
+          set:
+            OMPI_MCA_io: ^ompio
+            PMIX_MCA_psec: ^munge
+            SLURM_MPI_TYPE: pmix_v4
+          prepend_path:
+            LD_LIBRARY_PATH: '{prefix}/lib'
+    tcl:
+      hash_length: 4
+      projections:
+        all: '{name}/{version}-{compiler.name}-{compiler.version}'
+        ^mpi: '{name}/{version}-{^mpi.name}-{^mpi.version}-{compiler.name}-{compiler.version}'
+      all:
+        autoload: direct
+      cuda:
+        environment:
+          append_path:
+            LIBRARY_PATH: '{prefix}/lib64/stubs'
+      gcc:
+        environment:
+          set:
+            CC: gcc
+            CXX: g++
+            FC: gfortran
+            F90: gfortran
+            F77: gfortran
+            I_MPI_CC: gcc
+            I_MPI_CXX: g++
+            I_MPI_FC: gfortran
+            I_MPI_F90: gfortran
+            I_MPI_F77: gfortran
+      intel:
+        environment:
+          set:
+            CC: icc
+            CXX: icpc
+            FC: ifort
+            F90: ifort
+            F77: ifort
+            ICCCFG: /appl/opt/intel_configs/icc_gcc83_csc.cfg
+            ICPCCFG: /appl/opt/intel_configs/icpc_gcc83_csc.cfg
+            IFORTCFG: /appl/opt/intel_configs/ifort_gcc83_csc.cfg
+            I_MPI_CC: icc
+            I_MPI_CXX: icpc
+            I_MPI_FC: ifort
+            I_MPI_F90: ifort
+            I_MPI_F77: ifort
+      intel-oneapi-mpi:
+        environment:
+          prepend_path:
+            LD_LIBRARY_PATH: "/appl/opt/ucx/1.12.1/lib:/appl/opt/ucx/1.12.1/lib/ucx"
+          set:
+            FI_PROVIDER: "mlx"
+            I_MPI_PMI_VALUE_LENGTH_MAX: "512"
+            SLURM_MPI_TYPE: "pmi2"
       openmpi:
         environment:
           set:
