@@ -16,35 +16,13 @@ modules:
     enable::
     - lmod
     roots:
-      lmod: /appl/spack/v021/modulefiles
+      lmod: /appl/spack/v023/modulefiles
     lmod:
       hash_length: 0
       core_compilers:
       - gcc@8.5.0
       hierarchy:
       - mpi
-      include:
-      - 'aocc@4.0.0'
-      - amdblis
-      - amdfftw
-      - amdlibflame
-      - amdlibm
-      - amdscalapack
-      - aocl-sparse
-      - cgal
-      - cp2k
-      - 'cuda@12.1.1%gcc@10.4.0'
-      - fftw
-      - 'gcc@10.4.0'
-      - 'gcc@13.1.0'
-      - gromacs
-      - gsl
-      - jasper
-      - mariadb
-      - openblas
-      - openmpi
-      - rclone
-      - restic
       exclude:
       - '%aocc'
       - '%gcc'
@@ -145,20 +123,19 @@ modules:
     enable::
     - lmod
     roots:
-      lmod: /appl/spack/v021/unsupported
+      lmod: /appl/spack/v023/unsupported
     lmod:
       hash_length: 0
       core_compilers:
       - gcc@8.5.0
       hierarchy:
       - mpi
-      blacklist:
+      exclude:
       - '%aocc'
       - '%gcc'
       - '%nvhpc'
       - '%oneapi'
       - '%intel'
-      whitelist: []
       intel-oneapi-mpi:
         environment:
           prepend_path:
@@ -171,23 +148,19 @@ modules:
     enable::
     - lmod
     roots:
-      lmod: /appl/spack/v021/testing
+      lmod: /appl/spack/v023/testing
     lmod:
       hash_length: 0
       core_compilers:
       - gcc@8.5.0
       hierarchy:
       - mpi
-      blacklist:
+      exclude:
       - '%aocc'
       - '%gcc'
       - '%nvhpc'
       - '%oneapi'
       - '%intel'
-      whitelist:
-      - 'gcc@9.4.0'
-      - 'openmpi%gcc@9.4.0 ~cuda'
-      - 'cp2k +elpa ^amdblis'
       intel-oneapi-mpi:
         environment:
           prepend_path:
