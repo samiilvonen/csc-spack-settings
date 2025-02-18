@@ -11,6 +11,7 @@
 /environments/
 !/environments/**/spack.yaml
 alternatives/config.yaml
-modulefiles
 install-tree
 sources
+bootstrap/python
+tcl-modules
