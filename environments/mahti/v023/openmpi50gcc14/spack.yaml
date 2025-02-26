@@ -1,0 +1,57 @@
+# This is a Spack Environment file.
+#
+# It describes a set of packages to be installed, along with
+# configuration settings.
+spack:
+  # add package specs to the `specs` list
+  specs:
+  - boost
+  - cdo
+  - openmpi
+  - openblas
+  - eccodes
+  - fftw
+  - hdf
+  - hdf5
+  - parallel-netcdf
+  - netcdf-c
+  - netcdf-fortran
+  - netlib-scalapack
+  - scalasca
+  - mumps
+  view: false
+  concretizer:
+    unify: when_possible
+  packages:
+    all:
+      compiler: [gcc@14.2.0]
+      target: [zen2]
+      providers:
+        blas: [openblas]
+        lapack: [openblas]
+        scalapack: [netlib-scalapack]
+    boost:
+      variants: +context+container+coroutine+icu+mpi cxxstd=17
+    cdo:
+      variants: +curl
+    eccodes:
+      variants: +aec+fortran+memfs+netcdf+openmp+png~pthreads jp2k=jasper build_type=Release
+    fftw:
+      variants: +mpi
+    hdf:
+      variants: +szip+shared+fortran
+    hdf5:
+      variants: +threadsafe+szip+fortran+cxx+hl+mpi+tools
+    mumps:
+      variants: +ptscotch
+    netcdf-c:
+      variants: +dap~fsync+hdf4~jna+mpi+parallel-netcdf+pic+shared
+    netlib-scalapack:
+      variants: +pic
+    openmpi:
+      require:
+      - '%gcc@14.2.0'
+      variants: fabrics=ucx schedulers=slurm romio-filesystem=lustre ~internal-hwloc~internal-libevent+lustre~gpfs~static+thread_multiple+romio
+    python:
+      require:
+      - '%gcc@14.2.0'

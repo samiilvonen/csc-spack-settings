@@ -1,0 +1,30 @@
+# This is a Spack Environment file.
+#
+# It describes a set of packages to be installed, along with
+# configuration settings.
+spack:
+  # add package specs to the `specs` list
+  specs:
+  - openmpi
+  - amdblis
+  - amdfftw ^openmpi%aocc
+  - amdlibflame
+  - amdscalapack ^amdblis ^openmpi%aocc
+  - aocl-sparse
+  view: false
+  concretizer:
+    unify: when_possible
+  packages:
+    all:
+      compiler: [aocc@5.0.0]
+      target: [zen2]
+    amdfftw:
+      variants: +openmp
+    amdblis:
+      variants: threads=openmp
+    amdlibflame:
+      variants: threads=openmp
+    boost:
+      variants: +context+container+coroutine+fibber+icu~mpi cxxstd=17
+    openmpi:
+      variants: ~internal-hwloc~internal-libevent+romio schedulers=slurm fabrics=ucx
