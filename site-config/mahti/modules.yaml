@@ -21,8 +21,29 @@ modules:
       hash_length: 0
       core_compilers:
       - gcc@8.5.0
+      - gcc@13.3.0
       hierarchy:
       - mpi
+      include:
+      - 'aocc@5.0.0'
+      - amdblis
+      - amdfftw
+      - amdlibflame
+      - amdscalapack
+      - aocl-sparse
+      - cgal
+      - fftw
+      - gsl
+      - jasper
+      - 'gcc@14.2.0'
+      - netcdf-c
+      - netcdf-fortran
+      - parallel-netcdf
+      - openblas
+      - papi
+      - scorep
+      - scalasca
+      - openmpi
       exclude:
       - '%aocc'
       - '%gcc'
@@ -128,8 +149,12 @@ modules:
       hash_length: 0
       core_compilers:
       - gcc@8.5.0
+      - gcc@13.3.0
       hierarchy:
       - mpi
+      include:
+      - aocc
+      - gcc
       exclude:
       - '%aocc'
       - '%gcc'
@@ -153,8 +178,17 @@ modules:
       hash_length: 0
       core_compilers:
       - gcc@8.5.0
+      - gcc@13.3.0
       hierarchy:
       - mpi
+      include:
+      - aocc
+      - amdblis
+      - amdfftw
+      - amdlibflame
+      - amdscalapack
+      - aocl-sparse
+      - openmpi
       exclude:
       - '%aocc'
       - '%gcc'
