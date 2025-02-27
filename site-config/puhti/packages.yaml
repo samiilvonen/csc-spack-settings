@@ -33,7 +33,7 @@ packages:
     - spec: pmix@3.2.3
       prefix: /appl/spack/syslibs/pmix/3.2.3
   openmpi:
-    variants: fabrics=ucx schedulers=slurm ~static +pmix +lustre +thread_multiple +mlnx_platform +sys_libevent ~gpfs
+    variants: fabrics=ucx schedulers=slurm romio-filesystem=lustre ~static +lustre +thread_multiple ~internal-libevent ~internal-hwloc 
   openblas:
     variants: +consistent_fpcsr threads=openmp
   openssh:

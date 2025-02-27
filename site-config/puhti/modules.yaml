@@ -17,8 +17,7 @@ modules:
     - lmod
     - tcl
     roots:
-      lmod: /appl/spack/v022/modulefiles
-      tcl: /appl/spack/v022/tcl-modules
+      lmod: /appl/spack/v023/modulefiles
     arch_folder: false
     lmod:
       hide_implicits: false
@@ -27,30 +26,7 @@ modules:
       - gcc@8.5.0
       hierarchy:
       - mpi
-      include:
-      - boost
-      - cdo
-      - cmake
-      - cp2k
-      - cuda
-      - eccodes
-      - fftw
-      - gdal
-      - gromacs
-      - gsl
-      - jasper
-      - jemalloc
-      - hdf5
-      - libaec
-      - parallel-netcdf
-      - netcdf-c
-      - netcdf-fortran
-      - intel-oneapi-mkl
-      - intel-tbb
-      - openmpi
-      - proj
-      - udunits
-      - 'gcc@13.2.0'
+      include: []
       exclude:
       - '%gcc@8.5.0'
       - '%gcc@13.2.0'
@@ -191,7 +167,7 @@ modules:
     enable::
     - lmod
     roots:
-      lmod: /appl/spack/v022/unsupported
+      lmod: /appl/spack/v023/unsupported
     lmod:
       hash_length: 0
       core_compilers:
