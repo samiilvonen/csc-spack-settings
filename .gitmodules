@@ -2,3 +2,4 @@
 	path = spack
 	url = git@github.com:CSCfi/spack.git
 	branch = csc/v0.23
+        shallow = true
